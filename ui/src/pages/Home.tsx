@@ -11,7 +11,11 @@ const Home : FC = () => {
     const params = new URLSearchParams(location.search);
     const name = params.get('name');
     const email = params.get('email');
-    console.log("params " + name + " " + email);
+    const token = params.get('token');
+
+    localStorage.setItem('authToken', token ?? "");
+
+    console.log("params " + name + " " + email + " " + token);
   }, []);
 
   return (

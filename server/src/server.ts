@@ -4,12 +4,21 @@ import express, { NextFunction, Request, Response } from 'express';
 import session from 'express-session';
 import passport from 'passport';
 import { Strategy as GoogleStrategy, Profile } from 'passport-google-oauth20';
-import { getUserDetails, setupDB, StreamerDB, updateUser, User } from './mongo';
+import { StreamerDB } from './db/mongo';
+import { getUserDetails, insertUser, updateUser, User } from './db/users'
 require('dotenv').config()
+import jwt from 'jsonwebtoken';
+import cors from 'cors';
 
 const app = express();
 const PORT = 9999;
 
+
+
+app.use(cors({
+  origin: 'http://localhost:3000', // Allow requests from your React app
+  credentials: true, // Allow sending cookies and credentials
+}));
 
 // Session management
 app.use(
@@ -43,11 +52,12 @@ passport.use(
       
       const user: User = {
         email : email,
-        userName : profile.username ?? ""
+        userName : profile.displayName ?? ""
       }
 
       const userResp = await getUserDetails(email);
-      !userResp && await updateUser(user);
+      if (userResp) await updateUser(user);
+      else await insertUser(user);
       
       return done(null, profile);
     }
@@ -63,6 +73,26 @@ app.get(
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
+const  verifyToken = (req : Request, res : Response, next: NextFunction) => {
+  const token = req.headers.authorization?.split(' ')[1]; // Bearer token
+  if (!token) {
+    res.status(401).send('Unauthorized');
+    return;
+  }
+
+  const SECRET_KEY = process.env.SECRET_KEY ?? "";
+
+  jwt.verify(token, SECRET_KEY, (err, decoded) => {
+    if (err) {
+      res.status(403).send('Invalid Token');
+      return;
+    }
+    const email:string = (decoded as {email : string}).email;
+    req.user = { ...(decoded as Object), email: decodeURIComponent(email)}; // Attach user data to request
+    next();
+  });
+}
+
 app.get(
   '/auth/google/callback',
   passport.authenticate('google', {
@@ -73,21 +103,36 @@ app.get(
     console.log("User ", user);
     const name = encodeURIComponent(user.displayName);
     const email = encodeURIComponent(user.emails[0].value);
-    resp.redirect(`http://localhost:3000/home?name=${name}&email=${email}`);
+
+    const SECRET_KEY = process.env.SECRET_KEY ?? "";
+
+    const token = jwt.sign(
+      {
+        email: email
+      },
+      SECRET_KEY,
+      { expiresIn: '1h' } // Token expires in 1 hour
+    );
+    resp.redirect(`http://localhost:3000/home?name=${name}&email=${email}&token=${token}`);
   }
 );
 
-app.get('/profile', (req: Request, resp: Response) => {
-  console.log(req.isAuthenticated());
-  console.log(req.user);
-  if(req.isAuthenticated()){
-    resp.send("Homeee")
-    return;
+app.get('/profile', verifyToken, async (req: Request, resp: Response) => {
+  const user = req.user as {email : string};
+  const userDBResp = await getUserDetails(user.email);
+  console.log("UserResp", userDBResp, user.email);
+
+  if(userDBResp){
+    resp.send({
+      email: userDBResp.email,
+      name : userDBResp.userName
+    })
+  }else{
+    resp.status(404).send("User not found");
   }
-  resp.send("Not Authhhh");
 })
 
-app.get('/logout', (req: Request, resp: Response, next: NextFunction) => {
+app.get('/logout', verifyToken, (req: Request, resp: Response, next: NextFunction) => {
   req.logOut({ keepSessionInfo: false}, (error) => {
     next(error);
     console.log(error);

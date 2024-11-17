@@ -1,8 +1,9 @@
 import React, { FC } from "react";
+import { getProfile } from "../api/profile";
 
 const NavBar : FC = () => {
-  const handleProfileClick = () => {
-    
+  const handleProfileClick = async () => {
+    console.log("Profile", await getProfile());
   }
   return (
     <div className="w-screen bg-secondaryBG flex flex-row justify-between items-center">
