@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'HermeneusOne';
+  src: url('../src/style/fonts/HermeneusOne-Regular.ttf') format('ttf'),
+    url('../src/style/fonts/HermeneusOne-Regular.ttf') format('ttf');
+  font-style: normal;
+}
