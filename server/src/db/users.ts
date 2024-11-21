@@ -1,8 +1,5 @@
 import mongoose from "mongoose";
 import { Schema, model } from "mongoose";
-import { StreamerDB } from "./mongo";
-
-
 
 interface User extends Document {
   email: string,
@@ -12,7 +9,6 @@ interface User extends Document {
   friends: string[]
 }
 
-// Define a schema
 const UserSchema = new Schema<User>({
   userName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -21,9 +17,7 @@ const UserSchema = new Schema<User>({
   friends: { type: [String], default: [] }
 });
 
-// Create a model
 export const UserModel = model<User>("User", UserSchema);
-
 
 export const getUserDetails = async (email: string): Promise<User | null> => {
   return await UserModel.findOne({email:email});
@@ -89,4 +83,14 @@ export const acceptFriendRequest = async (personWhoAccepting : string, personWho
     throw err;
   }
 }
+
+
+export const getFriends = async (email : string ) => {
+  const user = await UserModel.findOne({email : email})
+  if(!user){
+    throw new Error(`No user found with email {email}`);
+  }
+  return user.friends;
+}
+
 

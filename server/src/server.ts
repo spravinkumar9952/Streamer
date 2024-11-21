@@ -13,14 +13,11 @@ import cors from 'cors';
 const app = express();
 const PORT = 9999;
 
-
-
 app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from your React app
-  credentials: true, // Allow sending cookies and credentials
+  origin: process.env.UI_BASE_URL, 
+  credentials: true, 
 }));
 
-// Session management
 app.use(
   session({
     secret: process.env.SESSION_SECRET || 'default-secret',
@@ -30,14 +27,12 @@ app.use(
   })
 );
 
-// Initialize Passport and session
 app.use(passport.initialize({
   userProperty: 'user'
 }
 ));
 app.use(passport.session());
 
-// Configure Passport to use Google strategy
 passport.use(
   new GoogleStrategy(
     {
@@ -63,7 +58,6 @@ passport.use(
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user: Profile, done) => done(null, user));
 
-// Route to trigger Google authentication
 app.get(
   '/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
@@ -89,27 +83,17 @@ const  verifyToken = (req : Request, res : Response, next: NextFunction) => {
   });
 }
 
-app.get(
-  '/auth/google/callback',
-  passport.authenticate('google', {
-    failureRedirect: '/login'
-  }),
+app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/login'}),
   (req: Request, resp: Response) =>{
-    const user = req.user as any; // Assuming user object from Passport
-    console.log("User ", user);
+    const user = req.user as any; 
+
     const name = encodeURIComponent(user.displayName);
     const email = encodeURIComponent(user.emails[0].value);
 
     const SECRET_KEY = process.env.SECRET_KEY ?? "";
+    const token = jwt.sign({email: email},SECRET_KEY,{ expiresIn: '1h' });
 
-    const token = jwt.sign(
-      {
-        email: email
-      },
-      SECRET_KEY,
-      { expiresIn: '1h' } // Token expires in 1 hour
-    );
-    resp.redirect(`http://localhost:3000/home?name=${name}&email=${email}&token=${token}`);
+    resp.redirect(`{process.env.UI_REDIRECT_URL}?name=${name}&email=${email}&token=${token}`);
   }
 );
 
@@ -140,20 +124,14 @@ app.get('/logout', verifyToken, (req: Request, resp: Response, next: NextFunctio
   resp.send("sucess");
 })
 
-// Basic route to test the server
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello, World! The TypeScript server is running!');
 });
-
-
-
 
 app.get('/friends', verifyToken, (req : Request, res: Response) => {
 
 })
 
-
-// Start the server
 app.listen(PORT, async () => {
   await StreamerDB.getInstance();
   console.log(`Server is running on http://localhost:${PORT}`);
