@@ -1,4 +1,5 @@
 import { Db, MongoClient } from "mongodb";
+import mongoose from "mongoose";
 
 export class StreamerDB {
   private static instance : StreamerDB;
@@ -8,9 +9,9 @@ export class StreamerDB {
 
   private static async setUp(){
     const connectionStr = process.env.MONGO_CONNECTION_STR ?? "";
-    const dbClient = new MongoClient(connectionStr);
-    await dbClient.connect();
-    StreamerDB.db = dbClient.db('streamer');
+    await mongoose.connect(connectionStr);
+    
+    console.log("MongoDB connected");
   }
 
   public static async getInstance () : Promise<StreamerDB> {

@@ -9,7 +9,8 @@ module.exports = {
         primaryBG: "#4A4458",
         secondaryBG: "#D9D9D9",
         primaryText: "#FFFFFF",
-        secondaryText: "#000000"
+        secondaryText: "#000000",
+        tertiaryText: "#7D5260"
       },
       fontFamily: {
         primaryFont: ['HermeneusOne']

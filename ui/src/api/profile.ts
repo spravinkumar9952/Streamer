@@ -1,22 +1,24 @@
+import { error } from "console"
 import { baseUrl, getHeaders } from "./common"
 
 
-type ProfileResp = {
+export type ProfileResp = {
   email : string,
-  userName : string
+  name : string
 }
 
-export const getProfile = async () => {
-  try{
-    const url = baseUrl + 'profile';
-    fetch(url ?? "",{
-      method : "GET",
-      headers: getHeaders(),
-    }).then(resp => resp.text())
-    .then(resp => console.log(resp))
-    .catch(err => console.log(err))
+export const getProfile = async (): Promise<ProfileResp> => {
 
-  }catch(err){
-    console.error(err);
+  const url = baseUrl + 'profile';
+  const resp = await fetch(url ?? "",{
+    method : "GET",
+    headers: getHeaders(),
+  })
+
+  if (!resp.ok) {
+    throw new Error(`HTTP error! status: ${resp.status}`);
   }
+  const apiResp = await resp.json()
+  console.log("API_RESP",apiResp);
+  return apiResp as ProfileResp;
 }

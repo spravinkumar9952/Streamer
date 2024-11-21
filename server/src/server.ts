@@ -5,7 +5,7 @@ import session from 'express-session';
 import passport from 'passport';
 import { Strategy as GoogleStrategy, Profile } from 'passport-google-oauth20';
 import { StreamerDB } from './db/mongo';
-import { getUserDetails, insertUser, updateUser, User } from './db/users'
+import { getUserDetails, insertUser, updateUser } from './db/users'
 require('dotenv').config()
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
@@ -49,15 +49,11 @@ passport.use(
       console.log("Inside GoogleStrategy", profile);
       const emails = profile.emails as {value: string; verified: boolean;}[]
       const email = emails[0].value;
-      
-      const user: User = {
-        email : email,
-        userName : profile.displayName ?? ""
-      }
+  
 
       const userResp = await getUserDetails(email);
-      if (userResp) await updateUser(user);
-      else await insertUser(user);
+      if (userResp) await updateUser(email, profile.displayName);
+      else await insertUser(email, profile.displayName);
       
       return done(null, profile);
     }
@@ -149,6 +145,12 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Hello, World! The TypeScript server is running!');
 });
 
+
+
+
+app.get('/friends', verifyToken, (req : Request, res: Response) => {
+
+})
 
 
 // Start the server
