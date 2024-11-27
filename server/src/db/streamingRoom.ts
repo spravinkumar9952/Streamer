@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose"
+import mongoose, { model, Schema } from "mongoose"
 import { UserModel } from "./users";
 import { UUID } from "mongodb";
 import { v4 as uuidv4 } from 'uuid';
@@ -37,12 +37,22 @@ export const createRoom = async (roomName: string, users : [string], createdBy :
   await newRoom.save();
 }
 
+export const addPerson = async  (roomId : string , usersEmail : [string]) => {
+  const session = await mongoose.startSession();
+  session.startTransaction();
 
-export const addPerson = async  (roomId : string , users : [string]) => {
-  await StreamingRoomModel.findByIdAndUpdate({_id : roomId}, {$addToSet : {joinedUsers : users}});
+  try{
+    await StreamingRoomModel.findByIdAndUpdate({ _id: roomId }, { $addToSet: { joinedUsers: usersEmail }});
+    usersEmail.forEach(async userEmail => await UserModel.findByIdAndUpdate({email : userEmail}, { $addToSet : {joinedStreamingRooms : roomId}}))
+    await session.commitTransaction()
+  }catch(err){
+    await session.abortTransaction();
+    throw err;
+  }
 }
 
 
 export const updateVideoURL = async (roomId: string, videoUrl : string) => {
   await StreamingRoomModel.findByIdAndUpdate({ _id: roomId }, { videoUrl: videoUrl});
 }
+

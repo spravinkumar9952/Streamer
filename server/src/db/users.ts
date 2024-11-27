@@ -6,7 +6,8 @@ interface User extends Document {
   userName: string,
   frinedRequestsSent: string[],
   frinedRequestsRecieved : string[],
-  friends: string[]
+  friends: string[],
+  joinedStreamingRooms : string[]
 }
 
 const UserSchema = new Schema<User>({
@@ -14,7 +15,8 @@ const UserSchema = new Schema<User>({
   email: { type: String, required: true, unique: true },
   frinedRequestsSent: { type: [String], default: [] },
   frinedRequestsRecieved: {type: [String], default: []},
-  friends: { type: [String], default: [] }
+  friends: { type: [String], default: [] },
+  joinedStreamingRooms: { type: [String], default: [] }
 });
 
 export const UserModel = model<User>("User", UserSchema);
@@ -48,6 +50,10 @@ export const addFrinedRequst = async (from : string, to : string) => {
   session.startTransaction();
 
   try{
+    if(!(await UserModel.findOne({email: to}))){
+      throw new Error(`User not exist with {to}`);
+    }
+    
     await UserModel.updateOne({ email: from }, { $addToSet: { frinedRequestsSent: to } })
     await UserModel.updateOne({ email: to }, {$addToSet : {frinedRequestsRecieved : from}})
 
@@ -63,7 +69,7 @@ export const acceptFriendRequest = async (personWhoAccepting : string, personWho
   session.startTransaction();
   
   try{
-    const isFrinedRequestThere = await UserModel.findOne({ email: personWhoAccepting, frinedRequestsSent: personWhoSent })
+    const isFrinedRequestThere = await UserModel.findOne({ email: personWhoAccepting, frinedRequestsRecieved: personWhoSent })
 
     if (!isFrinedRequestThere){
       throw new Error("No frinend request found")
@@ -71,13 +77,25 @@ export const acceptFriendRequest = async (personWhoAccepting : string, personWho
 
     await UserModel.updateOne(
       { email: personWhoAccepting }, 
-      { $pull: { frinedRequestsRecieved: personWhoSent}, $push: {friends : personWhoSent} } 
+      { $pull: { frinedRequestsRecieved: personWhoSent}, $addToSet: {friends : personWhoSent} } 
     )
 
     await UserModel.updateOne(
       { email: personWhoSent },
-      { $pull: { frinedRequestsSent: personWhoAccepting }, $push: {friends : personWhoAccepting}}
+      { $pull: { frinedRequestsSent: personWhoAccepting }, $addToSet: {friends : personWhoAccepting}}
     )
+
+    // await UserModel.updateOne(
+    //   { email: personWhoAccepting },
+    //   { $pull: { frinedRequestsRecieved: personWhoSent }}
+    // )
+
+    // await UserModel.updateOne(
+    //   { email: personWhoSent },
+    //   { $pull: { frinedRequestsSent: personWhoAccepting }}
+    // )
+
+    session.commitTransaction();
   }catch(err){
     session.abortTransaction();
     throw err;
@@ -93,4 +111,27 @@ export const getFriends = async (email : string ) => {
   return user.friends;
 }
 
+
+export const getStreamingRooms = async (userEmail: string) => {
+  const userInfo = await UserModel.findOne({email : userEmail});
+  if (!userInfo){
+    throw new Error(`No user found with email {userEmail}`);
+  }
+
+  return userInfo.joinedStreamingRooms;
+}
+
+
+export const matchUsersWithRegex = async (regex: string) : Promise<User[]> => {
+  const resp = await UserModel.find({
+    email: {
+      $elemMatch: {
+        $regex: regex,
+        $options: 'i'
+      }
+    }
+  });
+
+  return resp;
+}
 
