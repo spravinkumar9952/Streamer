@@ -1,15 +1,14 @@
 import React, { FC, useState } from "react";
-import { Friend, getProfile } from "../api/profile";
+import { Friend, getProfile, getSearchResult } from "../api/profile";
 import { useNavigate } from "react-router-dom";
 
 
 type NavBarProps = {
-  onSearchTextChange?: (event: React.FormEvent<HTMLInputElement>) => void | undefined 
 }
 
-const NavBar: FC<NavBarProps> = ({ onSearchTextChange }) => {
+const NavBar: FC<NavBarProps> = ({}) => {
   const navigation = useNavigate();
-  const [users, setUsers] = useState<null | Friend>(null);
+  const [users, setUsers] = useState<Friend[]>([]);
 
   const onProfileClick = async () => {
     navigation('/profile')
@@ -18,6 +17,13 @@ const NavBar: FC<NavBarProps> = ({ onSearchTextChange }) => {
   const onLogoClick = async () => {
     navigation('/');
   }
+
+  const onSearchTextChange = async (event: React.FormEvent<HTMLInputElement>) =>{
+    const resp = await getSearchResult(event.currentTarget.value);
+    setUsers(resp);
+  }
+
+
 
   return (
     <>
@@ -31,13 +37,8 @@ const NavBar: FC<NavBarProps> = ({ onSearchTextChange }) => {
       </div>
     </div>
 
-    <div className="flex flex-col z-10 items-end rounded-lg">
-        <SearchItem name="Pravinkumar S" email="spravinkumar9952@gmail.com"/>
-        <SearchItem name="Pravinkumar S" email="spravinkumar9952@gmail.com" />
-        <SearchItem name="Pravinkumar S" email="spravinkumar9952@gmail.com" />
-        <SearchItem name="Pravinkumar S" email="spravinkumar9952@gmail.com" />
-        <SearchItem name="Pravinkumar S" email="spravinkumar9952@gmail.com" />
-        <SearchItem name="Pravinkumar S" email="spravinkumar9952@gmail.com" />
+    <div className="flex flex-col absolute z-10 items-end rounded-lg right-2">
+      {users.map(item => <SearchItem name={item.name} email={item.email}/>)}
     </div>
     </>
   )
@@ -49,8 +50,13 @@ type SearchItemProps =  {
 }
 
 const SearchItem: FC<SearchItemProps> = ({name, email}) => {
+  const navigation = useNavigate();
+  const onSearchItemClick = () => {
+    navigation('/profile', {state: {email: email}});
+  }
+
   return (
-    <div className="flex flex-row p-4 bg-secondaryBG rounded-sm">
+    <div className="flex flex-row p-4 bg-secondaryBG rounded-sm" onClick={onSearchItemClick}>
       <h1>{name}</h1>
       <h1>{email}</h1>
       <div className="h-1 bg-primaryBG"/>

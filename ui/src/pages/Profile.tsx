@@ -1,23 +1,35 @@
 import React, { FC, useEffect, useState } from "react"
 import NavBar from "../components/NavBar"
-import { getProfile, ProfileResp } from "../api/profile";
+import { getProfile, getUserByEmail, giveFriendRequest, ProfileResp } from "../api/profile";
+import { useLocation } from "react-router-dom";
 
+interface ProfileProp {
+  email? : string
+}
 
-export const Profile = () => {
+export const Profile : FC = () => {
   const [user, setUser] = useState<ProfileResp | null>(null);
+  const location = useLocation();
+  const data : ProfileProp = location.state;
 
 
   useEffect(() => {
+    console.log("Inside Profile useEffect")
     const updateProfile = async () => {
       try{
-        const profileResp = await getProfile();
+        const profileResp = data.email ?  await getUserByEmail(data.email) : await getProfile() ;
+        console.log("profileResp", profileResp);
         setUser(profileResp);
       }catch(err){
         console.log(err);
       }
     }
     updateProfile();
-  }, []);
+  }, [data.email]);
+
+  const handleFriendRequest = async () => {
+    if(data.email) giveFriendRequest(data.email);
+  }
 
   return (
     <>
@@ -29,6 +41,7 @@ export const Profile = () => {
             <KeyValView label="Name:" val={user?.name ?? "NA"} />
             <KeyValView label="Email:" val={user?.email ?? "NA"} />
           </div>
+          {data.email && <button onClick={handleFriendRequest}>Give Friend Req</button>}
         </div>
       </div>
     </>

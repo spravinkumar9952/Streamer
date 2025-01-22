@@ -20,10 +20,19 @@ export const profileHandler = async (req: Request, resp: Response) => {
 export const handleUserSearch = async (req : Request, resp : Response) => {
   const searchKey = req.query.searchKey;
   const regex = "^" + searchKey;
+  console.log("regex", regex);
   const matchedUsers = await matchUsersWithRegex(regex);
+  console.log("matchedUsers", matchedUsers);
 
   const result : {email : string, name : string}[] = matchedUsers.map(item => {return {email : item.email, name : item.userName}});
   resp.send(result);
+}
+
+export const handleUserProfile = async (req: Request, resp : Response) => {
+  const searchKey = req.query.email as string;
+  console.log("handleUserProfile", "searchKey", req.query );
+  const user = await getUserDetails(searchKey);
+  resp.send({email : user?.email, name: user?.userName});
 }
 
 

@@ -58,6 +58,7 @@ export const addFrinedRequst = async (from : string, to : string) => {
     await UserModel.updateOne({ email: to }, {$addToSet : {frinedRequestsRecieved : from}})
 
     session.commitTransaction();
+    console.log("Completed friend request");
   }catch(err){
     session.abortTransaction();
     throw err;
@@ -123,14 +124,14 @@ export const getStreamingRooms = async (userEmail: string) => {
 
 
 export const matchUsersWithRegex = async (regex: string) : Promise<User[]> => {
-  const resp = await UserModel.find({
-    email: {
-      $elemMatch: {
-        $regex: regex,
-        $options: 'i'
-      }
-    }
-  });
+  // const resp = await UserModel.find({
+  //   email: {
+  //       $regex: regex,
+  //       $options: 'i'
+  //   }
+  // });
+
+  const resp = await UserModel.find();
 
   return resp;
 }

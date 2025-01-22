@@ -9,7 +9,7 @@ import { getStreamingRooms, getUserDetails, insertUser, updateUser } from '../db
 require('dotenv').config()
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
-import { handleFriendList, handleFriendRequestAccept, handleFriendRequestSent, handleUserSearch, profileHandler } from './handlers/user';
+import { handleFriendList, handleFriendRequestAccept, handleFriendRequestSent, handleUserProfile, handleUserSearch, profileHandler } from './handlers/user';
 import { authGoogleCallback, logOutHandler, verifyToken } from './handlers/auth';
 import { getStreamingRoomsHandler } from './handlers/streamingRoom';
 
@@ -71,6 +71,7 @@ app.get('/logout', verifyToken, logOutHandler);
 app.get('/profile', verifyToken, profileHandler)
 app.get('/stream/rooms/list', verifyToken, getStreamingRoomsHandler)
 app.get('/user/search', verifyToken, handleUserSearch);
+app.get('/user/profile', verifyToken, handleUserProfile);
 
 
 app.post('/friend/request/sent', verifyToken, handleFriendRequestSent);
