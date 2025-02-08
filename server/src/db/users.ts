@@ -4,8 +4,8 @@ import { Schema, model } from "mongoose";
 interface User extends Document {
     email: string;
     userName: string;
-    frinedRequestsSent: string[];
-    frinedRequestsRecieved: string[];
+    friendRequestsSent: string[];
+    friendRequestsReceived: string[];
     friends: string[];
     joinedStreamingRooms: string[];
 }
@@ -13,8 +13,8 @@ interface User extends Document {
 const UserSchema = new Schema<User>({
     userName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    frinedRequestsSent: { type: [String], default: [] },
-    frinedRequestsRecieved: { type: [String], default: [] },
+    friendRequestsSent: { type: [String], default: [] },
+    friendRequestsReceived: { type: [String], default: [] },
     friends: { type: [String], default: [] },
     joinedStreamingRooms: { type: [String], default: [] },
 });
@@ -41,7 +41,7 @@ export const updateUser = async (email: string, userName: string | undefined) =>
     UserModel.updateOne({ email: email }, userDetails);
 };
 
-export const addFrinedRequst = async (from: string, to: string) => {
+export const addFriendRequest = async (from: string, to: string) => {
     const session = await mongoose.startSession();
     session.startTransaction();
 
@@ -50,8 +50,8 @@ export const addFrinedRequst = async (from: string, to: string) => {
             throw new Error(`User not exist with {to}`);
         }
 
-        await UserModel.updateOne({ email: from }, { $addToSet: { frinedRequestsSent: to } });
-        await UserModel.updateOne({ email: to }, { $addToSet: { frinedRequestsRecieved: from } });
+        await UserModel.updateOne({ email: from }, { $addToSet: { friendRequestsSent: to } });
+        await UserModel.updateOne({ email: to }, { $addToSet: { friendRequestsReceived: from } });
 
         session.commitTransaction();
         console.log("Completed friend request");
@@ -66,34 +66,24 @@ export const acceptFriendRequest = async (personWhoAccepting: string, personWhoS
     session.startTransaction();
 
     try {
-        const isFrinedRequestThere = await UserModel.findOne({
+        const isFriendRequestThere = await UserModel.findOne({
             email: personWhoAccepting,
-            frinedRequestsRecieved: personWhoSent,
+            friendRequestsReceived: personWhoSent,
         });
 
-        if (!isFrinedRequestThere) {
-            throw new Error("No frinend request found");
+        if (!isFriendRequestThere) {
+            throw new Error("No friend request found");
         }
 
         await UserModel.updateOne(
             { email: personWhoAccepting },
-            { $pull: { frinedRequestsRecieved: personWhoSent }, $addToSet: { friends: personWhoSent } }
+            { $pull: { friendRequestsReceived: personWhoSent }, $addToSet: { friends: personWhoSent } }
         );
 
         await UserModel.updateOne(
             { email: personWhoSent },
-            { $pull: { frinedRequestsSent: personWhoAccepting }, $addToSet: { friends: personWhoAccepting } }
+            { $pull: { friendRequestsSent: personWhoAccepting }, $addToSet: { friends: personWhoAccepting } }
         );
-
-        // await UserModel.updateOne(
-        //   { email: personWhoAccepting },
-        //   { $pull: { frinedRequestsRecieved: personWhoSent }}
-        // )
-
-        // await UserModel.updateOne(
-        //   { email: personWhoSent },
-        //   { $pull: { frinedRequestsSent: personWhoAccepting }}
-        // )
 
         session.commitTransaction();
     } catch (err) {

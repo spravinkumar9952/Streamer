@@ -1,7 +1,7 @@
 import mongoose, { model, Schema } from "mongoose";
 import { exitRoom, updateJoinedStreamingRooms, UserModel } from "./users";
 import { UUID } from "mongodb";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidV4 } from "uuid";
 
 interface StreamingRoom extends Document {
     _id: UUID;
@@ -27,7 +27,7 @@ export const createRoom = async (roomName: string, users: string[], createdBy: s
     const session = await mongoose.startSession();
     session.startTransaction();
 
-    const id = uuidv4();
+    const id = uuidV4();
 
     try {
         const newRoom = new StreamingRoomModel({
@@ -86,4 +86,12 @@ export const deleteRoom = async (roomId: string) => {
     } catch (err) {
         session.abortTransaction();
     }
+};
+
+export const getRoomById = async (roomId: string) => {
+    const resp = await StreamingRoomModel.findById({ _id: roomId });
+    if (resp?.$isEmpty) {
+        throw new Error("Room not found for id " + roomId);
+    }
+    return resp;
 };

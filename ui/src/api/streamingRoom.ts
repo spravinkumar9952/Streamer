@@ -26,11 +26,11 @@ export const createStreamingRoom = async (req: CreateStreamingRoomReq) => {
 
 // -----------------
 
-interface getStreamingRoomsListReq {}
+interface GetStreamingRoomsListReq {}
 
-interface getStreamingRoomsListResp {}
+interface GetStreamingRoomsListResp {}
 
-export const getStreamingRoomsList = async (req) => {
+export const getStreamingRoomsList = async (req: GetStreamingRoomsListReq): Promise<GetStreamingRoomsListResp> => {
     const url = baseUrl + "stream/rooms/list";
     const resp = await fetch(url ?? "", {
         method: "POST",
@@ -43,5 +43,5 @@ export const getStreamingRoomsList = async (req) => {
     }
 
     const apiResp = await resp.json();
-    return apiResp as CreateStreamingRoomResp;
+    return apiResp as GetStreamingRoomsListReq;
 };
