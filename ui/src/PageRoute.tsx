@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LoginPage } from "./pages/Login";
 import Home from "./pages/Home";
 import { Profile } from "./pages/Profile";
+import CreateStreaming from "./pages/CreateStreaming";
 
 const PageRoute : FC = () => {
   const [initialCompenent, setInitialComponent] = useState <React.JSX.Element>(<LoginPage/>)
@@ -19,6 +20,7 @@ const PageRoute : FC = () => {
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/createStreaming" element={<CreateStreaming/>}/>
       </Routes>
     </BrowserRouter>  
   )
