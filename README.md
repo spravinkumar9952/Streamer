@@ -25,6 +25,7 @@ A real-time collaborative video streaming platform where users can watch videos 
 - Socket.IO for real-time communication
 - MongoDB with Mongoose
 - TypeScript
+- Nodemon for development
 
 ## Prerequisites
 
@@ -67,9 +68,12 @@ REACT_APP_API_URL=http://localhost:9998
 
 4. Start the application
 ```bash
-# Start backend server
+# Start backend servers (in separate terminals)
 cd server
-npm run dev
+# Start HTTP server
+npm run start:http
+# Start Socket server
+npm run start:socket
 
 # Start frontend (in a new terminal)
 cd ui
@@ -84,6 +88,7 @@ streaming-room/
 │   ├── src/
 │   │   ├── db/           # Database models and operations
 │   │   ├── socket/       # Socket.IO server implementation
+│   │   ├── http/         # HTTP server implementation
 │   │   └── routes/       # API routes
 │   └── package.json
 └── ui/
@@ -97,6 +102,28 @@ streaming-room/
 
 ## Socket Events
 
+### Client to Server
+- `joinRoom`: Join a streaming room
+- `leaveRoom`: Leave a streaming room
+- `play`: Start video playback
+- `pause`: Pause video playback
+- `seek`: Seek to a specific time
+- `onProgress`: Update video progress
+
+### Server to Client
+- `play`: Trigger video playback
+- `pause`: Trigger video pause
+- `seek`: Update video position
+- `onProgress`: Sync video progress
+
+## Development
+
+The backend is split into two servers:
+1. HTTP Server: Handles REST API requests
+2. Socket Server: Manages real-time video synchronization
+
+Both servers need to be running simultaneously for the application to work properly.
+
 ## Contributing
 
 1. Fork the repository
@@ -105,6 +132,3 @@ streaming-room/
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-
-This project is licensed under the MIT License - see the LICENSE file for details.
