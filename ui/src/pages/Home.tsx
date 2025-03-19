@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FC, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
@@ -11,7 +11,9 @@ import {
   getSearchResult,
 } from "../api/profile";
 import exp from "constants";
-
+import { getStreamingRoomsList, StreamingRoom } from "../api/streamingRoom";
+import { StreamingRoomListItem } from "../components/StreamingRoomListItem";
+import AuthContext, { User } from "../contexts/Auth";
 enum Section {
   StreamingRooms,
   Friends,
@@ -24,7 +26,9 @@ const Home: FC = () => {
     Section.StreamingRooms
   );
   const [friends, setFriends] = useState<FriendsListResp | null>(null);
+  const [streamingRooms, setStreamingRooms] = useState<StreamingRoom[]>([]);
   const navigation = useNavigate();
+  const { setUser } = useContext(AuthContext);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -32,10 +36,15 @@ const Home: FC = () => {
     const email = params.get("email");
     const token = params.get("token");
 
-    localStorage.setItem("authToken", token ?? "");
+    if (token) {
+      localStorage.setItem("authToken", token ?? "");
+    }
+    // changeSection(Section.StreamingRooms);
+    changeSection(selectedSection);
+    setUser({ email: email ?? "", name: name ?? "", profilePicture: "" });
 
     console.log("params " + name + " " + email + " " + token);
-  }, []);
+  }, [location.search]);
 
   const handleStartStreaming = () => {
     navigation("/createStreaming");
@@ -50,6 +59,12 @@ const Home: FC = () => {
         console.log(resp);
         setFriends(resp);
       } catch (err) {}
+    } else if (section === Section.StreamingRooms) {
+      const resp = await getStreamingRoomsList({});
+      console.log("getStreamingRoomsList", resp);
+      if (resp.list) {
+        setStreamingRooms(resp.list);
+      }
     }
   };
 
@@ -107,7 +122,8 @@ const Home: FC = () => {
           </>
         )}
 
-        {selectedSection === Section.StreamingRooms && <></>}
+        {selectedSection === Section.StreamingRooms &&
+          streamingRooms.map((item) => <StreamingRoomListItem item={item} />)}
       </div>
     </div>
   );

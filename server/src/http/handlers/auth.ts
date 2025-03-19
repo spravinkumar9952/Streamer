@@ -4,9 +4,9 @@ import jwt from "jsonwebtoken";
 export const logOutHandler = (req: Request, resp: Response, next: NextFunction) => {
     req.logOut({ keepSessionInfo: false }, (error) => {
         next(error);
-        console.log(error);
+        console.error(error);
         req.session.destroy((err) => {
-            console.log(error);
+            console.error(error);
             next(error);
         });
     });
@@ -30,6 +30,7 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
     const token = req.headers.authorization?.split(" ")[1]; // Bearer token
     if (!token) {
         res.status(401).send("Unauthorized");
+        console.error(`User with the token ${token} authorized`);
         return;
     }
 

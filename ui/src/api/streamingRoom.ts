@@ -28,14 +28,24 @@ export const createStreamingRoom = async (req: CreateStreamingRoomReq) => {
 
 interface GetStreamingRoomsListReq {}
 
-interface GetStreamingRoomsListResp {}
+export interface StreamingRoom {
+    id: string;
+    created_at: string;
+    joinedUsers: string[];
+    name: string;
+    videoUrl: string;
+    createdBy: string;
+}
+
+interface GetStreamingRoomsListResp {
+    list: StreamingRoom[];
+}
 
 export const getStreamingRoomsList = async (req: GetStreamingRoomsListReq): Promise<GetStreamingRoomsListResp> => {
     const url = baseUrl + "stream/rooms/list";
     const resp = await fetch(url ?? "", {
-        method: "POST",
+        method: "GET",
         headers: getHeaders(),
-        body: JSON.stringify(req),
     });
 
     if (!resp.ok) {
@@ -43,5 +53,5 @@ export const getStreamingRoomsList = async (req: GetStreamingRoomsListReq): Prom
     }
 
     const apiResp = await resp.json();
-    return apiResp as GetStreamingRoomsListReq;
+    return apiResp as GetStreamingRoomsListResp;
 };

@@ -66,12 +66,14 @@ export const getStreamingRoomsHandler = async (
         const roomsId = await getStreamingRooms(user.email);
         const roomsList = await Promise.all(
             roomsId.map(async (roomId) => {
+                console.log("getStreamingRoomsHandler RoomId", roomId);
                 const roomInfoFromDB = await getRoomById(roomId);
+                console.log("getStreamingRoomsHandler roomInfoFromDB", roomInfoFromDB);
                 if (roomInfoFromDB == undefined) {
                     throw new Error("Room info not found for id " + roomId);
                 }
                 const roomInfo: StreamingRoom = {
-                    id: roomInfoFromDB.id,
+                    id: roomInfoFromDB._id.toString(),
                     created_at: roomInfoFromDB.created_at.toLocaleString(),
                     joinedUsers: roomInfoFromDB.joinedUsers,
                     name: roomInfoFromDB.name,
@@ -83,6 +85,7 @@ export const getStreamingRoomsHandler = async (
         );
         res.send({ list: roomsList });
     } catch (err) {
+        console.error("getStreamingRoomsHandler Error", err);
         res.status(500).send({ message: err as string });
     }
 };

@@ -12,7 +12,6 @@ interface ProfileResp {
 export const profileHandler = async (req: Request<{}, {}, ProfileReq>, resp: Response<ProfileResp | ErrorResp>) => {
     const user = req.user as { email: string };
     const userDBResp = await getUserDetails(user.email);
-    console.log("UserResp", userDBResp, user.email);
 
     if (userDBResp) {
         resp.json({
@@ -42,9 +41,7 @@ export const handleUserSearch = async (
 ) => {
     const searchKey = req.query.searchKey;
     const regex = "^" + searchKey;
-    console.log("regex", regex);
     const matchedUsers = await matchUsersWithRegex(regex);
-    console.log("matchedUsers", matchedUsers);
 
     const result: UserSearchResp = {
         list: matchedUsers.map((item) => {
@@ -67,7 +64,6 @@ export const handleUserProfile = async (
     resp: Response<UserProfileResp | ErrorResp>
 ) => {
     const searchKey = req.query.email as string;
-    console.log("handleUserProfile", "searchKey", req.query);
     const user = await getUserDetails(searchKey);
     if (user === null) {
         resp.send({ message: "User not found for email id " + searchKey });
@@ -78,7 +74,6 @@ export const handleUserProfile = async (
 
 // ------------ Post Friend Request Sent API Start --------------
 export const handleFriendRequestSent = async (req: Request, resp: Response) => {
-    console.log("Inside_handleFriendRequestSent");
     const to = req.body.email;
     const user = req.user as { email: string };
     const from = user.email;
@@ -137,7 +132,6 @@ export const handleFriendList = async (req: Request<{}, {}, FriendListReq>, resp
 
         for (let email of friendsEmail) {
             const user = await getUserDetails(email);
-            console.log("user", user);
             friendsList.push({
                 email: email,
                 name: user?.userName,

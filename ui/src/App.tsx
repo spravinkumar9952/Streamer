@@ -3,6 +3,7 @@ import './App.css';
 import React from 'react';
 import { LoginPage } from './pages/Login';
 import PageRoute from './PageRoute';
+import { AuthProvider } from './contexts/Auth';
 
 // declare const Buffer;
 
@@ -12,7 +13,9 @@ import PageRoute from './PageRoute';
 function App() {
   return (
     <div className="App">
-      <PageRoute/>
+      <AuthProvider>
+        <PageRoute/>
+      </AuthProvider>
     </div>
   );
 }

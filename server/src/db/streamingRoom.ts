@@ -4,7 +4,7 @@ import { UUID } from "mongodb";
 import { v4 as uuidV4 } from "uuid";
 
 interface StreamingRoom extends Document {
-    _id: UUID;
+    _id: string;
     created_at: Date;
     joinedUsers: string[];
     name: string;
@@ -12,8 +12,9 @@ interface StreamingRoom extends Document {
     createdBy: string;
 }
 
+
 export const StreamingRoomSchema = new Schema<StreamingRoom>({
-    _id: { type: UUID, required: true },
+    _id: { type: String, required: true },
     created_at: { type: Date, default: Date.now() },
     joinedUsers: { type: [String], default: [] },
     name: { type: String, required: true },
@@ -23,7 +24,7 @@ export const StreamingRoomSchema = new Schema<StreamingRoom>({
 
 export const StreamingRoomModel = model<StreamingRoom>("StreamingRoom", StreamingRoomSchema);
 
-export const createRoom = async (roomName: string, users: string[], createdBy: string) => {
+export const createRoom = async (createdBy: string, joinedUsers: string[], roomName: string) => {
     const session = await mongoose.startSession();
     session.startTransaction();
 
@@ -32,12 +33,14 @@ export const createRoom = async (roomName: string, users: string[], createdBy: s
     try {
         const newRoom = new StreamingRoomModel({
             _id: id,
-            joinedUsers: users,
+            joinedUsers: joinedUsers,
             name: roomName,
             createdBy: createdBy,
         });
         await newRoom.save();
-        users.forEach(async (email) => await updateJoinedStreamingRooms(email, id));
+        joinedUsers.forEach(async (joinedUser) => await updateJoinedStreamingRooms(joinedUser, id));
+        console.log("createRoom, createdBy", createdBy);
+        await updateJoinedStreamingRooms(createdBy, id);
         await session.commitTransaction();
     } catch (err) {
         await session.abortTransaction();
@@ -79,7 +82,7 @@ export const deleteRoom = async (roomId: string) => {
             throw new Error("Streaming room not exit");
         }
 
-        resp?.joinedUsers.forEach(async (email) => await exitRoom(roomId, email));
+        resp?.joinedUsers.forEach(async (joinedUser : string) => await exitRoom(roomId, joinedUser));
         await StreamingRoomModel.deleteOne({ _id: roomId });
 
         session.commitTransaction();
@@ -88,10 +91,19 @@ export const deleteRoom = async (roomId: string) => {
     }
 };
 
-export const getRoomById = async (roomId: string) => {
-    const resp = await StreamingRoomModel.findById({ _id: roomId });
-    if (resp?.$isEmpty) {
+export const getRoomById = async (roomId: string): Promise<StreamingRoom> => {
+    const resp = await StreamingRoomModel.findOne({ _id: roomId });
+    if (!resp) {
         throw new Error("Room not found for id " + roomId);
     }
+
     return resp;
+};
+
+
+export const updateUserSocketId = async (roomId: string, email: string, socketId: string) => {
+    await StreamingRoomModel.findOneAndUpdate(
+        { _id: roomId, "joinedUsers.email": email },
+        { $set: { "joinedUsers.$.socketId": socketId } }
+    );
 };

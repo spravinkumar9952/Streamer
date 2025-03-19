@@ -19,6 +19,7 @@ import {
 } from "./handlers/user";
 import { authGoogleCallback, logOutHandler, verifyToken } from "./handlers/auth";
 import { createStreamingRoom, deleteStreamingRoom, getStreamingRoomsHandler } from "./handlers/streamingRoom";
+import "../utils/logger";
 
 const app = express();
 const PORT = 9999;
@@ -56,7 +57,6 @@ passport.use(
             callbackURL: "/auth/google/callback",
         },
         async (accessToken, refreshToken, profile, done) => {
-            console.log("Inside GoogleStrategy", profile);
             const emails = profile.emails as { value: string; verified: boolean }[];
             const email = emails[0].value;
 

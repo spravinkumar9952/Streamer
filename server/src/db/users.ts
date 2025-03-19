@@ -54,7 +54,6 @@ export const addFriendRequest = async (from: string, to: string) => {
         await UserModel.updateOne({ email: to }, { $addToSet: { friendRequestsReceived: from } });
 
         session.commitTransaction();
-        console.log("Completed friend request");
     } catch (err) {
         session.abortTransaction();
         throw err;
