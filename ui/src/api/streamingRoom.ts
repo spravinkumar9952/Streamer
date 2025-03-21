@@ -3,6 +3,7 @@ import { baseUrl, getHeaders } from "./common";
 interface CreateStreamingRoomReq {
     roomName: string;
     friends: string[];
+    videoUrl: string;
 }
 interface CreateStreamingRoomResp {
     id: string;

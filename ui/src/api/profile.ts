@@ -62,7 +62,11 @@ export const getFriendsList = async (): Promise<FriendsListResp> => {
 };
 
 const handleUnAuthorize = (statuscode: number) => {
-    // window.location = {replace: "\home"};
+    if (statuscode === 401 || statuscode === 403) {
+        window.location.href = "/login";
+    }else{
+        throw new Error(`HTTP error! status: ${statuscode}`);
+    }
 };
 export interface ProfileResp {
     email: string;
@@ -73,7 +77,7 @@ export interface UserSearchResp {
 }
 
 export const getSearchResult = async (key: string): Promise<UserSearchResp> => {
-    const url = baseUrl + "user/search?" + key;
+    const url = baseUrl + "user/search?searchKey=" + key;
     const resp = await fetch(url ?? "", {
         method: "GET",
         headers: getHeaders(),

@@ -24,7 +24,7 @@ export const StreamingRoomSchema = new Schema<StreamingRoom>({
 
 export const StreamingRoomModel = model<StreamingRoom>("StreamingRoom", StreamingRoomSchema);
 
-export const createRoom = async (createdBy: string, joinedUsers: string[], roomName: string) => {
+export const createRoom = async (createdBy: string, joinedUsers: string[], roomName: string, videoUrl : string) => {
     const session = await mongoose.startSession();
     session.startTransaction();
 
@@ -36,6 +36,7 @@ export const createRoom = async (createdBy: string, joinedUsers: string[], roomN
             joinedUsers: joinedUsers,
             name: roomName,
             createdBy: createdBy,
+            videoUrl: videoUrl,
         });
         await newRoom.save();
         joinedUsers.forEach(async (joinedUser) => await updateJoinedStreamingRooms(joinedUser, id));

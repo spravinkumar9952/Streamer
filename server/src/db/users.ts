@@ -109,16 +109,46 @@ export const getStreamingRooms = async (userEmail: string) => {
 };
 
 export const matchUsersWithRegex = async (regex: string): Promise<User[]> => {
-    // const resp = await UserModel.find({
-    //   email: {
-    //       $regex: regex,
-    //       $options: 'i'
-    //   }
-    // });
+    try {
+        console.log("Searching for regex:", regex);
 
-    const resp = await UserModel.find();
+        // If regex is empty, return empty array
+        if (!regex || regex.trim() === '') {
+            return [];
+        }
 
-    return resp;
+        // Create a case-insensitive regex pattern
+        const searchPattern = new RegExp(regex, 'i');
+        console.log("Search pattern:", searchPattern);
+
+        const resp = await UserModel.find({
+            $or: [
+                { email: searchPattern },
+                { userName: searchPattern }
+            ]
+        }).select('email userName');
+
+        console.log("Found users:", resp);
+
+        // If no results, try a simpler search
+        if (resp.length === 0) {
+            console.log("No results found, trying simpler search");
+            const simpleResp = await UserModel.find({
+                $or: [
+                    { email: { $regex: regex, $options: 'i' } },
+                    { userName: { $regex: regex, $options: 'i' } }
+                ]
+            }).select('email userName');
+
+            console.log("Simple search results:", simpleResp);
+            return simpleResp;
+        }
+
+        return resp;
+    } catch (error) {
+        console.error('Error in matchUsersWithRegex:', error);
+        throw new Error('Failed to search users');
+    }
 };
 
 export const updateJoinedStreamingRooms = async (email: string, roomId: string) => {

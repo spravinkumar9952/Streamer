@@ -7,6 +7,7 @@ import { ErrorResp, SuccessResp, User } from "../common";
 interface StreamingRoomReq {
     roomName: string;
     friends: string[];
+    videoUrl: string;
 }
 
 interface StreamingRoomResp {
@@ -19,7 +20,7 @@ export const createStreamingRoom = async (
 ) => {
     const user = req.user as User;
     const body = req.body;
-    const resp = await createRoom(user.email, body.friends, body.roomName);
+    const resp = await createRoom(user.email, body.friends, body.roomName, body.videoUrl);
     res.send({ id: resp });
 };
 

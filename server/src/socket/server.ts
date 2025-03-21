@@ -49,6 +49,7 @@ io.on("connection", async (socket) => {
     });
 
     socket.on("onProgress", (roomId, email, time) => {
+        // console.log("received onProgress to " + time);
         socket.to(roomId).emit("onProgress", time);
     });
 

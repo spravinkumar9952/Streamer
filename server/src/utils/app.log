@@ -1,501 +1,34 @@
-[2025-02-28T06:32:22.839Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T06:32:22.842Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T06:33:36.117Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T06:33:36.118Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T06:33:40.204Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  CastError: Cast to UUID failed for value "{ _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' }" (type Object) at path "_id" for model "StreamingRoom"
-      at SchemaUUID.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:289:11)
-      at SchemaUUID.SchemaType.applySetters (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schemaType.js:1236:12)
-      at SchemaUUID.castForQuery (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:345:17)
-      at cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/cast.js:319:34)
-      at model.Query.Query.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4918:12)
-      at model.Query.Query._castConditions (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2309:10)
-      at model.Query._findOne (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2632:8)
-      at model.Query.exec (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4458:80)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5) {
-    stringValue: `"{ _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' }"`,
-    messageFormat: undefined,
-    kind: 'UUID',
-    value: { _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' },
-    path: '_id',
-    reason: TypeError: Cannot read properties of undefined (reading 'path')
-        at SchemaUUID._cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:148:58)
-        at SchemaUUID.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:287:12)
-        at SchemaUUID.SchemaType.applySetters (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schemaType.js:1236:12)
-        at SchemaUUID.castForQuery (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:345:17)
-        at cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/cast.js:319:34)
-        at model.Query.Query.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4918:12)
-        at model.Query.Query._castConditions (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2309:10)
-        at model.Query._findOne (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2632:8)
-        at model.Query.exec (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4458:80)
-        at processTicksAndRejections (node:internal/process/task_queues:105:5),
-    valueType: 'Object'
-  }
-]
-[2025-02-28T06:36:11.057Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T06:36:11.062Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T06:36:14.099Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'b47184cc-7b31-4014-a281-55c216e02e3f'
-]
-[2025-02-28T06:36:14.102Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  CastError: Cast to UUID failed for value "{ _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' }" (type Object) at path "_id" for model "StreamingRoom"
-      at SchemaUUID.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:289:11)
-      at SchemaUUID.SchemaType.applySetters (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schemaType.js:1236:12)
-      at SchemaUUID.castForQuery (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:345:17)
-      at cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/cast.js:319:34)
-      at model.Query.Query.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4918:12)
-      at model.Query.Query._castConditions (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2309:10)
-      at model.Query._findOne (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2632:8)
-      at model.Query.exec (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4458:80)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5) {
-    stringValue: `"{ _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' }"`,
-    messageFormat: undefined,
-    kind: 'UUID',
-    value: { _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' },
-    path: '_id',
-    reason: TypeError: Cannot read properties of undefined (reading 'path')
-        at SchemaUUID._cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:148:58)
-        at SchemaUUID.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:287:12)
-        at SchemaUUID.SchemaType.applySetters (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schemaType.js:1236:12)
-        at SchemaUUID.castForQuery (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:345:17)
-        at cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/cast.js:319:34)
-        at model.Query.Query.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4918:12)
-        at model.Query.Query._castConditions (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2309:10)
-        at model.Query._findOne (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2632:8)
-        at model.Query.exec (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4458:80)
-        at processTicksAndRejections (node:internal/process/task_queues:105:5),
-    valueType: 'Object'
-  }
-]
-[2025-02-28T06:37:25.843Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T06:37:25.846Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T06:37:28.897Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'b47184cc-7b31-4014-a281-55c216e02e3f'
-]
-[2025-02-28T06:37:28.900Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  CastError: Cast to UUID failed for value "{ _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' }" (type Object) at path "_id" for model "StreamingRoom"
-      at SchemaUUID.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:289:11)
-      at SchemaUUID.SchemaType.applySetters (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schemaType.js:1236:12)
-      at SchemaUUID.castForQuery (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:345:17)
-      at cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/cast.js:319:34)
-      at model.Query.Query.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4918:12)
-      at model.Query.Query._castConditions (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2309:10)
-      at model.Query._findOne (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2632:8)
-      at model.Query.exec (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4458:80)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5) {
-    stringValue: `"{ _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' }"`,
-    messageFormat: undefined,
-    kind: 'UUID',
-    value: { _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' },
-    path: '_id',
-    reason: TypeError: Cannot read properties of undefined (reading 'path')
-        at SchemaUUID._cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:148:58)
-        at SchemaUUID.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:287:12)
-        at SchemaUUID.SchemaType.applySetters (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schemaType.js:1236:12)
-        at SchemaUUID.castForQuery (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:345:17)
-        at cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/cast.js:319:34)
-        at model.Query.Query.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4918:12)
-        at model.Query.Query._castConditions (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2309:10)
-        at model.Query._findOne (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2632:8)
-        at model.Query.exec (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4458:80)
-        at processTicksAndRejections (node:internal/process/task_queues:105:5),
-    valueType: 'Object'
-  }
-]
-[2025-02-28T06:37:59.345Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T06:37:59.347Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T06:38:01.743Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'b47184cc-7b31-4014-a281-55c216e02e3f'
-]
-[2025-02-28T06:38:01.746Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  CastError: Cast to UUID failed for value "{ _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' }" (type Object) at path "_id" for model "StreamingRoom"
-      at SchemaUUID.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:289:11)
-      at SchemaUUID.SchemaType.applySetters (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schemaType.js:1236:12)
-      at SchemaUUID.castForQuery (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:345:17)
-      at cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/cast.js:319:34)
-      at model.Query.Query.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4918:12)
-      at model.Query.Query._castConditions (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2309:10)
-      at model.Query._findOne (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2632:8)
-      at model.Query.exec (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4458:80)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5) {
-    stringValue: `"{ _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' }"`,
-    messageFormat: undefined,
-    kind: 'UUID',
-    value: { _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' },
-    path: '_id',
-    reason: TypeError: Cannot read properties of undefined (reading 'path')
-        at SchemaUUID._cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:148:58)
-        at SchemaUUID.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:287:12)
-        at SchemaUUID.SchemaType.applySetters (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schemaType.js:1236:12)
-        at SchemaUUID.castForQuery (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:345:17)
-        at cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/cast.js:319:34)
-        at model.Query.Query.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4918:12)
-        at model.Query.Query._castConditions (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2309:10)
-        at model.Query._findOne (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2632:8)
-        at model.Query.exec (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4458:80)
-        at processTicksAndRejections (node:internal/process/task_queues:105:5),
-    valueType: 'Object'
-  }
-]
-[2025-02-28T06:42:13.380Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T06:42:13.382Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T06:42:18.198Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'b47184cc-7b31-4014-a281-55c216e02e3f'
-]
-[2025-02-28T06:42:18.202Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  CastError: Cast to UUID failed for value "{ _id: <Buffer b4 71 84 cc 7b 31 40 14 a2 81 55 c2 16 e0 2e 3f> }" (type Object) at path "_id" for model "StreamingRoom"
-      at SchemaUUID.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:289:11)
-      at SchemaUUID.SchemaType.applySetters (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schemaType.js:1236:12)
-      at SchemaUUID.castForQuery (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:345:17)
-      at cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/cast.js:319:34)
-      at model.Query.Query.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4918:12)
-      at model.Query.Query._castConditions (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2309:10)
-      at model.Query._findOne (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2632:8)
-      at model.Query.exec (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4458:80)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5) {
-    stringValue: '"{ _id: <Buffer b4 71 84 cc 7b 31 40 14 a2 81 55 c2 16 e0 2e 3f> }"',
-    messageFormat: undefined,
-    kind: 'UUID',
-    value: { _id: <Buffer b4 71 84 cc 7b 31 40 14 a2 81 55 c2 16 e0 2e 3f> },
-    path: '_id',
-    reason: TypeError: Cannot read properties of undefined (reading 'path')
-        at SchemaUUID._cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:148:58)
-        at SchemaUUID.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:287:12)
-        at SchemaUUID.SchemaType.applySetters (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schemaType.js:1236:12)
-        at SchemaUUID.castForQuery (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:345:17)
-        at cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/cast.js:319:34)
-        at model.Query.Query.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4918:12)
-        at model.Query.Query._castConditions (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2309:10)
-        at model.Query._findOne (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2632:8)
-        at model.Query.exec (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4458:80)
-        at processTicksAndRejections (node:internal/process/task_queues:105:5),
-    valueType: 'Object'
-  }
-]
-[2025-02-28T06:42:57.608Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T06:42:57.612Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T06:43:02.586Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'b47184cc-7b31-4014-a281-55c216e02e3f'
-]
-[2025-02-28T06:43:02.587Z] [LOG]: [ 'getRoomById', 'b47184cc-7b31-4014-a281-55c216e02e3f' ]
-[2025-02-28T06:43:02.590Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  CastError: Cast to UUID failed for value "{ _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' }" (type Object) at path "_id" for model "StreamingRoom"
-      at SchemaUUID.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:289:11)
-      at SchemaUUID.SchemaType.applySetters (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schemaType.js:1236:12)
-      at SchemaUUID.castForQuery (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:345:17)
-      at cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/cast.js:319:34)
-      at model.Query.Query.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4918:12)
-      at model.Query.Query._castConditions (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2309:10)
-      at model.Query._findOne (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2632:8)
-      at model.Query.exec (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4458:80)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5) {
-    stringValue: `"{ _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' }"`,
-    messageFormat: undefined,
-    kind: 'UUID',
-    value: { _id: 'b47184cc-7b31-4014-a281-55c216e02e3f' },
-    path: '_id',
-    reason: TypeError: Cannot read properties of undefined (reading 'path')
-        at SchemaUUID._cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:148:58)
-        at SchemaUUID.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:287:12)
-        at SchemaUUID.SchemaType.applySetters (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schemaType.js:1236:12)
-        at SchemaUUID.castForQuery (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/schema/uuid.js:345:17)
-        at cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/cast.js:319:34)
-        at model.Query.Query.cast (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4918:12)
-        at model.Query.Query._castConditions (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2309:10)
-        at model.Query._findOne (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:2632:8)
-        at model.Query.exec (/Users/pravinkumars/Streamer/server/node_modules/mongoose/lib/query.js:4458:80)
-        at processTicksAndRejections (node:internal/process/task_queues:105:5),
-    valueType: 'Object'
-  }
-]
-[2025-02-28T06:43:35.746Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T06:43:35.751Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T06:43:38.205Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'b47184cc-7b31-4014-a281-55c216e02e3f'
-]
-[2025-02-28T06:43:38.205Z] [LOG]: [ 'getRoomById', 'b47184cc-7b31-4014-a281-55c216e02e3f' ]
-[2025-02-28T06:43:38.252Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  Error: Room not found for id b47184cc-7b31-4014-a281-55c216e02e3f
-      at /Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:97:15
-      at Generator.next (<anonymous>)
-      at fulfilled (/Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:28:58)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5)
-]
-[2025-02-28T06:45:22.090Z] [LOG]: [ 'createRoom, createdBy', 'spravinkumar9952@gmail.com' ]
-[2025-02-28T06:45:22.976Z] [ERROR]: [ 'User with the token undefined authorized' ]
-[2025-02-28T06:46:15.664Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '28dff443-4616-4691-acdb-225de5d77ff6'
-]
-[2025-02-28T06:46:15.666Z] [LOG]: [ 'getRoomById', '28dff443-4616-4691-acdb-225de5d77ff6' ]
-[2025-02-28T06:46:15.709Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  Error: Room not found for id 28dff443-4616-4691-acdb-225de5d77ff6
-      at /Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:97:15
-      at Generator.next (<anonymous>)
-      at fulfilled (/Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:28:58)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5)
-]
-[2025-02-28T06:50:24.719Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T06:50:24.721Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T06:50:27.905Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '28dff443-4616-4691-acdb-225de5d77ff6'
-]
-[2025-02-28T06:50:27.906Z] [LOG]: [ 'getRoomById', '28dff443-4616-4691-acdb-225de5d77ff6' ]
-[2025-02-28T06:50:27.948Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  Error: Room not found for id 28dff443-4616-4691-acdb-225de5d77ff6
-      at /Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:97:15
-      at Generator.next (<anonymous>)
-      at fulfilled (/Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:28:58)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5)
-]
-[2025-02-28T06:51:08.361Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T06:51:08.364Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T06:51:14.243Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '28dff443-4616-4691-acdb-225de5d77ff6'
-]
-[2025-02-28T06:51:14.244Z] [LOG]: [ 'getRoomById', new UUID('28dff443-4616-4691-acdb-225de5d77ff6') ]
-[2025-02-28T06:51:14.292Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  Error: Room not found for id 28dff443-4616-4691-acdb-225de5d77ff6
-      at /Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:97:15
-      at Generator.next (<anonymous>)
-      at fulfilled (/Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:28:58)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5)
-]
-[2025-02-28T07:03:11.694Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T07:03:11.697Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T07:06:00.752Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T07:06:00.755Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T07:06:40.172Z] [LOG]: [ 'createRoom, createdBy', 'spravinkumar9952@gmail.com' ]
-[2025-02-28T07:06:41.510Z] [ERROR]: [ 'User with the token undefined authorized' ]
-[2025-02-28T07:06:42.336Z] [ERROR]: [ 'User with the token undefined authorized' ]
-[2025-02-28T07:06:50.999Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '28dff443-4616-4691-acdb-225de5d77ff6'
-]
-[2025-02-28T07:06:51.000Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '0b1cbadd-80c3-4086-b594-ef27f0bc5650'
-]
-[2025-02-28T07:06:51.040Z] [LOG]: [ 'getStreamingRoomsHandler roomInfoFromDB', null ]
-[2025-02-28T07:06:51.041Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  Error: Room info not found for id 28dff443-4616-4691-acdb-225de5d77ff6
-      at /Users/pravinkumars/Streamer/server/src/http/handlers/streamingRoom.ts:73:27
-      at Generator.next (<anonymous>)
-      at fulfilled (/Users/pravinkumars/Streamer/server/src/http/handlers/streamingRoom.ts:5:58)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5)
-]
-[2025-02-28T07:11:37.935Z] [LOG]: [ 'createRoom, createdBy', 'spravinkumar9952@gmail.com' ]
-[2025-02-28T07:11:39.217Z] [ERROR]: [ 'User with the token undefined authorized' ]
-[2025-02-28T07:11:39.814Z] [ERROR]: [ 'User with the token undefined authorized' ]
-[2025-02-28T07:11:47.085Z] [LOG]: [
+[2025-03-21T04:35:20.615Z] [LOG]: [ 'resp', [] ]
+[2025-03-21T04:36:14.867Z] [LOG]: [ 'MongoDB connected' ]
+[2025-03-21T04:36:14.868Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
+[2025-03-21T04:36:21.581Z] [LOG]: [ 'MongoDB connected' ]
+[2025-03-21T04:36:21.582Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
+[2025-03-21T04:36:28.649Z] [LOG]: [ 'Searching for regex:', '^undefined' ]
+[2025-03-21T04:36:28.649Z] [LOG]: [ 'Search pattern:', /^undefined/i ]
+[2025-03-21T04:36:28.687Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:36:28.687Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:36:28.720Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:37:40.720Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '99b5ec2a-24fb-436e-8b50-79c9accc858e'
 ]
-[2025-02-28T07:11:47.138Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  Error: Room not found for id 99b5ec2a-24fb-436e-8b50-79c9accc858e
-      at /Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:96:15
-      at Generator.next (<anonymous>)
-      at fulfilled (/Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:28:58)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5)
-]
-[2025-02-28T07:18:05.159Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T07:18:05.163Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T07:18:11.164Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T07:18:11.206Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  Error: Room not found for id 99b5ec2a-24fb-436e-8b50-79c9accc858e
-      at /Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:96:15
-      at Generator.next (<anonymous>)
-      at fulfilled (/Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:28:58)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5)
-]
-[2025-02-28T07:19:18.546Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T07:19:18.549Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T07:19:50.465Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T07:19:50.467Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T07:28:35.185Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T07:28:35.188Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T07:28:49.752Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T07:28:49.754Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T07:28:52.069Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T07:28:52.071Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T07:30:02.698Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T07:30:02.743Z] [LOG]: [
-  'resp',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T07:30:02.785Z] [LOG]: [
-  'resp2',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T07:30:02.787Z] [ERROR]: [
-  'getStreamingRoomsHandler Error',
-  Error: Room not found for id 99b5ec2a-24fb-436e-8b50-79c9accc858e
-      at /Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:100:15
-      at Generator.next (<anonymous>)
-      at fulfilled (/Users/pravinkumars/Streamer/server/src/db/streamingRoom.ts:28:58)
-      at processTicksAndRejections (node:internal/process/task_queues:105:5)
-]
-[2025-02-28T07:36:35.967Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T07:36:35.968Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T07:36:58.157Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T07:36:58.190Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T07:37:02.709Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T07:37:02.740Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T07:37:26.685Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T07:37:26.687Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T07:37:53.739Z] [LOG]: [ 'MongoDB connected' ]
-[2025-02-28T07:37:53.741Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-02-28T07:38:07.917Z] [LOG]: [ 'createRoom, createdBy', 'spravinkumar9952@gmail.com' ]
-[2025-02-28T07:38:10.123Z] [ERROR]: [ 'User with the token undefined authorized' ]
-[2025-02-28T07:38:11.567Z] [ERROR]: [ 'User with the token undefined authorized' ]
-[2025-02-28T07:40:45.059Z] [ERROR]: [ 'User with the token undefined authorized' ]
-[2025-02-28T07:40:45.066Z] [ERROR]: [ 'User with the token undefined authorized' ]
-[2025-02-28T07:43:08.585Z] [LOG]: [ 'createRoom, createdBy', 'spravinkumar9952@gmail.com' ]
-[2025-02-28T07:43:10.645Z] [LOG]: [ 'createRoom, createdBy', 'spravinkumar9952@gmail.com' ]
-[2025-02-28T07:43:12.601Z] [ERROR]: [ 'User with the token undefined authorized' ]
-[2025-02-28T07:43:13.487Z] [ERROR]: [ 'User with the token undefined authorized' ]
-[2025-02-28T07:43:27.259Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: Error: read ETIMEDOUT
-[2025-02-28T07:43:49.472Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T07:43:49.473Z] [LOG]: [
+[2025-03-21T04:37:40.721Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '54059485-488f-433d-ae01-161b42f6d2de'
 ]
-[2025-02-28T07:43:49.474Z] [LOG]: [
+[2025-03-21T04:37:40.721Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
 ]
-[2025-02-28T07:43:49.508Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T07:43:49.558Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T07:43:49.683Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T07:43:53.849Z] [LOG]: [ 'createRoom, createdBy', 'spravinkumar9952@gmail.com' ]
-[2025-02-28T07:43:56.383Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T07:43:56.383Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-02-28T07:43:56.383Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-02-28T07:43:56.383Z] [LOG]: [
+[2025-03-21T04:37:40.721Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '8d2fe420-ebc6-4961-906e-dad92441244a'
 ]
-[2025-02-28T07:43:56.416Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
+[2025-03-21T04:37:40.721Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f1151ce1-ab1a-4dfb-be60-27a72cd4dd99'
 ]
-[2025-02-28T07:43:56.418Z] [LOG]: [
+[2025-03-21T04:37:40.752Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
@@ -506,18 +39,29 @@
     __v: 0
   }
 ]
-[2025-02-28T07:43:56.419Z] [LOG]: [
+[2025-03-21T04:37:40.784Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
+    _id: 'f1151ce1-ab1a-4dfb-be60-27a72cd4dd99',
+    created_at: 2025-03-19T04:08:50.736Z,
     joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
+    name: 'test2',
     createdBy: 'spravinkumar9952@gmail.com',
     __v: 0
   }
 ]
-[2025-02-28T07:43:56.623Z] [LOG]: [
+[2025-03-21T04:37:40.785Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '54059485-488f-433d-ae01-161b42f6d2de',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfas',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-03-21T04:37:41.006Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
@@ -528,46 +72,7 @@
     __v: 0
   }
 ]
-[2025-02-28T07:52:37.499Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: Error: read ETIMEDOUT
-[2025-02-28T07:53:17.965Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T07:53:17.966Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-02-28T07:53:17.966Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-02-28T07:53:17.966Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-02-28T07:53:18.003Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T07:53:18.040Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T07:53:18.221Z] [LOG]: [
+[2025-03-21T04:37:41.047Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
@@ -578,77 +83,27 @@
     __v: 0
   }
 ]
-[2025-02-28T07:53:18.245Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:01:02.237Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongoServerSelectionError: 4078760202000000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:ssl/record/rec_layer_s3.c:908:SSL alert number 80
-
-[2025-02-28T13:03:22.617Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongoServerSelectionError: 4078760202000000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:ssl/record/rec_layer_s3.c:908:SSL alert number 80
-
-[2025-02-28T13:03:32.609Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongoServerSelectionError: 4078760202000000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:ssl/record/rec_layer_s3.c:908:SSL alert number 80
-
-[2025-02-28T13:04:30.025Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongoServerSelectionError: 4078760202000000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:ssl/record/rec_layer_s3.c:908:SSL alert number 80
-
-[2025-02-28T13:04:30.158Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongoServerSelectionError: 4078760202000000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:ssl/record/rec_layer_s3.c:908:SSL alert number 80
-
-[2025-02-28T13:07:13.462Z] [LOG]: [
+[2025-03-21T04:37:50.737Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '99b5ec2a-24fb-436e-8b50-79c9accc858e'
 ]
-[2025-02-28T13:07:13.463Z] [LOG]: [
+[2025-03-21T04:37:50.737Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '54059485-488f-433d-ae01-161b42f6d2de'
 ]
-[2025-02-28T13:07:13.463Z] [LOG]: [
+[2025-03-21T04:37:50.737Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
 ]
-[2025-02-28T13:07:13.463Z] [LOG]: [
+[2025-03-21T04:37:50.737Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '8d2fe420-ebc6-4961-906e-dad92441244a'
 ]
-[2025-02-28T13:07:13.501Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
+[2025-03-21T04:37:50.737Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f1151ce1-ab1a-4dfb-be60-27a72cd4dd99'
 ]
-[2025-02-28T13:07:13.531Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:07:13.754Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:07:13.771Z] [LOG]: [
+[2025-03-21T04:37:50.770Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
@@ -659,56 +114,7 @@
     __v: 0
   }
 ]
-[2025-02-28T13:07:21.974Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T13:07:21.974Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-02-28T13:07:21.974Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-02-28T13:07:21.974Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-02-28T13:07:22.002Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:07:22.004Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:07:22.004Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:07:22.371Z] [LOG]: [
+[2025-03-21T04:37:50.771Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
@@ -719,45 +125,7 @@
     __v: 0
   }
 ]
-[2025-02-28T13:07:22.435Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T13:07:22.435Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-02-28T13:07:22.435Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-02-28T13:07:22.435Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-02-28T13:07:22.473Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:07:22.474Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:07:22.475Z] [LOG]: [
+[2025-03-21T04:37:50.772Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '54059485-488f-433d-ae01-161b42f6d2de',
@@ -768,7 +136,7 @@
     __v: 0
   }
 ]
-[2025-02-28T13:07:22.499Z] [LOG]: [
+[2025-03-21T04:37:50.779Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
@@ -779,60 +147,477 @@
     __v: 0
   }
 ]
-[2025-02-28T13:08:23.791Z] [LOG]: [
+[2025-03-21T04:37:50.926Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f1151ce1-ab1a-4dfb-be60-27a72cd4dd99',
+    created_at: 2025-03-19T04:08:50.736Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'test2',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-03-21T04:37:53.924Z] [LOG]: [ 'Searching for regex:', '^pravin' ]
+[2025-03-21T04:37:53.925Z] [LOG]: [ 'Search pattern:', /^pravin/i ]
+[2025-03-21T04:37:53.957Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:37:56.303Z] [LOG]: [ 'Searching for regex:', '^' ]
+[2025-03-21T04:37:56.303Z] [LOG]: [ 'Search pattern:', /^/i ]
+[2025-03-21T04:37:56.331Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:37:57.622Z] [LOG]: [ 'Searching for regex:', '^v' ]
+[2025-03-21T04:37:57.622Z] [LOG]: [ 'Search pattern:', /^v/i ]
+[2025-03-21T04:37:57.648Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:37:57.648Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:37:57.675Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:37:58.454Z] [LOG]: [ 'Searching for regex:', '^vi' ]
+[2025-03-21T04:37:58.454Z] [LOG]: [ 'Search pattern:', /^vi/i ]
+[2025-03-21T04:37:58.485Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:37:58.485Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:37:58.515Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:37:58.826Z] [LOG]: [ 'Searching for regex:', '^v' ]
+[2025-03-21T04:37:58.826Z] [LOG]: [ 'Search pattern:', /^v/i ]
+[2025-03-21T04:37:58.852Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:37:58.853Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:37:58.879Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:37:58.989Z] [LOG]: [ 'Searching for regex:', '^' ]
+[2025-03-21T04:37:58.989Z] [LOG]: [ 'Search pattern:', /^/i ]
+[2025-03-21T04:37:59.015Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:37:59.317Z] [LOG]: [ 'Searching for regex:', '^o' ]
+[2025-03-21T04:37:59.318Z] [LOG]: [ 'Search pattern:', /^o/i ]
+[2025-03-21T04:37:59.321Z] [LOG]: [ 'Searching for regex:', '^op' ]
+[2025-03-21T04:37:59.321Z] [LOG]: [ 'Search pattern:', /^op/i ]
+[2025-03-21T04:37:59.344Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:37:59.344Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:37:59.358Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:37:59.358Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:37:59.371Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:37:59.396Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:37:59.899Z] [LOG]: [ 'Searching for regex:', '^o' ]
+[2025-03-21T04:37:59.899Z] [LOG]: [ 'Search pattern:', /^o/i ]
+[2025-03-21T04:37:59.941Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:37:59.942Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:37:59.978Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:00.037Z] [LOG]: [ 'Searching for regex:', '^' ]
+[2025-03-21T04:38:00.037Z] [LOG]: [ 'Search pattern:', /^/i ]
+[2025-03-21T04:38:00.077Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:38:01.812Z] [LOG]: [ 'Searching for regex:', '^s' ]
+[2025-03-21T04:38:01.813Z] [LOG]: [ 'Search pattern:', /^s/i ]
+[2025-03-21T04:38:01.858Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    }
+  ]
+]
+[2025-03-21T04:38:01.969Z] [LOG]: [ 'Searching for regex:', '^sp' ]
+[2025-03-21T04:38:01.970Z] [LOG]: [ 'Search pattern:', /^sp/i ]
+[2025-03-21T04:38:02.009Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    }
+  ]
+]
+[2025-03-21T04:38:02.111Z] [LOG]: [ 'Searching for regex:', '^spr' ]
+[2025-03-21T04:38:02.111Z] [LOG]: [ 'Search pattern:', /^spr/i ]
+[2025-03-21T04:38:02.150Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    }
+  ]
+]
+[2025-03-21T04:38:02.315Z] [LOG]: [ 'Searching for regex:', '^spra' ]
+[2025-03-21T04:38:02.315Z] [LOG]: [ 'Search pattern:', /^spra/i ]
+[2025-03-21T04:38:02.355Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    }
+  ]
+]
+[2025-03-21T04:38:02.756Z] [LOG]: [ 'Searching for regex:', '^spr' ]
+[2025-03-21T04:38:02.756Z] [LOG]: [ 'Search pattern:', /^spr/i ]
+[2025-03-21T04:38:02.800Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    }
+  ]
+]
+[2025-03-21T04:38:02.924Z] [LOG]: [ 'Searching for regex:', '^sp' ]
+[2025-03-21T04:38:02.924Z] [LOG]: [ 'Search pattern:', /^sp/i ]
+[2025-03-21T04:38:02.964Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    }
+  ]
+]
+[2025-03-21T04:38:03.196Z] [LOG]: [ 'Searching for regex:', '^s' ]
+[2025-03-21T04:38:03.196Z] [LOG]: [ 'Search pattern:', /^s/i ]
+[2025-03-21T04:38:03.240Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    }
+  ]
+]
+[2025-03-21T04:38:03.355Z] [LOG]: [ 'Searching for regex:', '^' ]
+[2025-03-21T04:38:03.356Z] [LOG]: [ 'Search pattern:', /^/i ]
+[2025-03-21T04:38:03.396Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:38:07.238Z] [LOG]: [ 'Searching for regex:', '^b' ]
+[2025-03-21T04:38:07.238Z] [LOG]: [ 'Search pattern:', /^b/i ]
+[2025-03-21T04:38:07.295Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:07.295Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:07.334Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:07.808Z] [LOG]: [ 'Searching for regex:', '^' ]
+[2025-03-21T04:38:07.808Z] [LOG]: [ 'Search pattern:', /^/i ]
+[2025-03-21T04:38:07.874Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:38:28.108Z] [LOG]: [ 'Searching for regex:', '^v' ]
+[2025-03-21T04:38:28.109Z] [LOG]: [ 'Search pattern:', /^v/i ]
+[2025-03-21T04:38:28.150Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:28.150Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:28.189Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:28.218Z] [LOG]: [ 'Searching for regex:', '^vi' ]
+[2025-03-21T04:38:28.218Z] [LOG]: [ 'Search pattern:', /^vi/i ]
+[2025-03-21T04:38:28.261Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:28.261Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:28.301Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:28.424Z] [LOG]: [ 'Searching for regex:', '^vig' ]
+[2025-03-21T04:38:28.424Z] [LOG]: [ 'Search pattern:', /^vig/i ]
+[2025-03-21T04:38:28.463Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:28.463Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:28.504Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:28.772Z] [LOG]: [ 'Searching for regex:', '^vi' ]
+[2025-03-21T04:38:28.772Z] [LOG]: [ 'Search pattern:', /^vi/i ]
+[2025-03-21T04:38:28.811Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:28.811Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:28.853Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:28.961Z] [LOG]: [ 'Searching for regex:', '^v' ]
+[2025-03-21T04:38:28.961Z] [LOG]: [ 'Search pattern:', /^v/i ]
+[2025-03-21T04:38:29.002Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:29.002Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:29.040Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:29.110Z] [LOG]: [ 'Searching for regex:', '^' ]
+[2025-03-21T04:38:29.110Z] [LOG]: [ 'Search pattern:', /^/i ]
+[2025-03-21T04:38:29.152Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:38:29.343Z] [LOG]: [ 'Searching for regex:', '^p' ]
+[2025-03-21T04:38:29.343Z] [LOG]: [ 'Search pattern:', /^p/i ]
+[2025-03-21T04:38:29.354Z] [LOG]: [ 'Searching for regex:', '^po' ]
+[2025-03-21T04:38:29.354Z] [LOG]: [ 'Search pattern:', /^po/i ]
+[2025-03-21T04:38:29.380Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:38:29.383Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:29.383Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:29.409Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:29.469Z] [LOG]: [ 'Searching for regex:', '^por' ]
+[2025-03-21T04:38:29.470Z] [LOG]: [ 'Search pattern:', /^por/i ]
+[2025-03-21T04:38:29.497Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:29.497Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:29.525Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:29.665Z] [LOG]: [ 'Searching for regex:', '^pora' ]
+[2025-03-21T04:38:29.665Z] [LOG]: [ 'Search pattern:', /^pora/i ]
+[2025-03-21T04:38:29.692Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:29.693Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:29.720Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:29.904Z] [LOG]: [ 'Searching for regex:', '^por' ]
+[2025-03-21T04:38:29.904Z] [LOG]: [ 'Search pattern:', /^por/i ]
+[2025-03-21T04:38:29.931Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:29.931Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:29.959Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:30.057Z] [LOG]: [ 'Searching for regex:', '^po' ]
+[2025-03-21T04:38:30.057Z] [LOG]: [ 'Search pattern:', /^po/i ]
+[2025-03-21T04:38:30.083Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:30.083Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:30.107Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:30.216Z] [LOG]: [ 'Searching for regex:', '^p' ]
+[2025-03-21T04:38:30.216Z] [LOG]: [ 'Search pattern:', /^p/i ]
+[2025-03-21T04:38:30.244Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:38:30.865Z] [LOG]: [ 'Searching for regex:', '^pp' ]
+[2025-03-21T04:38:30.865Z] [LOG]: [ 'Search pattern:', /^pp/i ]
+[2025-03-21T04:38:30.895Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:30.895Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:30.921Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:31.096Z] [LOG]: [ 'Searching for regex:', '^ppr' ]
+[2025-03-21T04:38:31.096Z] [LOG]: [ 'Search pattern:', /^ppr/i ]
+[2025-03-21T04:38:31.122Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:31.122Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:31.150Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:31.318Z] [LOG]: [ 'Searching for regex:', '^pp' ]
+[2025-03-21T04:38:31.319Z] [LOG]: [ 'Search pattern:', /^pp/i ]
+[2025-03-21T04:38:31.347Z] [LOG]: [ 'Found users:', [] ]
+[2025-03-21T04:38:31.348Z] [LOG]: [ 'No results found, trying simpler search' ]
+[2025-03-21T04:38:31.376Z] [LOG]: [ 'Simple search results:', [] ]
+[2025-03-21T04:38:31.486Z] [LOG]: [ 'Searching for regex:', '^p' ]
+[2025-03-21T04:38:31.486Z] [LOG]: [ 'Search pattern:', /^p/i ]
+[2025-03-21T04:38:31.514Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:38:31.610Z] [LOG]: [ 'Searching for regex:', '^pr' ]
+[2025-03-21T04:38:31.610Z] [LOG]: [ 'Search pattern:', /^pr/i ]
+[2025-03-21T04:38:31.638Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:38:31.814Z] [LOG]: [ 'Searching for regex:', '^pra' ]
+[2025-03-21T04:38:31.814Z] [LOG]: [ 'Search pattern:', /^pra/i ]
+[2025-03-21T04:38:31.842Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:38:32.426Z] [LOG]: [ 'Searching for regex:', '^pr' ]
+[2025-03-21T04:38:32.426Z] [LOG]: [ 'Search pattern:', /^pr/i ]
+[2025-03-21T04:38:32.454Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:38:32.572Z] [LOG]: [ 'Searching for regex:', '^p' ]
+[2025-03-21T04:38:32.572Z] [LOG]: [ 'Search pattern:', /^p/i ]
+[2025-03-21T04:38:32.598Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:38:32.739Z] [LOG]: [ 'Searching for regex:', '^' ]
+[2025-03-21T04:38:32.739Z] [LOG]: [ 'Search pattern:', /^/i ]
+[2025-03-21T04:38:32.766Z] [LOG]: [
+  'Found users:',
+  [
+    {
+      _id: new ObjectId('67a72af0e11407cd6e118304'),
+      userName: 'Pravinkumar',
+      email: 'spravinkumar9952@gmail.com'
+    },
+    {
+      _id: new ObjectId('67a72c4b8cab5c8d636a9181'),
+      userName: 'Pravinkumar S',
+      email: 'pravinkumar.s@nammayatri.in'
+    }
+  ]
+]
+[2025-03-21T04:38:35.749Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '99b5ec2a-24fb-436e-8b50-79c9accc858e'
 ]
-[2025-02-28T13:08:23.791Z] [LOG]: [
+[2025-03-21T04:38:35.749Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '54059485-488f-433d-ae01-161b42f6d2de'
 ]
-[2025-02-28T13:08:23.791Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-02-28T13:08:23.791Z] [LOG]: [
+[2025-03-21T04:38:35.749Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
 ]
-[2025-02-28T13:08:23.791Z] [LOG]: [
+[2025-03-21T04:38:35.749Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '8d2fe420-ebc6-4961-906e-dad92441244a'
 ]
-[2025-02-28T13:08:23.819Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
+[2025-03-21T04:38:35.749Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f1151ce1-ab1a-4dfb-be60-27a72cd4dd99'
 ]
-[2025-02-28T13:08:23.821Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:08:23.824Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:08:23.851Z] [LOG]: [
+[2025-03-21T04:38:35.777Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
@@ -843,7 +628,7 @@
     __v: 0
   }
 ]
-[2025-02-28T13:08:24.147Z] [LOG]: [
+[2025-03-21T04:38:35.778Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
@@ -854,49 +639,18 @@
     __v: 0
   }
 ]
-[2025-02-28T13:08:24.188Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T13:08:24.189Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-02-28T13:08:24.189Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-02-28T13:08:24.189Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-02-28T13:08:24.189Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-02-28T13:08:24.224Z] [LOG]: [
+[2025-03-21T04:38:35.780Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
+    _id: 'f1151ce1-ab1a-4dfb-be60-27a72cd4dd99',
+    created_at: 2025-03-19T04:08:50.736Z,
     joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
+    name: 'test2',
     createdBy: 'spravinkumar9952@gmail.com',
     __v: 0
   }
 ]
-[2025-02-28T13:08:24.226Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:08:24.229Z] [LOG]: [
+[2025-03-21T04:38:35.781Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
@@ -907,18 +661,7 @@
     __v: 0
   }
 ]
-[2025-02-28T13:08:24.230Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:08:24.257Z] [LOG]: [
+[2025-03-21T04:38:35.787Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '54059485-488f-433d-ae01-161b42f6d2de',
@@ -929,60 +672,27 @@
     __v: 0
   }
 ]
-[2025-02-28T13:08:26.121Z] [LOG]: [
+[2025-03-21T04:38:35.826Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '99b5ec2a-24fb-436e-8b50-79c9accc858e'
 ]
-[2025-02-28T13:08:26.122Z] [LOG]: [
+[2025-03-21T04:38:35.826Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '54059485-488f-433d-ae01-161b42f6d2de'
 ]
-[2025-02-28T13:08:26.122Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-02-28T13:08:26.122Z] [LOG]: [
+[2025-03-21T04:38:35.826Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
 ]
-[2025-02-28T13:08:26.122Z] [LOG]: [
+[2025-03-21T04:38:35.826Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '8d2fe420-ebc6-4961-906e-dad92441244a'
 ]
-[2025-02-28T13:08:26.153Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
+[2025-03-21T04:38:35.826Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f1151ce1-ab1a-4dfb-be60-27a72cd4dd99'
 ]
-[2025-02-28T13:08:26.155Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:08:26.156Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:08:26.159Z] [LOG]: [
+[2025-03-21T04:38:35.853Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
@@ -993,60 +703,7 @@
     __v: 0
   }
 ]
-[2025-02-28T13:08:26.185Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:08:43.633Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T13:08:43.634Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-02-28T13:08:43.634Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-02-28T13:08:43.634Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-02-28T13:08:43.634Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-02-28T13:08:43.665Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:08:43.667Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:08:43.670Z] [LOG]: [
+[2025-03-21T04:38:35.854Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
@@ -1057,82 +714,18 @@
     __v: 0
   }
 ]
-[2025-02-28T13:08:43.670Z] [LOG]: [
+[2025-03-21T04:38:35.855Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
+    _id: 'f1151ce1-ab1a-4dfb-be60-27a72cd4dd99',
+    created_at: 2025-03-19T04:08:50.736Z,
     joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
+    name: 'test2',
     createdBy: 'spravinkumar9952@gmail.com',
     __v: 0
   }
 ]
-[2025-02-28T13:08:43.697Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:09:16.524Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T13:09:16.525Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-02-28T13:09:16.525Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-02-28T13:09:16.525Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-02-28T13:09:16.525Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-02-28T13:09:16.555Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:09:16.557Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:09:16.557Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:09:16.558Z] [LOG]: [
+[2025-03-21T04:38:35.857Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '54059485-488f-433d-ae01-161b42f6d2de',
@@ -1143,7 +736,7 @@
     __v: 0
   }
 ]
-[2025-02-28T13:09:16.684Z] [LOG]: [
+[2025-03-21T04:38:35.863Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
@@ -1154,27 +747,27 @@
     __v: 0
   }
 ]
-[2025-02-28T13:09:16.754Z] [LOG]: [
+[2025-03-21T04:44:36.736Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '99b5ec2a-24fb-436e-8b50-79c9accc858e'
 ]
-[2025-02-28T13:09:16.755Z] [LOG]: [
+[2025-03-21T04:44:36.747Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '54059485-488f-433d-ae01-161b42f6d2de'
 ]
-[2025-02-28T13:09:16.755Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-02-28T13:09:16.755Z] [LOG]: [
+[2025-03-21T04:44:36.748Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
 ]
-[2025-02-28T13:09:16.755Z] [LOG]: [
+[2025-03-21T04:44:36.748Z] [LOG]: [
   'getStreamingRoomsHandler RoomId',
   '8d2fe420-ebc6-4961-906e-dad92441244a'
 ]
-[2025-02-28T13:09:16.793Z] [LOG]: [
+[2025-03-21T04:44:36.748Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f1151ce1-ab1a-4dfb-be60-27a72cd4dd99'
+]
+[2025-03-21T04:44:36.775Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
@@ -1185,29 +778,18 @@
     __v: 0
   }
 ]
-[2025-02-28T13:09:16.794Z] [LOG]: [
+[2025-03-21T04:44:36.779Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
+    _id: 'f1151ce1-ab1a-4dfb-be60-27a72cd4dd99',
+    created_at: 2025-03-19T04:08:50.736Z,
     joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
+    name: 'test2',
     createdBy: 'spravinkumar9952@gmail.com',
     __v: 0
   }
 ]
-[2025-02-28T13:09:16.795Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:09:16.798Z] [LOG]: [
+[2025-03-21T04:44:36.779Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
@@ -1218,38 +800,7 @@
     __v: 0
   }
 ]
-[2025-02-28T13:09:16.822Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:13:02.972Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T13:13:02.972Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-02-28T13:13:02.972Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-02-28T13:13:02.972Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-02-28T13:13:02.972Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-02-28T13:13:03.003Z] [LOG]: [
+[2025-03-21T04:44:36.780Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '54059485-488f-433d-ae01-161b42f6d2de',
@@ -1260,2648 +811,13 @@
     __v: 0
   }
 ]
-[2025-02-28T13:13:03.004Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:13:03.005Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:13:03.007Z] [LOG]: [
+[2025-03-21T04:44:36.786Z] [LOG]: [
   'getStreamingRoomsHandler roomInfoFromDB',
   {
     _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
     created_at: 2025-02-28T07:05:56.943Z,
     joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
     name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:13:03.010Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:13:30.331Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T13:13:30.332Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-02-28T13:13:30.332Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-02-28T13:13:30.332Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-02-28T13:13:30.332Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-02-28T13:13:30.365Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:13:30.367Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:13:30.368Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:13:30.372Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:13:30.372Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:19:21.782Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T13:19:21.784Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-02-28T13:19:21.784Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-02-28T13:19:21.784Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-02-28T13:19:21.785Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-02-28T13:19:21.828Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:19:21.830Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:19:21.831Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:19:21.833Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:19:21.833Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:19:38.078Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-02-28T13:19:38.078Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-02-28T13:19:38.078Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-02-28T13:19:38.078Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-02-28T13:19:38.078Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-02-28T13:19:38.112Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:19:38.114Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:19:38.114Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:19:38.115Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-02-28T13:19:38.116Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T03:27:53.358Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-01T03:27:53.365Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-01T05:12:54.844Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-01T05:12:54.846Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-01T05:13:17.678Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-01T05:13:17.678Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-01T05:13:17.679Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-01T05:13:17.679Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-01T05:13:17.711Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:13:17.749Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:13:17.885Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:13:17.898Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:13:17.940Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-01T05:13:17.941Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-01T05:13:17.941Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-01T05:13:17.941Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-01T05:13:17.973Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:13:17.975Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:13:17.976Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:13:17.977Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:16:37.060Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-01T05:16:37.061Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-01T05:16:37.061Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-01T05:16:37.061Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-01T05:16:37.089Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:16:37.091Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:16:37.092Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:16:37.092Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:16:37.126Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-01T05:16:37.127Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-01T05:16:37.127Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-01T05:16:37.127Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-01T05:16:37.157Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:16:37.158Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:16:37.158Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:16:37.159Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-01T05:39:45.105Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-01T05:39:45.109Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-01T05:40:14.516Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-01T05:40:14.517Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-01T05:40:55.547Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-01T05:40:55.547Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-01T06:02:00.393Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-01T06:02:00.395Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-01T06:02:04.952Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-01T06:02:04.953Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-17T13:38:52.450Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
-[2025-03-17T13:39:21.179Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms
-[2025-03-17T13:39:48.650Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms
-[2025-03-17T13:40:13.001Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms
-[2025-03-17T13:41:03.501Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms
-[2025-03-17T13:42:04.625Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms
-[2025-03-17T13:43:22.121Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-17T13:43:22.123Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-17T13:43:23.862Z] [ERROR]: [
-  'TokenError: Bad Request\n' +
-    '    at Strategy.OAuth2Strategy.parseErrorResponse (/Users/pravinkumars/Streamer/server/node_modules/passport-oauth2/lib/strategy.js:373:12)\n' +
-    '    at Strategy.OAuth2Strategy._createOAuthError (/Users/pravinkumars/Streamer/server/node_modules/passport-oauth2/lib/strategy.js:420:16)\n' +
-    '    at /Users/pravinkumars/Streamer/server/node_modules/passport-oauth2/lib/strategy.js:177:45\n' +
-    '    at /Users/pravinkumars/Streamer/server/node_modules/oauth/lib/oauth2.js:196:18\n' +
-    '    at passBackControl (/Users/pravinkumars/Streamer/server/node_modules/oauth/lib/oauth2.js:132:9)\n' +
-    '    at IncomingMessage.<anonymous> (/Users/pravinkumars/Streamer/server/node_modules/oauth/lib/oauth2.js:157:7)\n' +
-    '    at IncomingMessage.emit (node:events:519:35)\n' +
-    '    at IncomingMessage.emit (node:domain:489:12)\n' +
-    '    at endReadableNT (node:internal/streams/readable:1696:12)\n' +
-    '    at processTicksAndRejections (node:internal/process/task_queues:90:21)'
-]
-[2025-03-17T13:43:25.857Z] [ERROR]: [
-  'TokenError: Bad Request\n' +
-    '    at Strategy.OAuth2Strategy.parseErrorResponse (/Users/pravinkumars/Streamer/server/node_modules/passport-oauth2/lib/strategy.js:373:12)\n' +
-    '    at Strategy.OAuth2Strategy._createOAuthError (/Users/pravinkumars/Streamer/server/node_modules/passport-oauth2/lib/strategy.js:420:16)\n' +
-    '    at /Users/pravinkumars/Streamer/server/node_modules/passport-oauth2/lib/strategy.js:177:45\n' +
-    '    at /Users/pravinkumars/Streamer/server/node_modules/oauth/lib/oauth2.js:196:18\n' +
-    '    at passBackControl (/Users/pravinkumars/Streamer/server/node_modules/oauth/lib/oauth2.js:132:9)\n' +
-    '    at IncomingMessage.<anonymous> (/Users/pravinkumars/Streamer/server/node_modules/oauth/lib/oauth2.js:157:7)\n' +
-    '    at IncomingMessage.emit (node:events:519:35)\n' +
-    '    at IncomingMessage.emit (node:domain:489:12)\n' +
-    '    at endReadableNT (node:internal/streams/readable:1696:12)\n' +
-    '    at processTicksAndRejections (node:internal/process/task_queues:90:21)'
-]
-[2025-03-17T13:43:31.713Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-17T13:43:31.713Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-17T13:43:31.714Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-17T13:43:31.714Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-17T13:43:31.755Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:43:31.792Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:43:32.015Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:43:32.032Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:43:32.069Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-17T13:43:32.070Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-17T13:43:32.070Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-17T13:43:32.070Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-17T13:43:32.106Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:43:32.107Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:43:32.108Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:43:32.109Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:43:35.163Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-17T13:43:35.163Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-17T13:43:35.164Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-17T13:43:35.164Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-17T13:43:35.193Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:43:35.196Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:43:35.198Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:43:35.199Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:49:59.125Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-17T13:49:59.126Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-17T13:49:59.126Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-17T13:49:59.126Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-17T13:49:59.159Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:49:59.164Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:49:59.165Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:49:59.165Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:49:59.196Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-17T13:49:59.196Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-17T13:49:59.196Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-17T13:49:59.196Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-17T13:49:59.227Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:49:59.229Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:49:59.230Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:49:59.231Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:08.553Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-17T13:50:08.553Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-17T13:50:08.553Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-17T13:50:08.553Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-17T13:50:08.582Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:08.584Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:08.585Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:08.585Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:08.619Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-17T13:50:08.620Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-17T13:50:08.620Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-17T13:50:08.620Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-17T13:50:08.650Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:08.650Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:08.651Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:08.652Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:30.858Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-17T13:50:30.858Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-17T13:50:30.858Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-17T13:50:30.858Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-17T13:50:30.888Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:30.889Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:30.889Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:30.892Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:30.926Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-17T13:50:30.926Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-17T13:50:30.926Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-17T13:50:30.926Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-17T13:50:30.955Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:30.956Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:30.957Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:30.958Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:41.608Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-17T13:50:41.609Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-17T13:50:41.609Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-17T13:50:41.609Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-17T13:50:41.638Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:41.640Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:41.641Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:41.642Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:41.675Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-17T13:50:41.675Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-17T13:50:41.675Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-17T13:50:41.675Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-17T13:50:41.705Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:41.706Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:41.706Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-17T13:50:41.706Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-18T02:31:28.413Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-18T02:31:28.415Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-18T02:31:38.223Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-18T02:31:38.225Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-18T02:34:15.921Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-18T02:34:15.923Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-18T02:34:19.188Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-18T02:34:19.190Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-18T02:35:30.877Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-18T02:35:30.877Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-18T02:36:23.077Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-18T02:36:23.077Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-18T02:40:18.164Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-18T02:40:18.166Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-18T02:40:44.508Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-18T02:40:44.510Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-19T02:29:52.146Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
-[2025-03-19T02:36:11.456Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
-[2025-03-19T02:36:46.900Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
-[2025-03-19T02:38:23.174Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
-[2025-03-19T02:45:57.425Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
-[2025-03-19T02:51:57.626Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
-[2025-03-19T02:53:02.081Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
-[2025-03-19T02:55:13.921Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
-[2025-03-19T02:55:26.352Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms
-[2025-03-19T02:56:10.690Z] [REJECTION]: Unhandled Rejection at: [object Promise], reason: MongooseError: Operation `users.findOne()` buffering timed out after 10000ms
-[2025-03-19T02:56:47.415Z] [ERROR]: [
-  'TokenError: Bad Request\n' +
-    '    at Strategy.OAuth2Strategy.parseErrorResponse (/Users/pravinkumars/Streamer/server/node_modules/passport-oauth2/lib/strategy.js:373:12)\n' +
-    '    at Strategy.OAuth2Strategy._createOAuthError (/Users/pravinkumars/Streamer/server/node_modules/passport-oauth2/lib/strategy.js:420:16)\n' +
-    '    at /Users/pravinkumars/Streamer/server/node_modules/passport-oauth2/lib/strategy.js:177:45\n' +
-    '    at /Users/pravinkumars/Streamer/server/node_modules/oauth/lib/oauth2.js:196:18\n' +
-    '    at passBackControl (/Users/pravinkumars/Streamer/server/node_modules/oauth/lib/oauth2.js:132:9)\n' +
-    '    at IncomingMessage.<anonymous> (/Users/pravinkumars/Streamer/server/node_modules/oauth/lib/oauth2.js:157:7)\n' +
-    '    at IncomingMessage.emit (node:events:519:35)\n' +
-    '    at IncomingMessage.emit (node:domain:489:12)\n' +
-    '    at endReadableNT (node:internal/streams/readable:1696:12)\n' +
-    '    at processTicksAndRejections (node:internal/process/task_queues:90:21)'
-]
-[2025-03-19T02:56:47.850Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-19T02:56:47.851Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-19T02:56:55.390Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-19T02:56:55.393Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-19T02:57:11.253Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T02:57:11.253Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T02:57:11.253Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T02:57:11.253Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T02:57:11.295Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ [Object] ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T02:57:11.334Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T02:57:11.451Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T02:57:11.459Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T02:57:11.503Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T02:57:11.503Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T02:57:11.503Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T02:57:11.503Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T02:57:11.532Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T02:57:11.534Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T02:57:11.534Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ [Object] ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T02:57:11.535Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T02:58:06.922Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-19T02:58:06.925Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-19T03:25:25.687Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:25:25.688Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:25:25.688Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:25:25.688Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:25:25.722Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:25.738Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ [Object] ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:26.015Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:26.018Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:26.058Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:25:26.059Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:25:26.059Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:25:26.059Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:25:26.094Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:26.096Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ [Object] ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:26.097Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:26.098Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:56.059Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:25:56.059Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:25:56.059Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:25:56.059Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:25:56.088Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:56.089Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ [Object] ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:56.090Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:56.094Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:56.125Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:25:56.125Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:25:56.125Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:25:56.125Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:25:56.151Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ [Object] ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:56.154Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:56.155Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:56.155Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:58.651Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:25:58.652Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:25:58.652Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:25:58.652Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:25:58.681Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:58.683Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ [Object] ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:58.684Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:58.684Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:58.717Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:25:58.717Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:25:58.717Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:25:58.717Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:25:58.747Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:58.749Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ [Object] ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:58.750Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:25:58.750Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:26:05.934Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:26:05.935Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:26:05.935Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:26:05.935Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:26:05.967Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:26:05.968Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ [Object] ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:26:05.968Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:26:05.969Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:26:06.000Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:26:06.000Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:26:06.000Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:26:06.000Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:26:06.026Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ [Object] ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:26:06.028Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:26:06.029Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:26:06.030Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ [Object] ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:32:44.685Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-19T03:32:44.687Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-19T03:32:53.334Z] [LOG]: [ 'MongoDB connected' ]
-[2025-03-19T03:32:53.335Z] [LOG]: [ 'Server is running on http://localhost:9999' ]
-[2025-03-19T03:36:42.905Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:36:42.905Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:36:42.905Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:36:42.905Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:36:42.937Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:36:42.958Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:36:43.274Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:36:43.279Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:36:43.326Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:36:43.326Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:36:43.327Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:36:43.327Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:36:43.359Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:36:43.360Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:36:43.363Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:36:43.364Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:38:05.588Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:38:05.589Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:38:05.589Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-03-19T03:38:05.589Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:38:05.589Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:38:05.620Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:38:05.622Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:38:05.624Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:38:05.624Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:38:05.917Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:38:05.951Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:38:05.951Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:38:05.951Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-03-19T03:38:05.951Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:38:05.951Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:38:05.983Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:38:05.984Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:38:05.984Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:38:05.986Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:38:05.986Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:22.569Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:39:22.569Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:39:22.569Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:39:22.569Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:39:22.601Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:22.602Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:22.602Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:22.604Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:22.641Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:39:22.641Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:39:22.641Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:39:22.641Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:39:22.670Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:22.671Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:22.672Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:22.674Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:27.241Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:39:27.241Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:39:27.241Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:39:27.241Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:39:27.268Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:27.268Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:27.271Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:27.272Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:27.304Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:39:27.305Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:39:27.305Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:39:27.305Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:39:27.333Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:27.334Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:27.336Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:39:27.337Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:40:39.460Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:40:39.460Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:40:39.460Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:40:39.460Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:40:39.491Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:40:39.493Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:40:39.493Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:40:39.494Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:40:39.528Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:40:39.528Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:40:39.528Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:40:39.528Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:40:39.559Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:40:39.560Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:40:39.561Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:40:39.562Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:41:45.681Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:41:45.681Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:41:45.681Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-03-19T03:41:45.681Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:41:45.681Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:41:45.712Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:41:45.713Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:41:45.713Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:41:45.714Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:41:45.715Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:41:45.752Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '99b5ec2a-24fb-436e-8b50-79c9accc858e'
-]
-[2025-03-19T03:41:45.752Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '54059485-488f-433d-ae01-161b42f6d2de'
-]
-[2025-03-19T03:41:45.752Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '462e47ed-8f20-453a-a43f-1493728c5a6e'
-]
-[2025-03-19T03:41:45.752Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a'
-]
-[2025-03-19T03:41:45.752Z] [LOG]: [
-  'getStreamingRoomsHandler RoomId',
-  '8d2fe420-ebc6-4961-906e-dad92441244a'
-]
-[2025-03-19T03:41:45.784Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '8d2fe420-ebc6-4961-906e-dad92441244a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'asfasdf',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:41:45.785Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: 'a0659932-1fb8-4e5c-bc8c-fb9deaf62d2a',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:41:45.785Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:41:45.786Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '99b5ec2a-24fb-436e-8b50-79c9accc858e',
-    created_at: 2025-02-28T07:05:56.943Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'fasdfasd',
-    createdBy: 'spravinkumar9952@gmail.com',
-    __v: 0
-  }
-]
-[2025-03-19T03:41:45.788Z] [LOG]: [
-  'getStreamingRoomsHandler roomInfoFromDB',
-  {
-    _id: '54059485-488f-433d-ae01-161b42f6d2de',
-    created_at: 2025-02-28T07:37:53.206Z,
-    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
-    name: 'sdfas',
     createdBy: 'spravinkumar9952@gmail.com',
     __v: 0
   }

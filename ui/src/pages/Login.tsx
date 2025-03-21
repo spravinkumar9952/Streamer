@@ -1,28 +1,47 @@
 import React from "react";
 import { FC } from "react";
-import  '../index.css';
+import '../index.css';
 import NavBar from "../components/NavBar";
 import { authGoogle } from "../api/auth";
 
-
-
-export const LoginPage : FC = () => {
+export const LoginPage: FC = () => {
   const handleGoogleLogin = () => {
     authGoogle();
   }
-  return(
+
+  return (
     <>
-    <NavBar/>
-    <div className="w-screen h-screen bg-primaryBG flex flex-col items-center justify-center">
-        <div className="w-screen h-screen flex flex-col justify-center items-center">
-          <div className="bg-secondaryBG w-fit h-fit flex flex-row justify-center items-center px-4 py-3 rounded-lg" onClick={handleGoogleLogin}>
-            <img src="/png/google.png" className="w-16"/>
-            <h1 className="font-primaryFont text-3xl text-secondaryText pl-2" >
-              Login with Google
-            </h1>
+      <NavBar showSearch={false} />
+      <div className="min-h-screen bg-background-primary flex flex-col items-center justify-center p-4">
+        <div className="w-full max-w-md space-y-8">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-text-primary mb-2">Welcome to Streamer</h1>
+            <p className="text-text-secondary">Watch and stream videos together with friends</p>
           </div>
+
+          <div className="mt-8">
+            <button
+              onClick={handleGoogleLogin}
+              className="w-full flex items-center justify-center space-x-3 bg-background-card hover:bg-background-secondary text-text-primary px-6 py-4 rounded-card shadow-card transition-all duration-200 hover:shadow-lg group"
+            >
+              <img
+                src="/png/google.png"
+                alt="Google"
+                className="w-6 h-6"
+              />
+              <span className="font-medium text-lg group-hover:scale-105 transition-transform duration-200">
+                Continue with Google
+              </span>
+            </button>
+          </div>
+
+          <div className="mt-6 text-center">
+            <p className="text-text-tertiary text-sm">
+              By continuing, you agree to our Terms of Service and Privacy Policy
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
     </>
-  )
-}
+  );
+};
