@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Schema, model } from "mongoose";
+import { Schema, model, Document } from "mongoose";
 
 interface User extends Document {
     email: string;
@@ -113,20 +113,17 @@ export const matchUsersWithRegex = async (regex: string): Promise<User[]> => {
         console.log("Searching for regex:", regex);
 
         // If regex is empty, return empty array
-        if (!regex || regex.trim() === '') {
+        if (!regex || regex.trim() === "") {
             return [];
         }
 
         // Create a case-insensitive regex pattern
-        const searchPattern = new RegExp(regex, 'i');
+        const searchPattern = new RegExp(regex, "i");
         console.log("Search pattern:", searchPattern);
 
         const resp = await UserModel.find({
-            $or: [
-                { email: searchPattern },
-                { userName: searchPattern }
-            ]
-        }).select('email userName');
+            $or: [{ email: searchPattern }, { userName: searchPattern }],
+        }).select("email userName");
 
         console.log("Found users:", resp);
 
@@ -134,11 +131,8 @@ export const matchUsersWithRegex = async (regex: string): Promise<User[]> => {
         if (resp.length === 0) {
             console.log("No results found, trying simpler search");
             const simpleResp = await UserModel.find({
-                $or: [
-                    { email: { $regex: regex, $options: 'i' } },
-                    { userName: { $regex: regex, $options: 'i' } }
-                ]
-            }).select('email userName');
+                $or: [{ email: { $regex: regex, $options: "i" } }, { userName: { $regex: regex, $options: "i" } }],
+            }).select("email userName");
 
             console.log("Simple search results:", simpleResp);
             return simpleResp;
@@ -146,22 +140,15 @@ export const matchUsersWithRegex = async (regex: string): Promise<User[]> => {
 
         return resp;
     } catch (error) {
-        console.error('Error in matchUsersWithRegex:', error);
-        throw new Error('Failed to search users');
+        console.error("Error in matchUsersWithRegex:", error);
+        throw new Error("Failed to search users");
     }
 };
 
 export const updateJoinedStreamingRooms = async (email: string, roomId: string) => {
-    const resp = await UserModel.updateOne({ email: email }, { $addToSet: { joinedStreamingRooms: roomId } });
-    if (resp.matchedCount < 0) {
-        throw new Error(`No user found with email {userEmail}`);
-    }
+    await UserModel.findOneAndUpdate({ email }, { $addToSet: { joinedStreamingRooms: roomId } });
 };
 
 export const exitRoom = async (roomId: string, email: string) => {
-    const resp = await UserModel.updateOne({ email: email }, { $pop: { joinedStreamingRooms: roomId } });
-
-    if (resp.matchedCount < 0) {
-        throw new Error(`No user found with email {userEmail}`);
-    }
+    await UserModel.findOneAndUpdate({ email }, { $pull: { joinedStreamingRooms: roomId } });
 };

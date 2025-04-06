@@ -14,6 +14,9 @@ import { StreamingRoom } from "../api/streamingRoom";
 import { useLocation, useParams } from "react-router-dom";
 import AuthContext from "../contexts/Auth";
 import NavBar from "../components/NavBar";
+import { getEnvVar, SOCKET_SERVER_URL } from "../utils/env";
+import { updateVideoUrl } from "../api/streamingRoom";
+import { DeleteRoomButton } from "../components/DeleteRoomButton";
 
 interface StreamingRoomProps {
   streamingRoomObj: StreamingRoom;
@@ -24,17 +27,23 @@ interface SocketEvents {
   pause: (roomId: string, email: string | undefined, time: number) => void;
   seek: (roomId: string, email: string | undefined, time: number) => void;
   onProgress: (roomId: string, email: string | undefined, time: number) => void;
+  updateVideoUrl: (
+    roomId: string,
+    email: string | undefined,
+    videoUrl: string
+  ) => void;
   joinRoom: (roomId: string, email: string | undefined) => void;
   leaveRoom: (roomId: string, email: string | undefined) => void;
 }
 
-const SOCKET_URL = "http://localhost:9998";
-
 export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
   const { roomId } = useParams<{ roomId: string }>();
-  const { streamingRoomObj } = useLocation().state as {
+  const props = useLocation().state as {
     streamingRoomObj: StreamingRoom;
   };
+  const [streamingRoomObj, setStreamingRoomObj] = useState<StreamingRoom>(
+    props.streamingRoomObj
+  );
   const { user } = useContext(AuthContext);
   const socketRef = useRef<Socket>();
   const playerRef = useRef<ReactPlayer>(null);
@@ -47,13 +56,16 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
     currentTime: 0,
   });
 
+  const [isUrlModalOpen, setIsUrlModalOpen] = useState(false);
+  const [newVideoUrl, setNewVideoUrl] = useState("");
+
   const viewOnly = useMemo(() => {
     return streamingRoomObj.createdBy !== user?.email;
   }, [streamingRoomObj.createdBy, user?.email]);
 
   const initializeSocket = useCallback(() => {
     if (!socketRef.current) {
-      socketRef.current = io(SOCKET_URL, {
+      socketRef.current = io(SOCKET_SERVER_URL, {
         query: {
           email: user?.email,
           roomId: roomId,
@@ -97,12 +109,21 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
       }
     };
 
+    const handleUpdateVideoUrl = (
+      roomId: string,
+      email: string | undefined,
+      videoUrl: string
+    ) => {
+      setStreamingRoomObj((prev) => ({ ...prev, videoUrl: videoUrl }));
+    };
+
     socket.on("connect", handleConnect);
     socket.on("disconnect", handleDisconnect);
     socket.on("play", handlePlay);
     socket.on("pause", handlePause);
     socket.on("seek", handleSeek);
     socket.on("onProgress", handleProgress);
+    socket.on("updateVideoUrl", handleUpdateVideoUrl);
 
     return () => {
       socket.off("connect", handleConnect);
@@ -202,6 +223,35 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
     [roomId, user?.email, emitEvent]
   );
 
+  const handleUpdateUrl = async () => {
+    try {
+      if (!roomId || !user?.email) return;
+
+      await updateVideoUrl({
+        roomId: roomId,
+        videoUrl: newVideoUrl,
+      });
+
+      // Update local state
+      setStreamingRoomObj((prev) => ({
+        ...prev,
+        videoUrl: newVideoUrl,
+      }));
+
+      emitEvent("updateVideoUrl", roomId, user?.email, newVideoUrl);
+
+      // Reset modal state
+      setIsUrlModalOpen(false);
+      setNewVideoUrl("");
+
+      // Show success message
+      alert("Video URL updated successfully!");
+    } catch (error) {
+      console.error("Failed to update video URL:", error);
+      alert("Failed to update video URL. Please try again.");
+    }
+  };
+
   if (!roomId || !user) {
     return (
       <div className="min-h-screen bg-background-primary flex items-center justify-center">
@@ -217,47 +267,19 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
         <div className="max-w-5xl mx-auto space-y-6">
           {/* Room Header */}
           <div className="bg-background-card rounded-card shadow-card p-6 flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <h2 className="text-2xl font-bold text-text-primary">
+            <div>
+              <h1 className="text-2xl font-bold text-text-primary">
                 {streamingRoomObj.name}
-              </h2>
-              <div
-                className={`px-3 py-1 rounded-full flex items-center space-x-2 ${
-                  playerState.isConnected
-                    ? "bg-status-online bg-opacity-10 text-status-online"
-                    : "bg-status-offline bg-opacity-10 text-status-offline"
-                }`}
-              >
-                <div
-                  className={`w-2 h-2 rounded-full ${
-                    playerState.isConnected
-                      ? "bg-status-online animate-pulse"
-                      : "bg-status-offline"
-                  }`}
-                />
-                <span className="text-sm font-medium">
-                  {playerState.isConnected ? "Live" : "Disconnected"}
-                </span>
-              </div>
+              </h1>
+              <p className="text-text-secondary mt-1">
+                Created by {streamingRoomObj.createdBy}
+              </p>
             </div>
-            <div className="flex items-center space-x-3">
-              <div className="flex -space-x-2">
-                <img
-                  src="/png/users.png"
-                  alt="Viewer"
-                  className="w-8 h-8 rounded-full border-2 border-background-card"
-                />
-                <img
-                  src="/png/users.png"
-                  alt="Viewer"
-                  className="w-8 h-8 rounded-full border-2 border-background-card"
-                />
-                <div className="w-8 h-8 rounded-full bg-background-secondary border-2 border-background-card flex items-center justify-center">
-                  <span className="text-xs font-medium text-text-secondary">
-                    +2
-                  </span>
-                </div>
-              </div>
+            <div className="flex items-center space-x-4">
+              <DeleteRoomButton
+                roomId={roomId}
+                isCreator={streamingRoomObj.createdBy === user?.email}
+              />
             </div>
           </div>
 
@@ -269,10 +291,7 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
               <div className="absolute top-0 left-0 w-full h-full">
                 <ReactPlayer
                   ref={playerRef}
-                  url={
-                    streamingRoomObj.videoUrl ||
-                    "https://youtu.be/wo_e0EvEZn8?feature=shared"
-                  }
+                  url={streamingRoomObj.videoUrl}
                   playing={playerState.isPlaying}
                   onPlay={handlePlay}
                   onPause={handlePause}
@@ -380,16 +399,12 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
                 </div>
               </div>
 
-              {/* Video Info */}
-              <div className="bg-background-secondary rounded-card p-4">
+              {/* Video Source */}
+              <div className="bg-background-secondary p-4 rounded-lg">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-text-tertiary text-sm">Video Source</p>
-                    <p className="text-text-primary font-medium">YouTube</p>
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-background-tertiary flex items-center justify-center">
+                  <div className="flex items-center space-x-2">
                     <svg
-                      className="w-5 h-5 text-text-secondary"
+                      className="w-5 h-5 text-secondary-light"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -398,17 +413,23 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
                       />
                     </svg>
+                    <span className="text-text-primary font-medium">
+                      Video Source
+                    </span>
                   </div>
+                  <button
+                    onClick={() => setIsUrlModalOpen(true)}
+                    className="text-secondary-light hover:text-secondary-dark text-sm font-medium px-3 py-1 rounded-md bg-background-card hover:bg-background-tertiary transition-colors"
+                  >
+                    Change URL
+                  </button>
                 </div>
+                <p className="text-text-tertiary mt-2 text-sm break-all">
+                  {streamingRoomObj.videoUrl}
+                </p>
               </div>
 
               {/* Viewers Info */}
@@ -418,7 +439,9 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
                     <p className="text-text-tertiary text-sm">
                       Current Viewers
                     </p>
-                    <p className="text-text-primary font-medium">4 watching</p>
+                    <p className="text-text-primary font-medium">
+                      {streamingRoomObj.joinedUsers.length + 1} watching
+                    </p>
                   </div>
                   <div className="w-10 h-10 rounded-full bg-background-tertiary flex items-center justify-center">
                     <svg
@@ -441,6 +464,41 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
           </div>
         </div>
       </div>
+
+      {/* Change URL Modal */}
+      {isUrlModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-background-primary p-6 rounded-lg w-full max-w-md">
+            <h3 className="text-text-primary text-lg font-semibold mb-4">
+              Change Video URL
+            </h3>
+            <input
+              type="text"
+              value={newVideoUrl}
+              onChange={(e) => setNewVideoUrl(e.target.value)}
+              placeholder="Enter new video URL"
+              className="w-full px-4 py-2 rounded-md bg-background-card text-text-primary border border-border-light focus:border-secondary-light focus:ring-1 focus:ring-secondary-light outline-none"
+            />
+            <div className="flex justify-end space-x-3 mt-4">
+              <button
+                onClick={() => {
+                  setIsUrlModalOpen(false);
+                  setNewVideoUrl("");
+                }}
+                className="px-4 py-2 rounded-md text-text-primary hover:bg-background-tertiary transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleUpdateUrl}
+                className="px-4 py-2 rounded-md bg-secondary-light text-white hover:bg-secondary-dark transition-colors"
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

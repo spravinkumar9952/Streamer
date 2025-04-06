@@ -1,19 +1,22 @@
 import express from "express";
 import http from "http";
 import { Server } from "socket.io";
-import { redisClient } from "../db/redis";
+import { createServer } from "http";
+import { SOCKET_PORT, UI_BASE_URL } from "../utils/env";
+// import { redisClient } from "../db/redis";
 
 const app = express();
-const server = http.createServer(app);
-const io = new Server(server, {
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: UI_BASE_URL,
         methods: ["GET", "POST"],
+        credentials: true,
     },
 });
 
-server.listen(9998, () => {
-    console.log("Server running on http://localhost:9998");
+httpServer.listen(SOCKET_PORT, () => {
+    console.log(`Socket server running on port ${SOCKET_PORT}`);
 });
 
 // Socket.IO connection handling
@@ -25,7 +28,7 @@ io.on("connection", async (socket) => {
 
     if (roomId && email) {
         const key = `${roomId}:${email}`;
-        await redisClient.set(key, socketId);
+        // await redisClient.set(key, socketId);
         socket.join(roomId);
     }
 
@@ -46,9 +49,13 @@ io.on("connection", async (socket) => {
         socket.to(roomId).emit("onProgress", time);
     });
 
+    socket.on("updateVideoUrl", (roomId, email, videoUrl) => {
+        socket.to(roomId).emit("updateVideoUrl", videoUrl);
+    });
+
     socket.on("disconnect", async (roomId, email) => {
         const key = `${roomId}:${email}`;
-        await redisClient.del(key);
+        // await redisClient.del(key);
         console.log("A user disconnected:", socket.id);
     });
 });

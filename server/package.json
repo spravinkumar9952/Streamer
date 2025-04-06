@@ -5,8 +5,9 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start:http": "nodemon src/http/server.ts",
-        "start:socket": "nodemon src/socket/server.ts"
+        "start:http": "NODE_ENV=development nodemon src/http/server.ts",
+        "start:socket": "NODE_ENV=development nodemon src/socket/server.ts",
+        "list:env": "node -e 'console.log(process.env)'"
     },
     "keywords": [],
     "author": "",

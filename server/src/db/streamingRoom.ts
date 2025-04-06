@@ -2,6 +2,9 @@ import mongoose, { model, Schema } from "mongoose";
 import { exitRoom, updateJoinedStreamingRooms, UserModel } from "./users";
 import { UUID } from "mongodb";
 import { v4 as uuidV4 } from "uuid";
+import { ErrorResp } from "../http/common";
+import { SuccessResp } from "../http/common";
+import { Response } from "express";
 
 interface StreamingRoom extends Document {
     _id: string;
@@ -11,7 +14,6 @@ interface StreamingRoom extends Document {
     videoUrl: string;
     createdBy: string;
 }
-
 
 export const StreamingRoomSchema = new Schema<StreamingRoom>({
     _id: { type: String, required: true },
@@ -24,7 +26,7 @@ export const StreamingRoomSchema = new Schema<StreamingRoom>({
 
 export const StreamingRoomModel = model<StreamingRoom>("StreamingRoom", StreamingRoomSchema);
 
-export const createRoom = async (createdBy: string, joinedUsers: string[], roomName: string, videoUrl : string) => {
+export const createRoom = async (createdBy: string, joinedUsers: string[], roomName: string, videoUrl: string) => {
     const session = await mongoose.startSession();
     session.startTransaction();
 
@@ -72,23 +74,39 @@ export const updateVideoURL = async (roomId: string, videoUrl: string) => {
     await StreamingRoomModel.findByIdAndUpdate({ _id: roomId }, { videoUrl: videoUrl });
 };
 
-export const deleteRoom = async (roomId: string) => {
+export const deleteRoom = async (
+    roomId: string,
+    deleteBy: string,
+    res: Response<SuccessResp | ErrorResp>
+): Promise<void> => {
     const session = await mongoose.startSession();
     session.startTransaction();
 
     try {
-        const resp = await StreamingRoomModel.findById({ _id: roomId });
-
-        if (resp?.$isEmpty) {
-            throw new Error("Streaming room not exit");
+        console.log("deleteRoom", roomId, deleteBy);
+        const room = await StreamingRoomModel.findById(roomId).session(session);
+        if (!room) {
+            res.status(404).send({ message: "Room not found" });
+            return;
         }
 
-        resp?.joinedUsers.forEach(async (joinedUser : string) => await exitRoom(roomId, joinedUser));
-        await StreamingRoomModel.deleteOne({ _id: roomId });
+        if (room.createdBy !== deleteBy) {
+            res.status(403).send({ message: "You are not authorized to delete this room" });
+            return;
+        }
 
-        session.commitTransaction();
-    } catch (err) {
-        session.abortTransaction();
+        await Promise.all(room.joinedUsers.map(async (joinedUser: string) => await exitRoom(roomId, joinedUser)));
+
+        await exitRoom(roomId, room.createdBy);
+
+        await StreamingRoomModel.deleteOne({ _id: roomId }).session(session);
+
+        await session.commitTransaction();
+    } catch (error) {
+        await session.abortTransaction();
+        throw error;
+    } finally {
+        session.endSession();
     }
 };
 
@@ -101,10 +119,16 @@ export const getRoomById = async (roomId: string): Promise<StreamingRoom> => {
     return resp;
 };
 
-
 export const updateUserSocketId = async (roomId: string, email: string, socketId: string) => {
     await StreamingRoomModel.findOneAndUpdate(
         { _id: roomId, "joinedUsers.email": email },
         { $set: { "joinedUsers.$.socketId": socketId } }
     );
 };
+
+// ------------------- API update video url Start ----------
+
+export const updateVideoUrlById = async (roomId: string, videoUrl: string) => {
+    await StreamingRoomModel.findByIdAndUpdate({ _id: roomId }, { videoUrl: videoUrl });
+};
+// ------------------- API update video url End ----------

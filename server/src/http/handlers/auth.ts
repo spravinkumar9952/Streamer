@@ -19,8 +19,8 @@ export const authGoogleCallback = (req: Request, resp: Response) => {
     const name = encodeURIComponent(user.displayName);
     const email = encodeURIComponent(user.emails[0].value);
 
-    const SECRET_KEY = process.env.SECRET_KEY ?? "";
-    const token = jwt.sign({ email: email }, SECRET_KEY, { expiresIn: "1h" });
+    const SESSION_SECRET = process.env.SESSION_SECRET ?? "";
+    const token = jwt.sign({ email: email }, SESSION_SECRET, { expiresIn: "1h" });
     const url = process.env.UI_REDIRECT_URL ?? "";
 
     resp.redirect(url + `?name=${name}&email=${email}&token=${token}`);
@@ -34,9 +34,9 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
         return;
     }
 
-    const SECRET_KEY = process.env.SECRET_KEY ?? "";
+    const SESSION_SECRET = process.env.SESSION_SECRET ?? "";
 
-    jwt.verify(token, SECRET_KEY, (err, decoded) => {
+    jwt.verify(token, SESSION_SECRET, (err, decoded) => {
         if (err) {
             res.status(403).send("Invalid Token");
             return;

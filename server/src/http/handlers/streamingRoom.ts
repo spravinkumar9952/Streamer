@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import { getStreamingRooms } from "../../db/users";
-import { createRoom, deleteRoom, getRoomById } from "../../db/streamingRoom";
+import { createRoom, deleteRoom, getRoomById, updateVideoUrlById } from "../../db/streamingRoom";
 import { ErrorResp, SuccessResp, User } from "../common";
 
 // ------------------- API create streaming room list Start ----------
@@ -31,13 +31,25 @@ interface DeleteStreamingRoomReq {
 }
 
 export const deleteStreamingRoom = async (
-    req: Request<{}, {}, DeleteStreamingRoomReq>,
+    req: Request<{}, {}, {}, { roomId: string }>,
     res: Response<SuccessResp | ErrorResp>
 ) => {
     const user = req.user as User;
-    const body = req.body as { roomId: string };
+    const roomId = req.query.roomId;
 
-    const resp = await deleteRoom(user.email);
+    if (!roomId) {
+        res.status(400).send({ message: "Room ID is required" });
+        return;
+    }
+
+    try {
+        const room = await getRoomById(roomId);
+        await deleteRoom(roomId, user.email, res);
+        res.send({ message: "Room deleted successfully" });
+    } catch (error) {
+        console.error("Error deleting room:", error);
+        res.status(500).send({ message: "Failed to delete room" });
+    }
 };
 
 // ------------------- API get streaming room list Start ----------
@@ -87,6 +99,39 @@ export const getStreamingRoomsHandler = async (
         res.send({ list: roomsList });
     } catch (err) {
         console.error("getStreamingRoomsHandler Error", err);
+        res.status(500).send({ message: err as string });
+    }
+};
+
+// ------------------- API update video url Start ----------
+
+interface UpdateVideoUrlReq {
+    roomId: string;
+    videoUrl: string;
+}
+
+export const updateVideoUrl = async (
+    req: Request<{}, {}, UpdateVideoUrlReq>,
+    res: Response<SuccessResp | ErrorResp>
+) => {
+    const user = req.user as User;
+    const body = req.body as { roomId: string; videoUrl: string };
+
+    try {
+        const streamingRoom = await getRoomById(body.roomId);
+        if (streamingRoom == undefined) {
+            res.status(404).send({ message: "Room info not found for id " + body.roomId });
+            return;
+        }
+        if (streamingRoom.createdBy !== user.email) {
+            res.status(403).send({ message: "You are not the owner of this room" });
+            return;
+        }
+
+        await updateVideoUrlById(body.roomId, body.videoUrl);
+        res.send({ message: "Video URL updated successfully" });
+    } catch (err) {
+        console.error("updateVideoUrl Error", err);
         res.status(500).send({ message: err as string });
     }
 };

@@ -1,14 +1,11 @@
-
-export const baseUrl = "http://localhost:9999/"
-
+import { HTTP_SERVER_URL } from "../utils/env";
+export const baseUrl = HTTP_SERVER_URL + "/";
 
 export const getHeaders = () => {
-  const token = localStorage.getItem('authToken');
-  console.log("token", token)
-  return {
-    'Authorization': `Bearer ${token}`, 
-    'Content-Type': 'application/json',
-  }
-}
-
-// write a middleware to check if the token is expired in
+    const token = localStorage.getItem("authToken");
+    console.log("token", token);
+    return {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+    };
+};

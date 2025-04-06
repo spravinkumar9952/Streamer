@@ -21,11 +21,13 @@ enum Section {
 
 const Home: FC = () => {
   const location = useLocation();
-  const [selectedSection, setSelectedSection] = useState<Section>(Section.StreamingRooms);
+  const [selectedSection, setSelectedSection] = useState<Section>(
+    Section.StreamingRooms
+  );
   const [friends, setFriends] = useState<FriendsListResp | null>(null);
   const [streamingRooms, setStreamingRooms] = useState<StreamingRoom[]>([]);
   const navigation = useNavigate();
-  const { setUser } = useContext(AuthContext);
+  const { setUser, user } = useContext(AuthContext);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -33,9 +35,16 @@ const Home: FC = () => {
     const email = params.get("email");
     const token = params.get("token");
 
-    if (token) {
-      localStorage.setItem("authToken", token ?? "");
+    if (!name || !email || !token) {
+      const token = localStorage.getItem("authToken");
+      if (!user?.email || !user?.name || !token) {
+        navigation("/login");
+        return;
+      }
+      return;
     }
+
+    localStorage.setItem("authToken", token ?? "");
     changeSection(selectedSection);
     setUser({ email: email ?? "", name: name ?? "", profilePicture: "" });
   }, [location.search]);
@@ -78,36 +87,44 @@ const Home: FC = () => {
             onClick={() => changeSection(Section.StreamingRooms)}
             className="relative group"
           >
-            <h2 className={`text-2xl font-medium transition-colors duration-200 ${
-              selectedSection === Section.StreamingRooms
-                ? 'text-text-primary'
-                : 'text-text-tertiary hover:text-text-primary'
-            }`}>
+            <h2
+              className={`text-2xl font-medium transition-colors duration-200 ${
+                selectedSection === Section.StreamingRooms
+                  ? "text-text-primary"
+                  : "text-text-tertiary hover:text-text-primary"
+              }`}
+            >
               Streaming Rooms
             </h2>
-            <div className={`absolute bottom-0 left-0 w-full h-1 transition-all duration-200 ${
-              selectedSection === Section.StreamingRooms
-                ? 'bg-secondary-light scale-x-100'
-                : 'bg-border-light scale-x-0 group-hover:scale-x-100'
-            }`} />
+            <div
+              className={`absolute bottom-0 left-0 w-full h-1 transition-all duration-200 ${
+                selectedSection === Section.StreamingRooms
+                  ? "bg-secondary-light scale-x-100"
+                  : "bg-border-light scale-x-0 group-hover:scale-x-100"
+              }`}
+            />
           </button>
 
           <button
             onClick={() => changeSection(Section.Friends)}
             className="relative group"
           >
-            <h2 className={`text-2xl font-medium transition-colors duration-200 ${
-              selectedSection === Section.Friends
-                ? 'text-text-primary'
-                : 'text-text-tertiary hover:text-text-primary'
-            }`}>
+            <h2
+              className={`text-2xl font-medium transition-colors duration-200 ${
+                selectedSection === Section.Friends
+                  ? "text-text-primary"
+                  : "text-text-tertiary hover:text-text-primary"
+              }`}
+            >
               Friends
             </h2>
-            <div className={`absolute bottom-0 left-0 w-full h-1 transition-all duration-200 ${
-              selectedSection === Section.Friends
-                ? 'bg-secondary-light scale-x-100'
-                : 'bg-border-light scale-x-0 group-hover:scale-x-100'
-            }`} />
+            <div
+              className={`absolute bottom-0 left-0 w-full h-1 transition-all duration-200 ${
+                selectedSection === Section.Friends
+                  ? "bg-secondary-light scale-x-100"
+                  : "bg-border-light scale-x-0 group-hover:scale-x-100"
+              }`}
+            />
           </button>
         </div>
 
@@ -115,16 +132,24 @@ const Home: FC = () => {
           {selectedSection === Section.Friends && (
             <>
               <div className="space-y-4">
-                <h3 className="text-xl font-medium text-text-primary">Friend Requests</h3>
+                <h3 className="text-xl font-medium text-text-primary">
+                  Friend Requests
+                </h3>
                 <div className="space-y-4">
                   {friends?.friendRequests.map((item) => (
-                    <FriendItemView key={item.email} friend={item} showAccept={true} />
+                    <FriendItemView
+                      key={item.email}
+                      friend={item}
+                      showAccept={true}
+                    />
                   ))}
                 </div>
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-xl font-medium text-text-primary">Friends</h3>
+                <h3 className="text-xl font-medium text-text-primary">
+                  Friends
+                </h3>
                 <div className="space-y-4">
                   {friends?.friends.map((item) => (
                     <FriendItemView key={item.email} friend={item} />
@@ -175,7 +200,9 @@ const FriendItemView: FC<FriendItemViewProps> = ({ friend, showAccept }) => {
           <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-status-online rounded-full border-2 border-background-card"></div>
         </div>
         <div>
-          <h2 className="font-medium text-text-primary text-lg">{friend.name}</h2>
+          <h2 className="font-medium text-text-primary text-lg">
+            {friend.name}
+          </h2>
           <p className="text-sm text-text-tertiary">{friend.email}</p>
         </div>
       </div>

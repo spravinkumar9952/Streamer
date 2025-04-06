@@ -10,7 +10,8 @@
         "install:all": "npm install && cd server && npm install && cd ../ui && npm install",
         "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
         "dev:backend": "cd server && npm run dev",
-        "dev:frontend": "cd ui && npm start"
+        "dev:frontend": "cd ui && npm start",
+        "env:check": "node -e \"require('dotenv').config(); console.log('Environment variables loaded:', process.env)\""
     },
     "devDependencies": {
         "concurrently": "^8.2.2"

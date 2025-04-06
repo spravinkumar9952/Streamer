@@ -18,20 +18,25 @@ import {
     profileHandler,
 } from "./handlers/user";
 import { authGoogleCallback, logOutHandler, verifyToken } from "./handlers/auth";
-import { createStreamingRoom, deleteStreamingRoom, getStreamingRoomsHandler } from "./handlers/streamingRoom";
+import {
+    createStreamingRoom,
+    deleteStreamingRoom,
+    getStreamingRoomsHandler,
+    updateVideoUrl,
+} from "./handlers/streamingRoom";
 import "../utils/logger";
+import { HTTP_PORT, UI_BASE_URL } from "../utils/env";
 
 const app = express();
-const PORT = 9999;
 
-app.use(express.json());
-
+// Middleware
 app.use(
     cors({
-        origin: process.env.UI_BASE_URL,
+        origin: UI_BASE_URL,
         credentials: true,
     })
 );
+app.use(express.json());
 
 app.use(
     session({
@@ -79,7 +84,9 @@ app.get("/logout", verifyToken, logOutHandler);
 app.get("/profile", verifyToken, profileHandler);
 app.get("/stream/rooms/list", verifyToken, getStreamingRoomsHandler);
 app.post("/stream/rooms/create", verifyToken, createStreamingRoom);
-app.post("/stream/rooms/delete", verifyToken, deleteStreamingRoom);
+app.delete("/stream/rooms/delete", verifyToken, deleteStreamingRoom);
+app.post("/stream/rooms/update-url", verifyToken, updateVideoUrl);
+
 app.get("/user/search", verifyToken, handleUserSearch);
 app.get("/user/profile", verifyToken, handleUserProfile);
 
@@ -97,7 +104,8 @@ app.all("*", (req, res) => {
     res.status(404).send("Route not found");
 });
 
-app.listen(PORT, async () => {
+// Start server
+app.listen(HTTP_PORT, async () => {
     await StreamerDB.getInstance();
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`HTTP server running on port ${HTTP_PORT}`);
 });
