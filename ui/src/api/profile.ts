@@ -68,10 +68,12 @@ const handleUnAuthorize = (statuscode: number) => {
         throw new Error(`HTTP error! status: ${statuscode}`);
     }
 };
+
 export interface ProfileResp {
     email: string;
     name: string;
 }
+
 export interface UserSearchResp {
     list: ProfileResp[];
 }

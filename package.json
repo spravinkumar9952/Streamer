@@ -1,0 +1,18 @@
+{
+    "name": "streaming-room",
+    "version": "1.0.0",
+    "description": "A real-time collaborative video streaming platform",
+    "scripts": {
+        "start": "concurrently \"npm run start:http\" \"npm run start:socket\" \"npm run start:react\"",
+        "start:http": "cd server && npm run start:http",
+        "start:socket": "cd server && npm run start:socket",
+        "start:react": "cd ui && npm start",
+        "install:all": "npm install && cd server && npm install && cd ../ui && npm install",
+        "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+        "dev:backend": "cd server && npm run dev",
+        "dev:frontend": "cd ui && npm start"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    }
+}

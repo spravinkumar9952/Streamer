@@ -18,30 +18,23 @@ server.listen(9998, () => {
 
 // Socket.IO connection handling
 io.on("connection", async (socket) => {
-
     const email = socket.handshake.query.email as string;
     const socketId = socket.id;
     const roomId = socket.handshake.query.roomId as string;
     console.log("A user connected: with email", email, "and socketId", socketId, "and roomId", roomId);
 
-    if(roomId && email) {
+    if (roomId && email) {
         const key = `${roomId}:${email}`;
         await redisClient.set(key, socketId);
         socket.join(roomId);
     }
 
-
-    socket.on("play", async (roomId, email) => {
-        // const streamingRooms = await getRoomById(roomId);
-        // streamingRooms.joinedUsers.map((joinedUser) => {
-        //     socket.to(joinedUser.socketId).emit("play");
-        // });
-
-        socket.to(roomId).emit("play");
+    socket.on("play", async (roomId, email, time) => {
+        socket.to(roomId).emit("play", time);
     });
 
-    socket.on("pause", (roomId, email) => {
-        socket.to(roomId).emit("pause");
+    socket.on("pause", (roomId, email, time) => {
+        socket.to(roomId).emit("pause", time);
     });
 
     socket.on("seek", (roomId, email, time) => {
