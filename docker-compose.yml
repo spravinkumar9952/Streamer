@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+    backend:
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        ports:
+            - "9999:9999" # HTTP server
+            - "9998:9998" # Socket server
+        environment:
+            - NODE_ENV=development
+            - MONGODB_URI=mongodb://mongodb:27017/streamer
+            - REDIS_URL=redis://redis:6379
+            - JWT_SECRET=your_jwt_secret
+            - GOOGLE_CLIENT_ID=your_google_client_id
+            - GOOGLE_CLIENT_SECRET=your_google_client_secret
+            - SOCKET_SERVER_URL=http://localhost:9998
+            - HTTP_SERVER_URL=http://localhost:9999
+        depends_on:
+            - mongodb
+            - redis
+        volumes:
+            - ./server:/app
+            - /app/node_modules
+        networks:
+            - app-network
+
+    mongodb:
+        image: mongo:latest
+        ports:
+            - "27017:27017"
+        volumes:
+            - mongodb_data:/data/db
+        networks:
+            - app-network
+
+    redis:
+        image: redis:alpine
+        ports:
+            - "6379:6379"
+        volumes:
+            - redis_data:/data
+        networks:
+            - app-network
+
+volumes:
+    mongodb_data:
+    redis_data:
+
+networks:
+    app-network:
+        driver: bridge

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: streamer-config
+data:
+    NODE_ENV: "production"
+    HTTP_SERVER_URL: "http://streamer-backend:80"
+    SOCKET_SERVER_URL: "http://streamer-backend:9998"

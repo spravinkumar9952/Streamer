@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: streamer-mongodb
+    labels:
+        app: streamer
+        component: mongodb
+spec:
+    ports:
+        - port: 27017
+          targetPort: 27017
+          name: mongodb
+    clusterIP: None
+    selector:
+        app: streamer
+        component: mongodb

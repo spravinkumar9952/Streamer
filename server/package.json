@@ -7,7 +7,10 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start:http": "NODE_ENV=development nodemon src/http/server.ts",
         "start:socket": "NODE_ENV=development nodemon src/socket/server.ts",
-        "list:env": "node -e 'console.log(process.env)'"
+        "start:all": "concurrently \"npm run start:http\" \"npm run start:socket\"",
+        "list:env": "node -e 'console.log(process.env)'",
+        "build": "tsc",
+        "start": "node dist/http/server.js"
     },
     "keywords": [],
     "author": "",
@@ -25,7 +28,8 @@
         "passport": "^0.7.0",
         "passport-google-oauth20": "^2.0.0",
         "socket.io": "^4.8.1",
-        "uuid": "^11.0.3"
+        "uuid": "^11.0.3",
+        "concurrently": "^8.2.2"
     },
     "devDependencies": {
         "@types/cors": "^2.8.17",

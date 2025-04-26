@@ -94,6 +94,10 @@ app.post("/friend/request/sent", verifyToken, handleFriendRequestSent);
 app.post("/friend/request/accept", verifyToken, handleFriendRequestAccept);
 app.get("/friend/list", verifyToken, handleFriendList);
 
+app.get("/health", (req: Request, res: Response) => {
+    res.status(200).send("OK");
+});
+
 app.get("/", (req: Request, res: Response) => {
     res.send("Hello, World! The TypeScript server is running!");
 });

@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: streamer-ingress
+    namespace: streamer
+    annotations:
+        kubernetes.io/ingress.class: "nginx"
+spec:
+    rules:
+        - host: streamer.example.com
+        - http:
+              paths:
+                  - path: /
+                    pathType: Prefix
+                    backend:
+                        service:
+                            name: streamer-backend
+                            port:
+                                number: 80

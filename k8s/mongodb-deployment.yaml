@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+    name: streamer-mongodb
+    labels:
+        app: streamer
+        component: mongodb
+spec:
+    serviceName: streamer-mongodb
+    replicas: 1
+    selector:
+        matchLabels:
+            app: streamer
+            component: mongodb
+    template:
+        metadata:
+            labels:
+                app: streamer
+                component: mongodb
+        spec:
+            containers:
+                - name: mongodb
+                  image: mongo:latest
+                  ports:
+                      - containerPort: 27017
+                        name: mongodb
+                  volumeMounts:
+                      - name: mongodb-data
+                        mountPath: /data/db
+                  resources:
+                      requests:
+                          memory: "512Mi"
+                          cpu: "250m"
+                      limits:
+                          memory: "1Gi"
+                          cpu: "500m"
+    volumeClaimTemplates:
+        - metadata:
+              name: mongodb-data
+          spec:
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                  requests:
+                      storage: 10Gi
