@@ -8,8 +8,10 @@ import { SOCKET_PORT, UI_BASE_URL } from "../utils/env";
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
+    path: "/socket.io",
+    transports: ["websocket"],
     cors: {
-        origin: UI_BASE_URL,
+        origin: "*",
         methods: ["GET", "POST"],
         credentials: true,
     },

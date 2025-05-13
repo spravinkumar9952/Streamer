@@ -63,9 +63,16 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
     return streamingRoomObj.createdBy !== user?.email;
   }, [streamingRoomObj.createdBy, user?.email]);
 
-  const initializeSocket = useCallback(() => {
+  const initializeSocket = useCallback(() => 
+    {
     if (!socketRef.current) {
       socketRef.current = io(SOCKET_SERVER_URL, {
+        transports: ["websocket"],
+        path: "/socket.io",
+        reconnection: true,
+        reconnectionAttempts: 5,
+        reconnectionDelay: 1000,
+        reconnectionDelayMax: 5000,
         query: {
           email: user?.email,
           roomId: roomId,
@@ -78,13 +85,21 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
     const handleConnect = () => {
       console.log("Connected to socket server");
       setPlayerState((prev) => ({ ...prev, isConnected: true }));
-      socket.emit("joinRoom", roomId);
+      if (socketRef.current) {
+        socketRef.current.emit("joinRoom", roomId);
+      } else {
+        console.error("Socket not connected");
+      }
     };
 
     const handleDisconnect = () => {
       console.log("Disconnected from socket server");
       setPlayerState((prev) => ({ ...prev, isConnected: false }));
-      socket.emit("leaveRoom", roomId);
+      if (socketRef.current) {
+        socketRef.current.emit("leaveRoom", roomId);
+      } else {
+        console.error("Socket not connected");
+      }
     };
 
     const handlePlay = (time: number) => {
@@ -117,21 +132,26 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
       setStreamingRoomObj((prev) => ({ ...prev, videoUrl: videoUrl }));
     };
 
-    socket.on("connect", handleConnect);
-    socket.on("disconnect", handleDisconnect);
-    socket.on("play", handlePlay);
-    socket.on("pause", handlePause);
-    socket.on("seek", handleSeek);
-    socket.on("onProgress", handleProgress);
-    socket.on("updateVideoUrl", handleUpdateVideoUrl);
+    if (socketRef.current) {
+      socketRef.current.on("connect", handleConnect);
+      socketRef.current.on("disconnect", handleDisconnect);
+      socketRef.current.on("play", handlePlay);
+      socketRef.current.on("pause", handlePause);
+      socketRef.current.on("seek", handleSeek);
+      socketRef.current.on("onProgress", handleProgress);
+      socketRef.current.on("updateVideoUrl", handleUpdateVideoUrl);
+    }
 
     return () => {
-      socket.off("connect", handleConnect);
-      socket.off("disconnect", handleDisconnect);
-      socket.off("play", handlePlay);
-      socket.off("pause", handlePause);
-      socket.off("seek", handleSeek);
-      socket.off("onProgress", handleProgress);
+      if (socketRef.current) {
+        socketRef.current.off("connect", handleConnect);
+        socketRef.current.off("disconnect", handleDisconnect);
+        socketRef.current.off("play", handlePlay);
+        socketRef.current.off("pause", handlePause);
+        socketRef.current.off("seek", handleSeek);
+        socketRef.current.off("onProgress", handleProgress);
+        socketRef.current.off("updateVideoUrl", handleUpdateVideoUrl);
+      }
     };
   }, [roomId, user?.email]);
 

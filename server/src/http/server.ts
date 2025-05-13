@@ -6,8 +6,6 @@ import passport from "passport";
 import { Strategy as GoogleStrategy, Profile } from "passport-google-oauth20";
 import { StreamerDB } from "../db/mongo";
 import { getStreamingRooms, getUserDetails, insertUser, updateUser } from "../db/users";
-require("dotenv").config();
-import jwt from "jsonwebtoken";
 import cors from "cors";
 import {
     handleFriendList,
