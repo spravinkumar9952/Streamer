@@ -14,12 +14,15 @@ services:
     command: ["npm", "run", "start:all"]
 
   frontend:
-    image: spravinkumar9952/streamer-frontend:v6.3
+    image: spravinkumar9952/streamer-frontend:v6.4
     container_name: frontend-app
     expose:
       - "80"  # Optional: expose separately if needed
+      - "443"
     env_file:
       - ./frontend/.env
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
     restart: unless-stopped
 
   nginx:
@@ -32,6 +35,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./certbot/www:/var/www/certbot
       - ./certbot/conf:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt:ro
     depends_on:
       - frontend
       - backend
