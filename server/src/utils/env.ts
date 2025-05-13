@@ -22,6 +22,7 @@ export const GOOGLE_CLIENT_ID = getEnvVar("GOOGLE_CLIENT_ID");
 export const GOOGLE_CLIENT_SECRET = getEnvVar("GOOGLE_CLIENT_SECRET");
 export const UI_REDIRECT_URL = getEnvVar("UI_REDIRECT_URL");
 export const SECRET_KEY = getEnvVar("SECRET_KEY");
+export const GOOGLE_CALLBACK_URL = getEnvVar("GOOGLE_CALLBACK_URL");
 
 // Log environment variables in development
 if (process.env.NODE_ENV === "development") {
@@ -35,5 +36,6 @@ if (process.env.NODE_ENV === "development") {
         GOOGLE_CLIENT_SECRET,
         UI_REDIRECT_URL,
         SECRET_KEY,
+        GOOGLE_CALLBACK_URL,
     });
 }

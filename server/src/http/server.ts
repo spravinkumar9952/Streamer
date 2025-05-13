@@ -25,7 +25,7 @@ import {
     updateVideoUrl,
 } from "./handlers/streamingRoom";
 import "../utils/logger";
-import { HTTP_PORT, UI_BASE_URL } from "../utils/env";
+import { HTTP_PORT, UI_BASE_URL, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_CALLBACK_URL } from "../utils/env";
 
 const app = express();
 
@@ -57,9 +57,9 @@ app.use(passport.session());
 passport.use(
     new GoogleStrategy(
         {
-            clientID: process.env.GOOGLE_CLIENT_ID!,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-            callbackURL: "/auth/google/callback",
+            clientID: GOOGLE_CLIENT_ID,
+            clientSecret: GOOGLE_CLIENT_SECRET,
+            callbackURL: GOOGLE_CALLBACK_URL,
         },
         async (accessToken, refreshToken, profile, done) => {
             const emails = profile.emails as { value: string; verified: boolean }[];

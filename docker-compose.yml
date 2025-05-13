@@ -1,53 +1,34 @@
-version: "3.8"
+version: '3.8'
 
 services:
-    backend:
-        build:
-            context: ./server
-            dockerfile: Dockerfile
-        ports:
-            - "9999:9999" # HTTP server
-            - "9998:9998" # Socket server
-        environment:
-            - NODE_ENV=development
-            - MONGODB_URI=mongodb://mongodb:27017/streamer
-            - REDIS_URL=redis://redis:6379
-            - JWT_SECRET=your_jwt_secret
-            - GOOGLE_CLIENT_ID=your_google_client_id
-            - GOOGLE_CLIENT_SECRET=your_google_client_secret
-            - SOCKET_SERVER_URL=http://localhost:9998
-            - HTTP_SERVER_URL=http://localhost:9999
-        depends_on:
-            - mongodb
-            - redis
-        volumes:
-            - ./server:/app
-            - /app/node_modules
-        networks:
-            - app-network
+  backend:
+    image: spravinkumar9952/streamer:v4.2
+    container_name: backend-app
+    ports:
+      - "9999:9999"
+      - "9998:9998"
+    env_file:
+      - ./backend/.env
+    restart: unless-stopped
+    working_dir: /app
+    command: ["npm", "run", "start:all"]
 
-    mongodb:
-        image: mongo:latest
-        ports:
-            - "27017:27017"
-        volumes:
-            - mongodb_data:/data/db
-        networks:
-            - app-network
+  frontend:
+    image: spravinkumar9952/streamer-frontend:v6.3
+    container_name: frontend-app
+    expose:
+      - "80"  # Optional: expose separately if needed
+    env_file:
+      - ./frontend/.env
+    restart: unless-stopped
 
-    redis:
-        image: redis:alpine
-        ports:
-            - "6379:6379"
-        volumes:
-            - redis_data:/data
-        networks:
-            - app-network
-
-volumes:
-    mongodb_data:
-    redis_data:
-
-networks:
-    app-network:
-        driver: bridge
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+      - backend
