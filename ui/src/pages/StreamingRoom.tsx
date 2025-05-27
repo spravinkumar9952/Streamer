@@ -68,7 +68,7 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
     if (!socketRef.current) {
       socketRef.current = io(SOCKET_SERVER_URL, {
         transports: ["websocket"],
-        path: "/socket.io",
+        path: "/socket",
         reconnection: true,
         reconnectionAttempts: 5,
         reconnectionDelay: 1000,

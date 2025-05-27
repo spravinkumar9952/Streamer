@@ -1624,3 +1624,1242 @@
 [2025-04-06T16:50:01.479Z] [LOG]: [ 'HTTP server running on port 9999' ]
 [2025-04-06T16:57:45.927Z] [LOG]: [ 'MongoDB connected' ]
 [2025-04-06T16:57:45.928Z] [LOG]: [ 'HTTP server running on port 9999' ]
+[2025-05-11T13:40:32.451Z] [LOG]: [
+  'Server environment variables loaded:',
+  {
+    MONGO_CONNECTION_STR: 'mongodb+srv://spravinkumar9952:XUenHQVQstQjky7u@maincluster.vamac.mongodb.net/?retryWrites=true&w=majority&appName=mainCluster',
+    UI_BASE_URL: 'http://localhost:3000',
+    HTTP_PORT: 9999,
+    SOCKET_PORT: 9998,
+    SESSION_SECRET: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CLIENT_ID: '1011199299288-h59vu4cmul32a8osvat3l1qssct20mr2.apps.googleusercontent.com',
+    GOOGLE_CLIENT_SECRET: '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',
+    UI_REDIRECT_URL: 'http://localhost:3000/home',
+    SECRET_KEY: 'ppreaavrilniknugmoalrd2197003822000033'
+  }
+]
+[2025-05-11T13:40:32.825Z] [LOG]: [ 'MongoDB connected' ]
+[2025-05-11T13:40:32.825Z] [LOG]: [ 'HTTP server running on port 9999' ]
+[2025-05-11T13:58:25.666Z] [LOG]: [
+  'Server environment variables loaded:',
+  {
+    MONGO_CONNECTION_STR: 'mongodb+srv://spravinkumar9952:XUenHQVQstQjky7u@maincluster.vamac.mongodb.net/?retryWrites=true&w=majority&appName=mainCluster',
+    UI_BASE_URL: 'http://localhost:3000',
+    HTTP_PORT: 9999,
+    SOCKET_PORT: 9998,
+    SESSION_SECRET: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CLIENT_ID: '1011199299288-h59vu4cmul32a8osvat3l1qssct20mr2.apps.googleusercontent.com',
+    GOOGLE_CLIENT_SECRET: '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',
+    UI_REDIRECT_URL: 'http://localhost:3000/home',
+    SECRET_KEY: 'ppreaavrilniknugmoalrd2197003822000033'
+  }
+]
+[2025-05-11T13:58:26.027Z] [LOG]: [ 'MongoDB connected' ]
+[2025-05-11T13:58:26.028Z] [LOG]: [ 'HTTP server running on port 9999' ]
+[2025-05-11T13:58:40.591Z] [LOG]: [
+  'Server environment variables loaded:',
+  {
+    MONGO_CONNECTION_STR: 'mongodb+srv://spravinkumar9952:XUenHQVQstQjky7u@maincluster.vamac.mongodb.net/?retryWrites=true&w=majority&appName=mainCluster',
+    UI_BASE_URL: 'http://localhost:3000',
+    HTTP_PORT: 9999,
+    SOCKET_PORT: 9998,
+    SESSION_SECRET: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CLIENT_ID: '1011199299288-h59vu4cmul32a8osvat3l1qssct20mr2.apps.googleusercontent.com',
+    GOOGLE_CLIENT_SECRET: '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',
+    UI_REDIRECT_URL: 'http://localhost:3000/home',
+    SECRET_KEY: 'ppreaavrilniknugmoalrd2197003822000033'
+  }
+]
+[2025-05-11T13:58:40.919Z] [LOG]: [ 'MongoDB connected' ]
+[2025-05-11T13:58:40.919Z] [LOG]: [ 'HTTP server running on port 9999' ]
+[2025-05-11T14:00:56.072Z] [LOG]: [
+  'Server environment variables loaded:',
+  {
+    MONGO_CONNECTION_STR: 'mongodb+srv://spravinkumar9952:XUenHQVQstQjky7u@maincluster.vamac.mongodb.net/?retryWrites=true&w=majority&appName=mainCluster',
+    UI_BASE_URL: 'http://localhost:3000',
+    HTTP_PORT: 9999,
+    SOCKET_PORT: 9998,
+    SESSION_SECRET: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CLIENT_ID: '1011199299288-h59vu4cmul32a8osvat3l1qssct20mr2.apps.googleusercontent.com',
+    GOOGLE_CLIENT_SECRET: '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',
+    UI_REDIRECT_URL: 'http://localhost:3000/home',
+    SECRET_KEY: 'ppreaavrilniknugmoalrd2197003822000033'
+  }
+]
+[2025-05-11T14:00:56.425Z] [LOG]: [ 'MongoDB connected' ]
+[2025-05-11T14:00:56.425Z] [LOG]: [ 'HTTP server running on port 9999' ]
+[2025-05-11T14:00:59.150Z] [LOG]: [
+  'Server environment variables loaded:',
+  {
+    MONGO_CONNECTION_STR: 'mongodb+srv://spravinkumar9952:XUenHQVQstQjky7u@maincluster.vamac.mongodb.net/?retryWrites=true&w=majority&appName=mainCluster',
+    UI_BASE_URL: 'http://localhost:3000',
+    HTTP_PORT: 9999,
+    SOCKET_PORT: 9998,
+    SESSION_SECRET: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CLIENT_ID: '1011199299288-h59vu4cmul32a8osvat3l1qssct20mr2.apps.googleusercontent.com',
+    GOOGLE_CLIENT_SECRET: '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',
+    UI_REDIRECT_URL: 'http://localhost:3000/home',
+    SECRET_KEY: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CALLBACK_URL: '/auth/google/callback'
+  }
+]
+[2025-05-11T14:00:59.485Z] [LOG]: [ 'MongoDB connected' ]
+[2025-05-11T14:00:59.485Z] [LOG]: [ 'HTTP server running on port 9999' ]
+[2025-05-11T14:01:15.260Z] [LOG]: [
+  'Server environment variables loaded:',
+  {
+    MONGO_CONNECTION_STR: 'mongodb+srv://spravinkumar9952:XUenHQVQstQjky7u@maincluster.vamac.mongodb.net/?retryWrites=true&w=majority&appName=mainCluster',
+    UI_BASE_URL: 'http://localhost:3000',
+    HTTP_PORT: 9999,
+    SOCKET_PORT: 9998,
+    SESSION_SECRET: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CLIENT_ID: '1011199299288-h59vu4cmul32a8osvat3l1qssct20mr2.apps.googleusercontent.com',
+    GOOGLE_CLIENT_SECRET: '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',
+    UI_REDIRECT_URL: 'http://localhost:3000/home',
+    SECRET_KEY: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CALLBACK_URL: '/auth/google/callback'
+  }
+]
+[2025-05-11T14:01:15.594Z] [LOG]: [ 'MongoDB connected' ]
+[2025-05-11T14:01:15.595Z] [LOG]: [ 'HTTP server running on port 9999' ]
+[2025-05-13T15:53:47.163Z] [LOG]: [
+  'Server environment variables loaded:',
+  {
+    MONGO_CONNECTION_STR: 'mongodb+srv://spravinkumar9952:XUenHQVQstQjky7u@maincluster.vamac.mongodb.net/?retryWrites=true&w=majority&appName=mainCluster',
+    UI_BASE_URL: 'http://localhost:3000',
+    HTTP_PORT: 9999,
+    SOCKET_PORT: 9998,
+    SESSION_SECRET: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CLIENT_ID: '1011199299288-h59vu4cmul32a8osvat3l1qssct20mr2.apps.googleusercontent.com',
+    GOOGLE_CLIENT_SECRET: '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',
+    UI_REDIRECT_URL: 'http://localhost:3000/home',
+    SECRET_KEY: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CALLBACK_URL: '/auth/google/callback'
+  }
+]
+[2025-05-13T15:53:47.726Z] [LOG]: [ 'MongoDB connected' ]
+[2025-05-13T15:53:47.726Z] [LOG]: [ 'HTTP server running on port 9999' ]
+[2025-05-13T15:54:04.670Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T15:54:04.671Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T15:54:04.694Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T15:54:04.721Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T15:54:04.746Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T15:54:04.746Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T15:54:04.767Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T15:54:04.768Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T15:54:20.077Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T15:54:20.101Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T15:54:20.128Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T15:54:20.152Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T15:55:33.815Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T15:55:33.816Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T15:55:33.837Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T15:55:33.839Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T15:55:33.864Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T15:55:33.864Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T15:55:33.887Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T15:55:33.888Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:33:01.037Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:33:01.037Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:33:01.066Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:33:01.231Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:33:01.260Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:33:01.260Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:33:01.287Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:33:01.288Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:35:37.881Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:35:37.881Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:35:37.909Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:35:37.910Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:35:37.940Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:35:37.940Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:35:37.971Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:35:37.974Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:43:02.154Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:43:02.182Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:43:02.214Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:43:02.241Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:43:15.970Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:43:15.971Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:43:15.997Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:43:15.998Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:43:16.045Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:43:16.045Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:43:16.072Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:43:16.073Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:47:00.795Z] [LOG]: [
+  'Server environment variables loaded:',
+  {
+    MONGO_CONNECTION_STR: 'mongodb+srv://spravinkumar9952:XUenHQVQstQjky7u@maincluster.vamac.mongodb.net/?retryWrites=true&w=majority&appName=mainCluster',
+    UI_BASE_URL: 'http://localhost:3000',
+    HTTP_PORT: 9999,
+    SOCKET_PORT: 9998,
+    SESSION_SECRET: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CLIENT_ID: '1011199299288-h59vu4cmul32a8osvat3l1qssct20mr2.apps.googleusercontent.com',
+    GOOGLE_CLIENT_SECRET: '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',
+    UI_REDIRECT_URL: 'http://localhost:3000/home',
+    SECRET_KEY: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CALLBACK_URL: '/auth/google/callback'
+  }
+]
+[2025-05-13T17:47:01.153Z] [LOG]: [ 'MongoDB connected' ]
+[2025-05-13T17:47:01.154Z] [LOG]: [ 'HTTP server running on port 9999' ]
+[2025-05-13T17:47:08.214Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:47:08.215Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:47:08.244Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:47:08.290Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:47:08.319Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:47:08.320Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:47:08.350Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:47:08.351Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:47:41.070Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:47:41.070Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:47:41.100Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:47:41.103Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:47:41.136Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:47:41.136Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:47:41.165Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:47:41.166Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:48:01.110Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:48:01.110Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:48:01.136Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:48:01.137Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:48:01.167Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:48:01.167Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:48:01.195Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:48:01.195Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:48:06.007Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:48:06.007Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:48:06.034Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:48:06.035Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:48:06.063Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:48:06.063Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:48:06.089Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:48:06.090Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:51:00.599Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:51:00.599Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:51:00.649Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:51:00.650Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T17:51:00.686Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T17:51:00.686Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T17:51:00.714Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T17:51:00.715Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T18:14:27.488Z] [LOG]: [
+  'Server environment variables loaded:',
+  {
+    MONGO_CONNECTION_STR: 'mongodb+srv://spravinkumar9952:XUenHQVQstQjky7u@maincluster.vamac.mongodb.net/?retryWrites=true&w=majority&appName=mainCluster',
+    UI_BASE_URL: 'http://localhost:3000',
+    HTTP_PORT: 9999,
+    SOCKET_PORT: 9998,
+    SESSION_SECRET: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CLIENT_ID: '1011199299288-h59vu4cmul32a8osvat3l1qssct20mr2.apps.googleusercontent.com',
+    GOOGLE_CLIENT_SECRET: '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',
+    UI_REDIRECT_URL: 'http://localhost:3000/home',
+    SECRET_KEY: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CALLBACK_URL: '/auth/google/callback'
+  }
+]
+[2025-05-13T18:14:27.868Z] [LOG]: [ 'MongoDB connected' ]
+[2025-05-13T18:14:27.869Z] [LOG]: [ 'HTTP server running on port 9999' ]
+[2025-05-13T18:14:36.881Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T18:14:36.881Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T18:14:36.911Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T18:14:36.941Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T18:14:36.972Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T18:14:36.972Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T18:14:37.001Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T18:14:37.004Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T18:16:03.275Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T18:16:03.276Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T18:16:03.308Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T18:16:03.308Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T18:16:03.340Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T18:16:03.340Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T18:16:03.369Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T18:16:03.370Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T18:23:05.508Z] [LOG]: [
+  'Server environment variables loaded:',
+  {
+    MONGO_CONNECTION_STR: 'mongodb+srv://spravinkumar9952:XUenHQVQstQjky7u@maincluster.vamac.mongodb.net/?retryWrites=true&w=majority&appName=mainCluster',
+    UI_BASE_URL: 'http://localhost:3000',
+    HTTP_PORT: 9999,
+    SOCKET_PORT: 9998,
+    SESSION_SECRET: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CLIENT_ID: '1011199299288-h59vu4cmul32a8osvat3l1qssct20mr2.apps.googleusercontent.com',
+    GOOGLE_CLIENT_SECRET: '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',
+    UI_REDIRECT_URL: 'http://localhost:3000/home',
+    SECRET_KEY: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CALLBACK_URL: '/auth/google/callback'
+  }
+]
+[2025-05-13T18:23:05.876Z] [LOG]: [ 'MongoDB connected' ]
+[2025-05-13T18:23:05.876Z] [LOG]: [ 'HTTP server running on port 9999' ]
+[2025-05-13T18:26:34.374Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T18:26:34.374Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T18:26:34.405Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T18:26:34.427Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T18:26:34.458Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T18:26:34.458Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T18:26:34.486Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T18:26:34.487Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T18:26:35.493Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T18:26:35.493Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T18:26:35.524Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T18:26:35.525Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T18:26:35.555Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T18:26:35.555Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T18:26:35.585Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T18:26:35.586Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T18:35:55.181Z] [LOG]: [
+  'Server environment variables loaded:',
+  {
+    MONGO_CONNECTION_STR: 'mongodb+srv://spravinkumar9952:XUenHQVQstQjky7u@maincluster.vamac.mongodb.net/?retryWrites=true&w=majority&appName=mainCluster',
+    UI_BASE_URL: 'http://localhost:3000',
+    HTTP_PORT: 9999,
+    SOCKET_PORT: 9998,
+    SESSION_SECRET: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CLIENT_ID: '1011199299288-h59vu4cmul32a8osvat3l1qssct20mr2.apps.googleusercontent.com',
+    GOOGLE_CLIENT_SECRET: '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',
+    UI_REDIRECT_URL: 'http://localhost:3000/home',
+    SECRET_KEY: 'ppreaavrilniknugmoalrd2197003822000033',
+    GOOGLE_CALLBACK_URL: '/auth/google/callback'
+  }
+]
+[2025-05-13T18:35:55.553Z] [LOG]: [ 'MongoDB connected' ]
+[2025-05-13T18:35:55.554Z] [LOG]: [ 'HTTP server running on port 9999' ]
+[2025-05-13T18:38:50.744Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T18:38:50.745Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T18:38:50.777Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T18:38:50.804Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T18:38:50.833Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T18:38:50.834Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T18:38:50.861Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T18:38:50.863Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T18:41:07.962Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T18:41:07.962Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T18:41:07.990Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T18:41:07.991Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]
+[2025-05-13T18:41:08.021Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  '462e47ed-8f20-453a-a43f-1493728c5a6e'
+]
+[2025-05-13T18:41:08.022Z] [LOG]: [
+  'getStreamingRoomsHandler RoomId',
+  'f843fad0-3039-430d-9ede-f6bb87732101'
+]
+[2025-05-13T18:41:08.049Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: '462e47ed-8f20-453a-a43f-1493728c5a6e',
+    created_at: 2025-02-28T07:37:53.206Z,
+    joinedUsers: [ 'pravinkumar.s@nammayatri.in' ],
+    name: 'sdfasd',
+    createdBy: 'spravinkumar9952@gmail.com',
+    __v: 0
+  }
+]
+[2025-05-13T18:41:08.050Z] [LOG]: [
+  'getStreamingRoomsHandler roomInfoFromDB',
+  {
+    _id: 'f843fad0-3039-430d-9ede-f6bb87732101',
+    created_at: 2025-05-11T14:55:31.478Z,
+    joinedUsers: [ 'spravinkumar9952@gmail.com' ],
+    name: 'Enjoy Sunday',
+    videoUrl: 'https://youtu.be/uQx8jKiIDTI?feature=shared',
+    createdBy: 'pravinkumar.s@nammayatri.in',
+    __v: 0
+  }
+]

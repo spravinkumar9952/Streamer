@@ -8,7 +8,7 @@ import { SOCKET_PORT, UI_BASE_URL } from "../utils/env";
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
-    path: "/socket.io",
+    path: "/socket",
     transports: ["websocket"],
     cors: {
         origin: "*",
@@ -17,7 +17,7 @@ const io = new Server(httpServer, {
     },
 });
 
-httpServer.listen(SOCKET_PORT, () => {
+httpServer.listen(SOCKET_PORT, "0.0.0.0", () => {
     console.log(`Socket server running on port ${SOCKET_PORT}`);
 });
 

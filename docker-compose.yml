@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   backend:
-    image: spravinkumar9952/streamer:v4.2
+    image: spravinkumar9952/streamer:v5.2
     container_name: backend-app
     ports:
       - "9999:9999"
@@ -14,7 +14,7 @@ services:
     command: ["npm", "run", "start:all"]
 
   frontend:
-    image: spravinkumar9952/streamer-frontend:v6.4
+    image: spravinkumar9952/streamer-frontend:v7.1
     container_name: frontend-app
     expose:
       - "80"  # Optional: expose separately if needed
