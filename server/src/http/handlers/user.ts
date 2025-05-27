@@ -1,12 +1,22 @@
 import { acceptFriendRequest, addFriendRequest, getFriends, getUserDetails, matchUsersWithRegex } from "../../db/users";
 import { Request, Response } from "express";
 import { ErrorResp, SuccessResp, User } from "../common";
+import { User as UserDB } from "../../db/users";
 
 // ------------ Get User Profile API Start ----------------
 interface ProfileReq {}
+
 interface ProfileResp {
     email: string;
     name: string;
+    friendshipStatus: FriendshipStatus;
+}
+enum FriendshipStatus {
+    FRIEND = "FRIEND",
+    REQUEST_SENT = "REQUEST_SENT",
+    REQUEST_RECEIVED = "REQUEST_RECEIVED",
+    NOT_FRIEND = "NOT_FRIEND",
+    YOU = "YOU",
 }
 
 export const profileHandler = async (req: Request<{}, {}, ProfileReq>, resp: Response<ProfileResp | ErrorResp>) => {
@@ -17,6 +27,7 @@ export const profileHandler = async (req: Request<{}, {}, ProfileReq>, resp: Res
         resp.json({
             email: userDBResp.email,
             name: userDBResp.userName,
+            friendshipStatus: FriendshipStatus.YOU,
         });
     } else {
         resp.status(404).json({ message: "User not found" });
@@ -42,12 +53,15 @@ export const handleUserSearch = async (
     const searchKey = req.query.searchKey;
     const regex = "^" + searchKey;
     const matchedUsers = await matchUsersWithRegex(regex);
+    const user = req.user as User;
 
     const result: UserSearchResp = {
         list: matchedUsers.map((item) => {
-            return { email: item.email, name: item.userName };
+            const friendshipStatus = getFriendshipStatus(user, item);
+            return { email: item.email, name: item.userName, friendshipStatus: friendshipStatus };
         }),
     };
+    console.log("result", result);
     resp.send(result);
 };
 
@@ -64,12 +78,32 @@ export const handleUserProfile = async (
     resp: Response<UserProfileResp | ErrorResp>
 ) => {
     const searchKey = req.query.email as string;
-    const user = await getUserDetails(searchKey);
-    if (user === null) {
+    const reqUser = await getUserDetails(searchKey);
+    if (reqUser === null) {
         resp.send({ message: "User not found for email id " + searchKey });
         return;
     }
-    resp.send({ email: user.email, name: user.userName });
+
+    const user = req.user as User;
+    const friendshipStatus = getFriendshipStatus(user, reqUser);
+    resp.send({ email: reqUser.email, name: reqUser.userName, friendshipStatus: friendshipStatus });
+};
+
+const getFriendshipStatus = (whom: User, who: UserDB) => {
+    const isFriend = who.friends.includes(whom.email);
+    const isFriendRequestSent = who.friendRequestsReceived.includes(whom.email);
+    const isFriendRequestReceived = who.friendRequestsSent.includes(whom.email);
+    const isYou = whom.email === who.email;
+
+    return isFriend
+        ? FriendshipStatus.FRIEND
+        : isFriendRequestSent
+        ? FriendshipStatus.REQUEST_SENT
+        : isFriendRequestReceived
+        ? FriendshipStatus.REQUEST_RECEIVED
+        : isYou
+        ? FriendshipStatus.YOU
+        : FriendshipStatus.NOT_FRIEND;
 };
 
 // ------------ Post Friend Request Sent API Start --------------

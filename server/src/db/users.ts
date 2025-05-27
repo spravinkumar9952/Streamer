@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Schema, model, Document } from "mongoose";
 
-interface User extends Document {
+export interface User extends Document {
     email: string;
     userName: string;
     friendRequestsSent: string[];
@@ -123,7 +123,7 @@ export const matchUsersWithRegex = async (regex: string): Promise<User[]> => {
 
         const resp = await UserModel.find({
             $or: [{ email: searchPattern }, { userName: searchPattern }],
-        }).select("email userName");
+        });
 
         console.log("Found users:", resp);
 
@@ -132,7 +132,7 @@ export const matchUsersWithRegex = async (regex: string): Promise<User[]> => {
             console.log("No results found, trying simpler search");
             const simpleResp = await UserModel.find({
                 $or: [{ email: { $regex: regex, $options: "i" } }, { userName: { $regex: regex, $options: "i" } }],
-            }).select("email userName");
+            });
 
             console.log("Simple search results:", simpleResp);
             return simpleResp;

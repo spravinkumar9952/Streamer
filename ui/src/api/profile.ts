@@ -31,20 +31,14 @@ export const getUserByEmail = async (key: string): Promise<Friend> => {
     return apiResp as Friend;
 };
 
-export type FriendsListResp = {
+export interface FriendsListResp {
     friends: Friend[];
     friendRequests: FriendRequest[];
-};
+}
 
-export type Friend = {
-    email: string;
-    name: string;
-};
+export interface Friend extends ProfileResp {}
 
-export type FriendRequest = {
-    email: string;
-    name: string;
-};
+export interface FriendRequest extends ProfileResp {}
 
 export const getFriendsList = async (): Promise<FriendsListResp> => {
     const url = baseUrl + "friend/list";
@@ -64,14 +58,22 @@ export const getFriendsList = async (): Promise<FriendsListResp> => {
 const handleUnAuthorize = (statuscode: number) => {
     if (statuscode === 401 || statuscode === 403) {
         window.location.href = "/login";
-    }else{
+    } else {
         throw new Error(`HTTP error! status: ${statuscode}`);
     }
 };
 
+export enum FriendshipStatus {
+    FRIEND = "FRIEND",
+    REQUEST_SENT = "REQUEST_SENT",
+    REQUEST_RECEIVED = "REQUEST_RECEIVED",
+    NOT_FRIEND = "NOT_FRIEND",
+    YOU = "YOU",
+}
 export interface ProfileResp {
     email: string;
     name: string;
+    friendshipStatus: FriendshipStatus;
 }
 
 export interface UserSearchResp {
@@ -80,10 +82,13 @@ export interface UserSearchResp {
 
 export const getSearchResult = async (key: string): Promise<UserSearchResp> => {
     const url = baseUrl + "user/search?searchKey=" + key;
+    console.log("getSearchResult", url);
     const resp = await fetch(url ?? "", {
         method: "GET",
         headers: getHeaders(),
     });
+
+    console.log("getSearchResult", resp.status);
 
     if (!resp.ok) {
         handleUnAuthorize(resp.status);
