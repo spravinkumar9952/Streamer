@@ -1,3 +1,4 @@
+import { handleUnAuthorize } from "./auth";
 import { baseUrl, getHeaders } from "./common";
 
 interface CreateStreamingRoomReq {
@@ -18,6 +19,7 @@ export const createStreamingRoom = async (req: CreateStreamingRoomReq) => {
     });
 
     if (!resp.ok) {
+        handleUnAuthorize(resp.status);
         throw new Error(`HTTP error! status: ${resp.status}`);
     }
 
@@ -45,12 +47,14 @@ interface GetStreamingRoomsListResp {
 export const getStreamingRoomsList = async (req: GetStreamingRoomsListReq): Promise<GetStreamingRoomsListResp> => {
     const url = baseUrl + "stream/rooms/list";
     console.log("Base URL", baseUrl);
+    console.log("Headers", getHeaders());
     const resp = await fetch(url ?? "", {
         method: "GET",
         headers: getHeaders(),
     });
 
     if (!resp.ok) {
+        // handleUnAuthorize(resp.status);
         throw new Error(`HTTP error! status: ${resp.status}`);
     }
 
@@ -76,6 +80,7 @@ export const updateVideoUrl = async (req: UpdateVideoUrlReq): Promise<UpdateVide
     });
 
     if (!resp.ok) {
+        handleUnAuthorize(resp.status);
         throw new Error(`HTTP error! status: ${resp.status}`);
     }
 
@@ -99,6 +104,7 @@ export const deleteStreamingRoom = async (req: DeleteStreamingRoomReq): Promise<
     });
 
     if (!resp.ok) {
+        handleUnAuthorize(resp.status);
         const apiResp = await resp.json();
         console.error("deleteStreamingRoom Error", apiResp);
         throw new Error(`HTTP error! : ${resp.status} ${apiResp}`);

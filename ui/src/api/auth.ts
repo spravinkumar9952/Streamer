@@ -6,3 +6,11 @@ export const authGoogle = () => {
     const endPoint = `${baseUrl}/auth/google`;
     window.location.href = endPoint;
 };
+
+export const handleUnAuthorize = (statuscode: number) => {
+    if (statuscode === 401 || statuscode === 403) {
+        window.location.href = "/login";
+    } else {
+        throw new Error(`HTTP error! status: ${statuscode}`);
+    }
+};
