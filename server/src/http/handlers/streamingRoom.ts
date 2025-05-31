@@ -56,7 +56,7 @@ export const deleteStreamingRoom = async (
 
 interface StreamingRoom {
     id: string;
-    created_at: string;
+    created_at: Date;
     joinedUsers: string[];
     name: string;
     videoUrl: string;
@@ -87,7 +87,7 @@ export const getStreamingRoomsHandler = async (
                 }
                 const roomInfo: StreamingRoom = {
                     id: roomInfoFromDB._id.toString(),
-                    created_at: roomInfoFromDB.created_at.toLocaleString(),
+                    created_at: roomInfoFromDB.created_at,
                     joinedUsers: roomInfoFromDB.joinedUsers,
                     name: roomInfoFromDB.name,
                     videoUrl: roomInfoFromDB.videoUrl,

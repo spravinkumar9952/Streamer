@@ -4,6 +4,7 @@ import { Schema, model, Document } from "mongoose";
 export interface User extends Document {
     email: string;
     userName: string;
+    picture: string | undefined;
     friendRequestsSent: string[];
     friendRequestsReceived: string[];
     friends: string[];
@@ -13,6 +14,7 @@ export interface User extends Document {
 const UserSchema = new Schema<User>({
     userName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
+    picture: { type: String, required: false },
     friendRequestsSent: { type: [String], default: [] },
     friendRequestsReceived: { type: [String], default: [] },
     friends: { type: [String], default: [] },
@@ -25,18 +27,20 @@ export const getUserDetails = async (email: string): Promise<User | null> => {
     return await UserModel.findOne({ email: email });
 };
 
-export const insertUser = async (email: string, userName: string): Promise<void> => {
+export const insertUser = async (email: string, userName: string, picture: string | undefined): Promise<void> => {
     const newUser = new UserModel({
         userName: userName,
         email: email,
+        picture: picture,
     });
     await UserModel.insertMany(newUser);
 };
 
-export const updateUser = async (email: string, userName: string | undefined) => {
+export const updateUser = async (email: string, userName: string | undefined, picture: string | undefined) => {
     const userDetails = new UserModel();
 
     if (userName) userDetails.userName = userName;
+    if (picture) userDetails.picture = picture;
 
     UserModel.updateOne({ email: email }, userDetails);
 };
@@ -53,9 +57,9 @@ export const addFriendRequest = async (from: string, to: string) => {
         await UserModel.updateOne({ email: from }, { $addToSet: { friendRequestsSent: to } });
         await UserModel.updateOne({ email: to }, { $addToSet: { friendRequestsReceived: from } });
 
-        session.commitTransaction();
+        await session.commitTransaction();
     } catch (err) {
-        session.abortTransaction();
+        await session.abortTransaction();
         throw err;
     }
 };
@@ -84,9 +88,9 @@ export const acceptFriendRequest = async (personWhoAccepting: string, personWhoS
             { $pull: { friendRequestsSent: personWhoAccepting }, $addToSet: { friends: personWhoAccepting } }
         );
 
-        session.commitTransaction();
+        await session.commitTransaction();
     } catch (err) {
-        session.abortTransaction();
+        await session.abortTransaction();
         throw err;
     }
 };

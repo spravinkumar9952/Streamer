@@ -99,7 +99,7 @@ export const Profile: FC = () => {
                         <div className="flex flex-col items-center">
                             <div className="relative">
                                 <img
-                                    src="/png/user.png"
+                                    src={user?.picture ?? "/png/user.png"}
                                     alt="Profile"
                                     className="w-32 h-32 rounded-full border-4 border-border-light object-cover"
                                 />

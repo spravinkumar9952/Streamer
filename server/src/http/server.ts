@@ -60,12 +60,13 @@ passport.use(
             callbackURL: GOOGLE_CALLBACK_URL,
         },
         async (accessToken, refreshToken, profile, done) => {
+            const picture = profile.photos?.[0]?.value;
             const emails = profile.emails as { value: string; verified: boolean }[];
             const email = emails[0].value;
 
             const userResp = await getUserDetails(email);
-            if (userResp) await updateUser(email, profile.displayName);
-            else await insertUser(email, profile.displayName);
+            if (userResp) await updateUser(email, profile.displayName, picture);
+            else await insertUser(email, profile.displayName, picture);
 
             return done(null, profile);
         }

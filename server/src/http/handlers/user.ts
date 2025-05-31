@@ -9,6 +9,7 @@ interface ProfileReq {}
 interface ProfileResp {
     email: string;
     name: string;
+    picture: string | undefined;
     friendshipStatus: FriendshipStatus;
 }
 enum FriendshipStatus {
@@ -27,6 +28,7 @@ export const profileHandler = async (req: Request<{}, {}, ProfileReq>, resp: Res
         resp.json({
             email: userDBResp.email,
             name: userDBResp.userName,
+            picture: userDBResp.picture,
             friendshipStatus: FriendshipStatus.YOU,
         });
     } else {
@@ -58,7 +60,12 @@ export const handleUserSearch = async (
     const result: UserSearchResp = {
         list: matchedUsers.map((item) => {
             const friendshipStatus = getFriendshipStatus(user, item);
-            return { email: item.email, name: item.userName, friendshipStatus: friendshipStatus };
+            return {
+                email: item.email,
+                name: item.userName,
+                friendshipStatus: friendshipStatus,
+                picture: item.picture,
+            };
         }),
     };
     console.log("result", result);
@@ -86,7 +93,12 @@ export const handleUserProfile = async (
 
     const user = req.user as User;
     const friendshipStatus = getFriendshipStatus(user, reqUser);
-    resp.send({ email: reqUser.email, name: reqUser.userName, friendshipStatus: friendshipStatus });
+    resp.send({
+        email: reqUser.email,
+        name: reqUser.userName,
+        friendshipStatus: friendshipStatus,
+        picture: reqUser.picture,
+    });
 };
 
 const getFriendshipStatus = (whom: User, who: UserDB) => {

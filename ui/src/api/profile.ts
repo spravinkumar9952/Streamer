@@ -31,6 +31,19 @@ export const getUserByEmail = async (key: string): Promise<Friend> => {
     return apiResp as Friend;
 };
 
+export const updateProfile = async (name: string): Promise<void> => {
+    const url = baseUrl + "user/profile";
+    const resp = await fetch(url ?? "", {
+        method: "POST",
+        headers: getHeaders(),
+        body: JSON.stringify({ name: name }),
+    });
+
+    if (!resp.ok) {
+        throw new Error(`HTTP error! status: ${resp.status}`);
+    }
+};
+
 export interface FriendsListResp {
     friends: Friend[];
     friendRequests: FriendRequest[];
@@ -74,6 +87,7 @@ export interface ProfileResp {
     email: string;
     name: string;
     friendshipStatus: FriendshipStatus;
+    picture: string | undefined;
 }
 
 export interface UserSearchResp {
