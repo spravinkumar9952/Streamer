@@ -13,6 +13,7 @@ import {
     FriendRequest,
     acceptFriendRequest,
     getProfile,
+    unfriend,
 } from "../../api/profile";
 import AuthContext from "../../contexts/Auth";
 import HeartIcon from "./svg/HeartIcon";
@@ -123,6 +124,16 @@ export const HomeV2: React.FC = () => {
         }
     }, [selectedSection]);
 
+    const handleUnfriend = (email: string) => async () => {
+        try {
+            await unfriend(email);
+            const updated = await getFriendsList();
+            setFriends(updated);
+        } catch (err) {
+            alert("Failed to unfriend. Please try again.");
+        }
+    };
+
     return (
         <div className="min-h-screen bg-background-primary">
             <NavBarV2 />
@@ -193,7 +204,7 @@ export const HomeV2: React.FC = () => {
                                             initials={getInitials(friend.name)}
                                             color={pastelColors[idx % pastelColors.length]}
                                             online={true}
-                                            onUnfriend={() => alert(`Unfriended ${friend.name}`)}
+                                            onUnfriend={handleUnfriend(friend.email)}
                                         />
                                     ))}
                                 </div>

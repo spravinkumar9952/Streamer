@@ -141,3 +141,16 @@ export const acceptFriendRequest = async (email: string): Promise<void> => {
         throw new Error(`HTTP error! status: ${resp.status}`);
     }
 };
+
+export const unfriend = async (email: string): Promise<void> => {
+    const url = baseUrl + "friend/unfriend";
+    const resp = await fetch(url ?? "", {
+        method: "POST",
+        headers: getHeaders(),
+        body: JSON.stringify({ email }),
+    });
+    if (!resp.ok) {
+        handleUnAuthorize(resp.status);
+        throw new Error(`HTTP error! status: ${resp.status}`);
+    }
+};
