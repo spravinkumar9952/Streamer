@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Schema, model, Document } from "mongoose";
+import { removeUserFromRooms } from "./streamingRoom";
 
 export interface User extends Document {
     email: string;
@@ -155,4 +156,36 @@ export const updateJoinedStreamingRooms = async (email: string, roomId: string) 
 
 export const exitRoom = async (roomId: string, email: string) => {
     await UserModel.findOneAndUpdate({ email }, { $pull: { joinedStreamingRooms: roomId } });
+};
+
+export const unfriend = async (userEmail: string, friendEmail: string) => {
+    const session = await mongoose.startSession();
+    session.startTransaction();
+    try {
+        // Remove each other from friends list
+        await UserModel.updateOne({ email: userEmail }, { $pull: { friends: friendEmail } });
+        await UserModel.updateOne({ email: friendEmail }, { $pull: { friends: userEmail } });
+
+        // Get both users' joinedStreamingRooms
+        const user = await UserModel.findOne({ email: userEmail });
+        const friend = await UserModel.findOne({ email: friendEmail });
+        if (!user || !friend) throw new Error("User not found");
+
+        // Find intersection of rooms
+        const userRooms = user.joinedStreamingRooms || [];
+        const friendRooms = friend.joinedStreamingRooms || [];
+        const sharedRooms = userRooms.filter((roomId) => friendRooms.includes(roomId));
+
+        // Remove each user from the other's joinedStreamingRooms
+        await UserModel.updateOne({ email: userEmail }, { $pull: { joinedStreamingRooms: { $in: sharedRooms } } });
+        await UserModel.updateOne({ email: friendEmail }, { $pull: { joinedStreamingRooms: { $in: sharedRooms } } });
+
+        // Remove each user from the other's joinedStreamingRooms
+        await removeUserFromRooms(userEmail, friendEmail);
+
+        await session.commitTransaction();
+    } catch (err) {
+        await session.abortTransaction();
+        throw err;
+    }
 };

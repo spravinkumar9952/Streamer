@@ -21,7 +21,7 @@ export const StreamingRoomSchema = new Schema<StreamingRoom>({
     joinedUsers: { type: [String], default: [] },
     name: { type: String, required: true },
     videoUrl: { type: String },
-    createdBy: {},
+    createdBy: { type: String, required: true },
 });
 
 export const StreamingRoomModel = model<StreamingRoom>("StreamingRoom", StreamingRoomSchema);
@@ -132,3 +132,10 @@ export const updateVideoUrlById = async (roomId: string, videoUrl: string) => {
     await StreamingRoomModel.findByIdAndUpdate({ _id: roomId }, { videoUrl: videoUrl });
 };
 // ------------------- API update video url End ----------
+
+export const removeUserFromRooms = async (userEmail: string, friendEmail: string) => {
+    await StreamingRoomModel.updateMany(
+        { joinedUsers: { $in: [userEmail, friendEmail] } },
+        { $pull: { joinedUsers: { $in: [userEmail, friendEmail] } } }
+    );
+};

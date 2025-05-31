@@ -14,6 +14,7 @@ import {
     handleUserProfile,
     handleUserSearch,
     profileHandler,
+    handleUnfriend,
 } from "./handlers/user";
 import { authGoogleCallback, logOutHandler, verifyToken } from "./handlers/auth";
 import {
@@ -92,6 +93,7 @@ app.get("/user/profile", verifyToken, handleUserProfile);
 app.post("/friend/request/sent", verifyToken, handleFriendRequestSent);
 app.post("/friend/request/accept", verifyToken, handleFriendRequestAccept);
 app.get("/friend/list", verifyToken, handleFriendList);
+app.post("/friend/unfriend", verifyToken, handleUnfriend);
 
 app.get("/health", (req: Request, res: Response) => {
     res.status(200).send("OK");

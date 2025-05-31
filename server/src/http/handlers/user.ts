@@ -1,4 +1,11 @@
-import { acceptFriendRequest, addFriendRequest, getFriends, getUserDetails, matchUsersWithRegex } from "../../db/users";
+import {
+    acceptFriendRequest,
+    addFriendRequest,
+    getFriends,
+    getUserDetails,
+    matchUsersWithRegex,
+    unfriend,
+} from "../../db/users";
 import { Request, Response } from "express";
 import { ErrorResp, SuccessResp, User } from "../common";
 import { User as UserDB } from "../../db/users";
@@ -208,3 +215,20 @@ export const handleFriendList = async (req: Request<{}, {}, FriendListReq>, resp
 };
 
 // ------------ Get friend list API End ----------------
+
+// ------------ Unfriend API Start --------------
+interface UnfriendReq {
+    email: string;
+}
+
+export const handleUnfriend = async (req: Request<{}, {}, UnfriendReq>, resp: Response<SuccessResp | ErrorResp>) => {
+    const friendEmail = req.body.email;
+    const user = req.user as { email: string };
+    try {
+        await unfriend(user.email, friendEmail);
+        resp.status(200).json({ message: "OK" });
+    } catch (err) {
+        resp.status(500).json({ message: "UNFRIEND_FAILED" });
+    }
+};
+// ------------ Unfriend API End --------------
