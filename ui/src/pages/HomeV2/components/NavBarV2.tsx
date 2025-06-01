@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     getSearchResult,
@@ -9,6 +9,7 @@ import {
     acceptFriendRequest,
 } from "../../../api/profile";
 import SearchOverlay from "./SearchOverlay";
+import AuthContext from "../../../contexts/Auth";
 
 export const NavBarV2: React.FC = () => {
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ export const NavBarV2: React.FC = () => {
     const [friends, setFriends] = useState<FriendsListResp | null>(null);
     const [loading, setLoading] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
+    const { user: authUser } = useContext(AuthContext);
 
     useEffect(() => {
         getFriendsList().then((f) => setFriends(f));
@@ -39,6 +41,11 @@ export const NavBarV2: React.FC = () => {
             getFriendsList().then((resp) => setFriends(resp));
             getSearchResult(search).then((resp) => setResults(resp.list));
         });
+    };
+
+    const onProfileClick = () => {
+        console.log("onProfileClick", authUser);
+        navigate("/profile", { state: { email: authUser?.email } });
     };
 
     return (
@@ -110,7 +117,7 @@ export const NavBarV2: React.FC = () => {
                     </svg>
                 </button>
                 {/* Profile Icon */}
-                <button>
+                <button onClick={onProfileClick}>
                     <div className="w-8 h-8 rounded-full bg-accent-pink/30 flex items-center justify-center">
                         <svg
                             className="w-6 h-6 text-white"

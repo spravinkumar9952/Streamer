@@ -9,6 +9,7 @@ import { StreamingRoom } from "./api/streamingRoom";
 import { getProfile } from "./api/profile";
 import HomeV2 from "./pages/HomeV2/Page";
 import LandingPage from "./pages/LandingPage/Page";
+import ProfileV2 from "./pages/ProfileV2/Page";
 
 const PageRoute: FC = () => {
     const [initialCompenent, setInitialComponent] = useState<React.JSX.Element>(<LandingPage />);
@@ -28,7 +29,7 @@ const PageRoute: FC = () => {
                 <Route path="/" element={initialCompenent} />
                 <Route path="/login" element={<LandingPage />} />
                 <Route path="/home" element={<HomeV2 />} />
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/profile" element={<ProfileV2 />} />
                 <Route path="/createStreaming" element={<CreateStreaming />} />
                 <Route
                     path="/streamingRoom/:roomId"

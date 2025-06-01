@@ -88,6 +88,8 @@ export interface ProfileResp {
     name: string;
     friendshipStatus: FriendshipStatus;
     picture: string | undefined;
+    location: string | undefined;
+    bio: string | undefined;
 }
 
 export interface UserSearchResp {
@@ -179,5 +181,31 @@ export const deleteFriendRequest = async (email: string): Promise<void> => {
         throw new Error(`HTTP error! status: ${resp.status}`);
     } else {
         console.log("[API][profile.ts][deleteFriendRequest] Friend request deleted");
+    }
+};
+
+interface UserProfileUpdateReq {
+    picture?: string;
+    name?: string;
+    location?: string;
+    bio?: string;
+}
+
+export const updateUserProfile = async (req: UserProfileUpdateReq): Promise<void> => {
+    const url = baseUrl + "user/profile/update";
+    console.log("[API][profile.ts][updateUserProfile] url", url, req);
+
+    const resp = await fetch(url ?? "", {
+        method: "POST",
+        headers: getHeaders(),
+        body: JSON.stringify(req),
+    });
+
+    if (!resp.ok) {
+        handleUnAuthorize(resp.status);
+        console.log("[API][profile.ts][updateUserProfile] Error in updateUserProfile:", resp.status);
+        throw new Error(`HTTP error! status: ${resp.status}`);
+    } else {
+        console.log("[API][profile.ts][updateUserProfile] User profile updated");
     }
 };
