@@ -22,7 +22,11 @@ export const NavBarV2: React.FC = () => {
     const { user: authUser } = useContext(AuthContext);
 
     useEffect(() => {
-        getFriendsList().then((f) => setFriends(f));
+        getFriendsList()
+            .then((f) => setFriends(f))
+            .catch((err) => {
+                console.error("Error fetching friends list:", err);
+            });
     }, []);
 
     useEffect(() => {

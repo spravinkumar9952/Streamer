@@ -6,6 +6,7 @@ import ProfileHeader from "./components/ProfileHeader";
 import ProfileStats from "./components/ProfileStats";
 import ProfileEditForm from "./components/ProfileEditForm";
 import ProfileNavBar from "./components/ProfileNavBar";
+import { LogOut } from "./components/LogOut";
 
 const ProfileV2: React.FC = () => {
     const [user, setUser] = useState<ProfileResp | null>(null);
@@ -42,6 +43,7 @@ const ProfileV2: React.FC = () => {
                     <ProfileHeader user={user} editMode={editMode} setEditMode={setEditMode} isAlien={isAlien} />
                     <ProfileStats user={user} />
                     {editMode && <ProfileEditForm user={user} setUser={setUser} setEditMode={setEditMode} />}
+                    <LogOut />
                 </div>
             </div>
         </div>

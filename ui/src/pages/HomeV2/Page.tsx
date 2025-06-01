@@ -84,7 +84,7 @@ export const HomeV2: React.FC = () => {
             if (newToken == null && currentToken) {
                 getProfile()
                     .then((profileResp) => {
-                        setUser({ email: profileResp.email, name: profileResp.name, profilePicture: "" });
+                        setUser({ email: profileResp.email, name: profileResp.name, picture: "" });
                     })
                     .catch(() => {
                         navigation("/login");
@@ -104,7 +104,7 @@ export const HomeV2: React.FC = () => {
                 return;
             }
             localStorage.setItem("authToken", token ?? "");
-            setUser({ email: email ?? "", name: name ?? "", profilePicture: "" });
+            setUser({ email: email ?? "", name: name ?? "", picture: "" });
         };
 
         if (!checkOldTokenValidity(token)) {
@@ -117,10 +117,16 @@ export const HomeV2: React.FC = () => {
         if (selectedSection === SectionV2.Rooms) {
             getStreamingRoomsList({})
                 .then((resp: { list: StreamingRoom[] }) => setRooms(resp.list))
+                .catch((err) => {
+                    console.error("Error fetching streaming rooms list:", err);
+                })
                 .finally(() => setLoading(false));
         } else {
             getFriendsList()
                 .then((resp: FriendsListResp) => setFriends(resp))
+                .catch((err) => {
+                    console.error("Error fetching friends list:", err);
+                })
                 .finally(() => setLoading(false));
         }
     }, [selectedSection]);

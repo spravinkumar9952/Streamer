@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FC } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import { Profile } from "./pages/Profile";
 import CreateStreaming from "./pages/CreateStreaming";
@@ -10,6 +10,8 @@ import { getProfile } from "./api/profile";
 import HomeV2 from "./pages/HomeV2/Page";
 import LandingPage from "./pages/LandingPage/Page";
 import ProfileV2 from "./pages/ProfileV2/Page";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import { AuthProvider } from "./contexts/Auth";
 
 const PageRoute: FC = () => {
     const [initialCompenent, setInitialComponent] = useState<React.JSX.Element>(<LandingPage />);
@@ -25,28 +27,46 @@ const PageRoute: FC = () => {
 
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={initialCompenent} />
-                <Route path="/login" element={<LandingPage />} />
-                <Route path="/home" element={<HomeV2 />} />
-                <Route path="/profile" element={<ProfileV2 />} />
-                <Route path="/createStreaming" element={<CreateStreaming />} />
-                <Route
-                    path="/streamingRoom/:roomId"
-                    element={
-                        <StreamingRoomPlayer
-                            streamingRoomObj={{
-                                id: "",
-                                created_at: new Date().toISOString(),
-                                joinedUsers: [],
-                                name: "",
-                                videoUrl: "",
-                                createdBy: "",
-                            }}
-                        />
-                    }
-                />
-            </Routes>
+            <AuthProvider>
+                <Routes>
+                    <Route path="/" element={initialCompenent} />
+                    <Route path="/login" element={<LandingPage />} />
+                    <Route path="/home" element={<HomeV2 />} />
+                    <Route
+                        path="/profile"
+                        element={
+                            <ProtectedRoute>
+                                <ProfileV2 />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/createStreaming"
+                        element={
+                            <ProtectedRoute>
+                                <CreateStreaming />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/streamingRoom/:roomId"
+                        element={
+                            <ProtectedRoute>
+                                <StreamingRoomPlayer
+                                    streamingRoomObj={{
+                                        id: "",
+                                        created_at: new Date().toISOString(),
+                                        joinedUsers: [],
+                                        name: "",
+                                        videoUrl: "",
+                                        createdBy: "",
+                                    }}
+                                />
+                            </ProtectedRoute>
+                        }
+                    />
+                </Routes>
+            </AuthProvider>
         </BrowserRouter>
     );
 };

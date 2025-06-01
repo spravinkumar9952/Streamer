@@ -13,7 +13,7 @@ import {
 } from "../api/profile";
 import { getStreamingRoomsList, StreamingRoom } from "../api/streamingRoom";
 import { StreamingRoomListItem } from "../components/StreamingRoomListItem";
-import AuthContext, { User } from "../contexts/Auth";
+import AuthContext from "../contexts/Auth";
 
 enum Section {
     StreamingRooms,
@@ -38,7 +38,7 @@ const Home: FC = () => {
                 .then((profileResp) => {
                     console.log("profileResp", profileResp);
                     changeSection(Section.StreamingRooms);
-                    setUser({ email: profileResp.email, name: profileResp.name, profilePicture: "" });
+                    setUser({ email: profileResp.email, name: profileResp.name, picture: "" });
                 })
                 .catch((err) => {
                     console.error("Error fetching profile:", err);
@@ -60,7 +60,7 @@ const Home: FC = () => {
         }
         localStorage.setItem("authToken", token ?? "");
         changeSection(Section.StreamingRooms);
-        setUser({ email: email ?? "", name: name ?? "", profilePicture: "" });
+        setUser({ email: email ?? "", name: name ?? "", picture: "" });
     };
 
     useEffect(() => {
