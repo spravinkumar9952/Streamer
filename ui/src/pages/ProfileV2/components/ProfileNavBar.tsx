@@ -14,7 +14,7 @@ const ProfileNavBar: React.FC<{ isAlien: boolean }> = ({ isAlien }) => {
                 <span className="text-2xl font-bold text-white cursor-pointer">Streamer</span>
             </div>
             {/* Right: Settings Icon */}
-            {!isAlien && (
+            {/* {!isAlien && (
                 <button className="p-2 rounded-full hover:bg-white/10 transition">
                     <svg
                         className="w-6 h-6 text-white"
@@ -30,7 +30,7 @@ const ProfileNavBar: React.FC<{ isAlien: boolean }> = ({ isAlien }) => {
                         />
                     </svg>
                 </button>
-            )}
+            )} */}
         </nav>
     );
 };

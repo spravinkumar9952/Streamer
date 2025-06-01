@@ -11,7 +11,7 @@ export const LandingPage: React.FC = () => {
             <Hero />
             <FeaturesGrid />
             <HowItWorks />
-            <Testimonials />
+            {/* <Testimonials /> */}
             <Footer />
         </div>
     );

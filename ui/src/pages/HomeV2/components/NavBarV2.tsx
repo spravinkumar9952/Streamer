@@ -89,7 +89,7 @@ export const NavBarV2: React.FC = () => {
                     Create Room
                 </button>
                 {/* Notification Icon */}
-                <button className="relative">
+                {/* <button className="relative">
                     <svg
                         className="w-6 h-6 text-white"
                         fill="none"
@@ -103,9 +103,9 @@ export const NavBarV2: React.FC = () => {
                             d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
                         />
                     </svg>
-                </button>
+                </button> */}
                 {/* Settings Icon */}
-                <button>
+                {/* <button>
                     <svg
                         className="w-6 h-6 text-white"
                         fill="none"
@@ -119,7 +119,7 @@ export const NavBarV2: React.FC = () => {
                             d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 0V4m0 16v-4m8-4h-4m-8 0H4"
                         />
                     </svg>
-                </button>
+                </button> */}
                 {/* Profile Icon */}
                 <button onClick={onProfileClick}>
                     <div className="w-8 h-8 rounded-full bg-accent-pink/30 flex items-center justify-center">

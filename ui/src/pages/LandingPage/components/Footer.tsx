@@ -17,8 +17,8 @@ export const Footer: React.FC = () => {
             <div className="container mx-auto px-4">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                        <div className="col-span-1 md:col-span-2">
-                            <div className="flex items-center mb-4">
+                        <div className="col-span-1 md:col-span-4">
+                            <div className="flex items-center mb-4 justify-center">
                                 <img src="/png/ic_logo.png" alt="Streamer Logo" className="w-10 h-10 object-contain" />
                                 <span className="ml-2 text-2xl font-bold text-text-primary">Streamer</span>
                             </div>
@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
                             </p>
                         </div>
 
-                        <div>
+                        {/* <div>
                             <h3 className="text-lg font-semibold text-text-primary mb-4">Quick Links</h3>
                             <ul className="space-y-2">
                                 <li>
@@ -85,7 +85,7 @@ export const Footer: React.FC = () => {
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="border-t border-border-light mt-12 pt-8 text-center text-text-secondary">

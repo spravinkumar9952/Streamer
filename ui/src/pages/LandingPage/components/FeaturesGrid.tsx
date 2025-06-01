@@ -7,21 +7,21 @@ const features = [
         title: "Synchronized Viewing",
         desc: "Watch movies and shows in perfect sync, with automatic pause and play for both partners.",
     },
-    {
-        icon: <ChatIcon className="w-8 h-8 mb-4" />,
-        title: "Live Chat & Reactions",
-        desc: "Share your thoughts and reactions in real-time with private chat and emoji reactions.",
-    },
-    {
-        icon: <CalendarIcon className="w-8 h-8 mb-4" />,
-        title: "Date Night Planner",
-        desc: "Schedule movie nights and get personalized recommendations for your perfect date.",
-    },
-    {
-        icon: <HeartIcon className="w-8 h-8 mb-4" />,
-        title: "Couple's Wishlist",
-        desc: "Create shared watchlists and discover new content you'll both love together.",
-    },
+    // {
+    //     icon: <ChatIcon className="w-8 h-8 mb-4" />,
+    //     title: "Live Chat & Reactions",
+    //     desc: "Share your thoughts and reactions in real-time with private chat and emoji reactions.",
+    // },
+    // {
+    //     icon: <CalendarIcon className="w-8 h-8 mb-4" />,
+    //     title: "Date Night Planner",
+    //     desc: "Schedule movie nights and get personalized recommendations for your perfect date.",
+    // },
+    // {
+    //     icon: <HeartIcon className="w-8 h-8 mb-4" />,
+    //     title: "Couple's Wishlist",
+    //     desc: "Create shared watchlists and discover new content you'll both love together.",
+    // },
     {
         icon: <LockIcon className="w-8 h-8 mb-4" />,
         title: "Private & Secure",
@@ -30,7 +30,7 @@ const features = [
     {
         icon: <DeviceIcon className="w-8 h-8 mb-4" />,
         title: "Any Device, Anywhere",
-        desc: "Stream on any device – phone, tablet, laptop, or TV. Stay connected wherever you are.",
+        desc: "Stream on any device – phone, tablet, laptop. Stay connected wherever you are.",
     },
 ];
 
