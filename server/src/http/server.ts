@@ -15,6 +15,7 @@ import {
     handleUserSearch,
     profileHandler,
     handleUnfriend,
+    handleDeleteFriendRequest,
 } from "./handlers/user";
 import { authGoogleCallback, logOutHandler, verifyToken } from "./handlers/auth";
 import {
@@ -92,6 +93,7 @@ app.get("/user/profile", verifyToken, handleUserProfile);
 
 app.post("/friend/request/sent", verifyToken, handleFriendRequestSent);
 app.post("/friend/request/accept", verifyToken, handleFriendRequestAccept);
+app.delete("/friend/request/delete", verifyToken, handleDeleteFriendRequest);
 app.get("/friend/list", verifyToken, handleFriendList);
 app.post("/friend/unfriend", verifyToken, handleUnfriend);
 

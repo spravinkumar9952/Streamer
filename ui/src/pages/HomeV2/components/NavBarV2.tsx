@@ -1,21 +1,73 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+    getSearchResult,
+    getFriendsList,
+    giveFriendRequest,
+    ProfileResp,
+    FriendsListResp,
+    acceptFriendRequest,
+} from "../../../api/profile";
+import SearchOverlay from "./SearchOverlay";
 
 export const NavBarV2: React.FC = () => {
     const navigate = useNavigate();
+    const [search, setSearch] = useState("");
+    const [results, setResults] = useState<ProfileResp[]>([]);
+    const [isFocused, setIsFocused] = useState(false);
+    const [friends, setFriends] = useState<FriendsListResp | null>(null);
+    const [loading, setLoading] = useState(false);
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        getFriendsList().then((f) => setFriends(f));
+    }, []);
+
+    useEffect(() => {
+        if (search.trim() === "") {
+            setResults([]);
+            return;
+        }
+        setLoading(true);
+        getSearchResult(search)
+            .then((resp) => setResults(resp.list))
+            .finally(() => setLoading(false));
+    }, [search]);
+
+    const handleAddFriend = async (email: string) => {
+        giveFriendRequest(email).then(() => {
+            getFriendsList().then((resp) => setFriends(resp));
+            getSearchResult(search).then((resp) => setResults(resp.list));
+        });
+    };
+
     return (
         <nav className="sticky top-0 z-30 w-full bg-[#4A4458] shadow-lg py-3 px-6 flex items-center justify-between rounded-b-2xl">
             <div className="flex items-center gap-3">
                 <img src="/png/ic_logo.png" alt="Streamer Logo" className="w-8 h-8 object-contain" />
                 <span className="text-2xl font-bold text-white">Streamer</span>
             </div>
-            <div className="flex-1 flex justify-center">
+            <div className="flex-1 flex justify-center relative">
                 <div className="w-full max-w-xl">
                     <input
+                        ref={inputRef}
                         type="text"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        onFocus={() => setIsFocused(true)}
                         placeholder="Search for friends..."
                         className="w-full px-5 py-2 rounded-full border border-border-light bg-background-tertiary text-white focus:outline-none focus:ring-2 focus:ring-accent-pink placeholder:text-gray-300"
                     />
+                    {isFocused && search && (
+                        <SearchOverlay
+                            results={results}
+                            loading={loading}
+                            friends={friends}
+                            onAddFriend={handleAddFriend}
+                            onAccept={acceptFriendRequest}
+                            onClose={() => setIsFocused(false)}
+                        />
+                    )}
                 </div>
             </div>
             <div className="flex items-center gap-5">

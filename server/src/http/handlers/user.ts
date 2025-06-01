@@ -4,6 +4,7 @@ import {
     getFriends,
     getUserDetails,
     matchUsersWithRegex,
+    removeFriendRequest,
     unfriend,
 } from "../../db/users";
 import { Request, Response } from "express";
@@ -232,3 +233,25 @@ export const handleUnfriend = async (req: Request<{}, {}, UnfriendReq>, resp: Re
     }
 };
 // ------------ Unfriend API End --------------
+
+// ------------ Delete friend request API Start --------------
+
+interface DeleteFriendRequestReq {
+    email: string;
+}
+
+export const handleDeleteFriendRequest = async (
+    req: Request<{}, {}, DeleteFriendRequestReq>,
+    resp: Response<SuccessResp | ErrorResp>
+) => {
+    const friendEmail = req.body.email;
+    const user = req.user as { email: string };
+    const userEmail = user.email;
+    try {
+        await removeFriendRequest(friendEmail, userEmail);
+        resp.status(200).json({ message: "OK" });
+    } catch (err) {
+        resp.status(500).json({ message: "DELETE_FRIEND_REQUEST_FAILED" });
+    }
+};
+// ------------ Delete friend request API End --------------

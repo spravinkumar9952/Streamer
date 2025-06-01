@@ -14,6 +14,7 @@ import {
     acceptFriendRequest,
     getProfile,
     unfriend,
+    deleteFriendRequest,
 } from "../../api/profile";
 import AuthContext from "../../contexts/Auth";
 import HeartIcon from "./svg/HeartIcon";
@@ -109,7 +110,7 @@ export const HomeV2: React.FC = () => {
         if (!checkOldTokenValidity(token)) {
             checkNewTokenValidity(name, email, token);
         }
-    }, [location.search, navigation, setUser, user]);
+    }, [location.search]);
 
     useEffect(() => {
         setLoading(true);
@@ -131,6 +132,16 @@ export const HomeV2: React.FC = () => {
             setFriends(updated);
         } catch (err) {
             alert("Failed to unfriend. Please try again.");
+        }
+    };
+
+    const handleDeleteFriendRequest = (email: string) => async () => {
+        try {
+            await deleteFriendRequest(email);
+            const updated = await getFriendsList();
+            setFriends(updated);
+        } catch (err) {
+            alert("Failed to delete friend request. Please try again.");
         }
     };
 
@@ -182,7 +193,7 @@ export const HomeV2: React.FC = () => {
                                             onAccept={() =>
                                                 acceptFriendRequest(req.email).then(() => window.location.reload())
                                             }
-                                            onDecline={() => alert(`Declined ${req.name}`)}
+                                            onDecline={handleDeleteFriendRequest(req.email)}
                                         />
                                     ))}
                                 </div>

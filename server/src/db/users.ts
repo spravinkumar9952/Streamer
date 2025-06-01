@@ -186,6 +186,23 @@ export const unfriend = async (userEmail: string, friendEmail: string) => {
         await session.commitTransaction();
     } catch (err) {
         await session.abortTransaction();
+        console.error("[DB][users.ts][unfriend] Error in unfriend:", err);
+        throw err;
+    }
+};
+
+export const removeFriendRequest = async (from: string, to: string) => {
+    const session = await mongoose.startSession();
+    console.log("[DB][users.ts][removeFriendRequest] Removing friend request", from, to);
+    session.startTransaction();
+    try {
+        await UserModel.updateOne({ email: from }, { $pull: { friendRequestsSent: to } });
+        await UserModel.updateOne({ email: to }, { $pull: { friendRequestsReceived: from } });
+        await session.commitTransaction();
+        console.log("[DB][users.ts][removeFriendRequest] Friend request removed", from, to);
+    } catch (err) {
+        await session.abortTransaction();
+        console.error("[DB][users.ts][removeFriendRequest] Error in removeFriendRequest:", err);
         throw err;
     }
 };

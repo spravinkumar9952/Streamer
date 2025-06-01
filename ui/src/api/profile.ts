@@ -102,15 +102,14 @@ export const getSearchResult = async (key: string): Promise<UserSearchResp> => {
         headers: getHeaders(),
     });
 
-    console.log("getSearchResult", resp.status);
-
     if (!resp.ok) {
         handleUnAuthorize(resp.status);
+        console.log("[API][profile.ts][getSearchResult] Error in getSearchResult:", resp.status);
         throw new Error(`HTTP error! status: ${resp.status}`);
     }
 
     const apiResp = await resp.json();
-    console.log("getSearchResult", apiResp);
+    console.log("[API][profile.ts][getSearchResult] getSearchResult", apiResp);
     return apiResp as UserSearchResp;
 };
 
@@ -124,7 +123,10 @@ export const giveFriendRequest = async (email: string): Promise<void> => {
 
     if (!resp.ok) {
         handleUnAuthorize(resp.status);
+        console.log("[API][profile.ts][giveFriendRequest] Error in giveFriendRequest:", resp.status);
         throw new Error(`HTTP error! status: ${resp.status}`);
+    } else {
+        console.log("[API][profile.ts][giveFriendRequest] Friend request sent");
     }
 };
 
@@ -138,7 +140,10 @@ export const acceptFriendRequest = async (email: string): Promise<void> => {
 
     if (!resp.ok) {
         handleUnAuthorize(resp.status);
+        console.log("[API][profile.ts][acceptFriendRequest] Error in acceptFriendRequest:", resp.status);
         throw new Error(`HTTP error! status: ${resp.status}`);
+    } else {
+        console.log("[API][profile.ts][acceptFriendRequest] Friend request accepted");
     }
 };
 
@@ -151,6 +156,28 @@ export const unfriend = async (email: string): Promise<void> => {
     });
     if (!resp.ok) {
         handleUnAuthorize(resp.status);
+        console.log("[API][profile.ts][unfriend] Error in unfriend:", resp.status);
         throw new Error(`HTTP error! status: ${resp.status}`);
+    } else {
+        console.log("[API][profile.ts][unfriend] Unfriended");
+    }
+};
+
+export const deleteFriendRequest = async (email: string): Promise<void> => {
+    const url = baseUrl + "friend/request/delete";
+    const body = { email: email };
+
+    console.log("[API][profile.ts][deleteFriendRequest] body", body);
+    const resp = await fetch(url ?? "", {
+        method: "DELETE",
+        headers: getHeaders(),
+        body: JSON.stringify(body),
+    });
+    if (!resp.ok) {
+        handleUnAuthorize(resp.status);
+        console.log("[API][profile.ts][deleteFriendRequest] Error in deleteFriendRequest:", resp.status);
+        throw new Error(`HTTP error! status: ${resp.status}`);
+    } else {
+        console.log("[API][profile.ts][deleteFriendRequest] Friend request deleted");
     }
 };
