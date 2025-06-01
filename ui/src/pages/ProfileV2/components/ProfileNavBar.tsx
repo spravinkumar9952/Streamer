@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const ProfileNavBar: React.FC = () => {
+const ProfileNavBar: React.FC<{ isAlien: boolean }> = ({ isAlien }) => {
     const navigate = useNavigate();
     const onLogoClick = () => {
         navigate("/");
@@ -14,21 +14,23 @@ const ProfileNavBar: React.FC = () => {
                 <span className="text-2xl font-bold text-white cursor-pointer">Streamer</span>
             </div>
             {/* Right: Settings Icon */}
-            <button className="p-2 rounded-full hover:bg-white/10 transition">
-                <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 0V4m0 16v-4m8-4h-4m-8 0H4"
-                    />
-                </svg>
-            </button>
+            {!isAlien && (
+                <button className="p-2 rounded-full hover:bg-white/10 transition">
+                    <svg
+                        className="w-6 h-6 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 0V4m0 16v-4m8-4h-4m-8 0H4"
+                        />
+                    </svg>
+                </button>
+            )}
         </nav>
     );
 };

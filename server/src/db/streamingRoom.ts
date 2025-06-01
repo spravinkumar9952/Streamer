@@ -5,6 +5,8 @@ import { v4 as uuidV4 } from "uuid";
 import { ErrorResp } from "../http/common";
 import { SuccessResp } from "../http/common";
 import { Response } from "express";
+import { NotOwnerError } from "./errors/streamingRoom";
+import { RoomNotFoundError } from "./errors/streamingRoom";
 
 interface StreamingRoom extends Document {
     _id: string;
@@ -113,7 +115,7 @@ export const deleteRoom = async (
 export const getRoomById = async (roomId: string): Promise<StreamingRoom> => {
     const resp = await StreamingRoomModel.findOne({ _id: roomId });
     if (!resp) {
-        throw new Error("Room not found for id " + roomId);
+        throw new RoomNotFoundError(roomId);
     }
 
     return resp;
@@ -138,4 +140,45 @@ export const removeUserFromRooms = async (userEmail: string, friendEmail: string
         { joinedUsers: { $in: [userEmail, friendEmail] } },
         { $pull: { joinedUsers: { $in: [userEmail, friendEmail] } } }
     );
+};
+
+export const updateRoom = async (
+    roomId: string,
+    userEmail: string,
+    videoUrl: string | undefined,
+    name: string | undefined
+) => {
+    const room = await StreamingRoomModel.findById(roomId);
+    if (!room) {
+        throw new RoomNotFoundError(roomId);
+    } else if (room.createdBy !== userEmail) {
+        throw new NotOwnerError(roomId);
+    }
+
+    if (videoUrl) room.videoUrl = videoUrl;
+    if (name) room.name = name;
+
+    await StreamingRoomModel.updateOne({ _id: roomId }, room);
+};
+
+export const addFriendsToRoom = async (roomId: string, userEmail: string, friends: string[]) => {
+    const room = await StreamingRoomModel.findById(roomId);
+    if (!room) {
+        throw new RoomNotFoundError(roomId);
+    } else if (room.createdBy !== userEmail) {
+        throw new NotOwnerError(roomId);
+    }
+
+    await StreamingRoomModel.findByIdAndUpdate({ _id: roomId }, { $addToSet: { joinedUsers: { $in: friends } } });
+};
+
+export const removeFriendsFromRoom = async (roomId: string, userEmail: string, friends: string[]) => {
+    const room = await StreamingRoomModel.findById(roomId);
+    if (!room) {
+        throw new RoomNotFoundError(roomId);
+    } else if (room.createdBy !== userEmail) {
+        throw new NotOwnerError(roomId);
+    }
+
+    await StreamingRoomModel.findByIdAndUpdate({ _id: roomId }, { $pull: { joinedUsers: { $in: friends } } });
 };

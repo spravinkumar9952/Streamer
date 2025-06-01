@@ -6,21 +6,23 @@ interface ProfileHeaderProps {
     user: ProfileResp | null;
     editMode: boolean;
     setEditMode: (edit: boolean) => void;
+    isAlien: boolean;
 }
 
-const ProfileHeader: React.FC<ProfileHeaderProps> = ({ user, editMode, setEditMode }) => {
+const ProfileHeader: React.FC<ProfileHeaderProps> = ({ user, editMode, setEditMode, isAlien }) => {
     return (
         <div className="relative rounded-3xl mb-8 bg-gradient-to-r from-[#A084CA]/60 to-[#FFD3B6]/60 shadow-lg px-10 py-10 flex items-center">
             {/* Edit button */}
             <div className="absolute top-6 right-8 z-10">
-                {!editMode ? (
+                {!editMode && !isAlien && (
                     <button
                         className="px-5 py-2 rounded-full font-semibold text-white bg-gradient-to-r from-[#F7A8C1] to-[#C6B6F7] shadow hover:from-[#C6B6F7] hover:to-[#F7A8C1] transition"
                         onClick={() => setEditMode(true)}
                     >
                         Edit Profile
                     </button>
-                ) : (
+                )}
+                {editMode && !isAlien && (
                     <button
                         className="px-5 py-2 rounded-full font-semibold text-white bg-gradient-to-r from-[#F7A8C1] to-[#C6B6F7] shadow hover:from-[#C6B6F7] hover:to-[#F7A8C1] transition"
                         onClick={() => setEditMode(false)}
@@ -28,6 +30,11 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({ user, editMode, setEditMo
                         Cancel
                     </button>
                 )}
+                {/* {isAlien && (
+                    <button className="px-5 py-2 rounded-full font-semibold text-white bg-gradient-to-r from-[#F7A8C1] to-[#C6B6F7] shadow hover:from-[#C6B6F7] hover:to-[#F7A8C1] transition">
+                        Add Friend
+                    </button>
+                )} */}
             </div>
             {/* Avatar on the left */}
             <div className="flex-shrink-0 mr-10">

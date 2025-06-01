@@ -1,7 +1,16 @@
 import express, { NextFunction, Request, Response } from "express";
-import { getStreamingRooms } from "../../db/users";
-import { createRoom, deleteRoom, getRoomById, updateVideoUrlById } from "../../db/streamingRoom";
+import { getStreamingRooms, getUserDetails } from "../../db/users";
+import {
+    createRoom,
+    deleteRoom,
+    getRoomById,
+    updateRoom,
+    addFriendsToRoom as addFriendsToRoomDB,
+    removeFriendsFromRoom as removeFriendsFromRoomDB,
+} from "../../db/streamingRoom";
 import { ErrorResp, SuccessResp, User } from "../common";
+import { UserNotFriendError } from "../../db/errors/users";
+import { NotOwnerError, RoomNotFoundError } from "../../db/errors/streamingRoom";
 
 // ------------------- API create streaming room list Start ----------
 interface StreamingRoomReq {
@@ -105,33 +114,68 @@ export const getStreamingRoomsHandler = async (
 
 // ------------------- API update video url Start ----------
 
-interface UpdateVideoUrlReq {
+interface UpdateStreamingRoomReq {
     roomId: string;
-    videoUrl: string;
+    videoUrl?: string;
+    name?: string;
 }
 
-export const updateVideoUrl = async (
-    req: Request<{}, {}, UpdateVideoUrlReq>,
+export const updateStreamingRoom = async (
+    req: Request<{}, {}, UpdateStreamingRoomReq>,
     res: Response<SuccessResp | ErrorResp>
 ) => {
     const user = req.user as User;
-    const body = req.body as { roomId: string; videoUrl: string };
-
+    const body = req.body;
     try {
-        const streamingRoom = await getRoomById(body.roomId);
-        if (streamingRoom == undefined) {
-            res.status(404).send({ message: "Room info not found for id " + body.roomId });
-            return;
-        }
-        if (streamingRoom.createdBy !== user.email) {
-            res.status(403).send({ message: "You are not the owner of this room" });
-            return;
-        }
-
-        await updateVideoUrlById(body.roomId, body.videoUrl);
-        res.send({ message: "Video URL updated successfully" });
+        await updateRoom(body.roomId, user.email, body.videoUrl, body.name);
+        res.send({ message: "Room updated successfully" });
     } catch (err) {
-        console.error("updateVideoUrl Error", err);
+        console.error("updateStreamingRoom Error", err);
         res.status(500).send({ message: err as string });
+    }
+};
+
+interface AddFriendsToRoomReq {
+    roomId: string;
+    friends: string[];
+}
+
+export const addFriendsToRoom = async (req: Request, res: Response<SuccessResp | ErrorResp>) => {
+    const user = req.user as User;
+    const body = req.body;
+    try {
+        await addFriendsToRoomDB(body.roomId, user.email, body.friends);
+
+        res.send({ message: "Friends added to room successfully" });
+    } catch (err) {
+        console.error("addFriendsToRoom Error", err);
+        res.status(500).send({ message: err as string });
+    }
+};
+
+interface RemoveFriendsFromRoomReq {
+    roomId: string;
+    friends: string[];
+}
+
+export const removeFriendsFromRoom = async (req: Request, res: Response<SuccessResp | ErrorResp>) => {
+    const user = req.user as User;
+    const body = req.body;
+    try {
+        const userDB = await getUserDetails(user.email);
+        const friends = body.friends;
+        const filterValidFriends = friends.filter((friend: string) => userDB.friends.includes(friend));
+        await removeFriendsFromRoomDB(body.roomId, user.email, filterValidFriends);
+        res.send({ message: "Friends removed from room successfully" });
+    } catch (error) {
+        if (error instanceof UserNotFriendError) {
+            res.status(400).send({ message: error.message });
+        } else if (error instanceof RoomNotFoundError) {
+            res.status(404).send({ message: error.message });
+        } else if (error instanceof NotOwnerError) {
+        } else {
+            console.error("removeFriendsFromRoom Error", error);
+            res.status(500).send({ message: error as string });
+        }
     }
 };

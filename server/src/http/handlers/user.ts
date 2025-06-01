@@ -6,41 +6,51 @@ import {
     matchUsersWithRegex,
     removeFriendRequest,
     unfriend,
+    updateUser,
 } from "../../db/users";
 import { Request, Response } from "express";
 import { ErrorResp, SuccessResp, User } from "../common";
-import { User as UserDB } from "../../db/users";
+import { getErrorMessage, getStatusCode } from "../error";
+import { getFriendshipStatus } from "../utils/user";
+import {
+    DeleteFriendRequestReq,
+    ProfileReq,
+    UserProfileUpdateReq,
+    FriendshipStatus,
+    UserProfileParams,
+    UserSearchParam,
+    UserSearchResp,
+    ProfileResp,
+    UserProfileResp,
+    FriendListReq,
+    FriendListResp,
+    UnfriendReq,
+    FriendRequestAcceptReq,
+    FriendRequestAcceptResp,
+    UserProfileUpdateResp,
+    DeleteFriendRequestResp,
+    UnfriendResp,
+    FriendRequestSentReq,
+    FriendRequestSentResp,
+} from "../types/user";
 
 // ------------ Get User Profile API Start ----------------
-interface ProfileReq {}
-
-interface ProfileResp {
-    email: string;
-    name: string;
-    picture: string | undefined;
-    friendshipStatus: FriendshipStatus;
-}
-enum FriendshipStatus {
-    FRIEND = "FRIEND",
-    REQUEST_SENT = "REQUEST_SENT",
-    REQUEST_RECEIVED = "REQUEST_RECEIVED",
-    NOT_FRIEND = "NOT_FRIEND",
-    YOU = "YOU",
-}
 
 export const profileHandler = async (req: Request<{}, {}, ProfileReq>, resp: Response<ProfileResp | ErrorResp>) => {
-    const user = req.user as { email: string };
-    const userDBResp = await getUserDetails(user.email);
+    try {
+        const user = req.user as { email: string };
+        const userDBResp = await getUserDetails(user.email);
 
-    if (userDBResp) {
-        resp.json({
+        resp.status(200).json({
             email: userDBResp.email,
             name: userDBResp.userName,
             picture: userDBResp.picture,
             friendshipStatus: FriendshipStatus.YOU,
+            location: userDBResp.location,
+            bio: userDBResp.bio,
         });
-    } else {
-        resp.status(404).json({ message: "User not found" });
+    } catch (err) {
+        resp.status(getStatusCode(err)).json(getErrorMessage(err));
     }
 };
 
@@ -48,106 +58,83 @@ export const profileHandler = async (req: Request<{}, {}, ProfileReq>, resp: Res
 
 // ------------ Get User Profile Search API Start ----------------
 
-interface UserSearchParam {
-    searchKey: string;
-}
-
-interface UserSearchResp {
-    list: ProfileResp[];
-}
-
 export const handleUserSearch = async (
     req: Request<{}, {}, {}, Partial<UserSearchParam>>,
     resp: Response<UserSearchResp | ErrorResp>
 ) => {
-    const searchKey = req.query.searchKey;
-    const regex = "^" + searchKey;
-    const matchedUsers = await matchUsersWithRegex(regex);
-    const user = req.user as User;
+    try {
+        const searchKey = req.query.searchKey;
+        const regex = "^" + searchKey;
+        const matchedUsers = await matchUsersWithRegex(regex);
+        const user = req.user as User;
 
-    const result: UserSearchResp = {
-        list: matchedUsers.map((item) => {
-            const friendshipStatus = getFriendshipStatus(user, item);
-            return {
-                email: item.email,
-                name: item.userName,
-                friendshipStatus: friendshipStatus,
-                picture: item.picture,
-            };
-        }),
-    };
-    console.log("result", result);
-    resp.send(result);
+        const result: UserSearchResp = {
+            list: matchedUsers.map((item) => {
+                const friendshipStatus = getFriendshipStatus(user, item);
+                return {
+                    email: item.email,
+                    name: item.userName,
+                    friendshipStatus: friendshipStatus,
+                    picture: item.picture,
+                    location: item.location,
+                    bio: item.bio,
+                };
+            }),
+        };
+        resp.status(200).json(result);
+    } catch (err) {
+        resp.status(getStatusCode(err)).json(getErrorMessage(err));
+    }
 };
 
 // ------------ Get User Profile Search API End ----------------
 
 // ------------ Get other user profile ----------------
-interface UserProfileParams {
-    email: string;
-}
-interface UserProfileResp extends ProfileResp {}
 
 export const handleUserProfile = async (
     req: Request<{}, {}, {}, Partial<UserProfileParams>>,
     resp: Response<UserProfileResp | ErrorResp>
 ) => {
     const searchKey = req.query.email as string;
-    const reqUser = await getUserDetails(searchKey);
-    if (reqUser === null) {
-        resp.send({ message: "User not found for email id " + searchKey });
-        return;
+    try {
+        const reqUser = await getUserDetails(searchKey);
+        const user = req.user as User;
+        const friendshipStatus = getFriendshipStatus(user, reqUser);
+        resp.send({
+            email: reqUser.email,
+            name: reqUser.userName,
+            friendshipStatus: friendshipStatus,
+            picture: reqUser.picture,
+            location: reqUser.location,
+            bio: reqUser.bio,
+        });
+    } catch (err) {
+        resp.status(getStatusCode(err)).json(getErrorMessage(err));
     }
-
-    const user = req.user as User;
-    const friendshipStatus = getFriendshipStatus(user, reqUser);
-    resp.send({
-        email: reqUser.email,
-        name: reqUser.userName,
-        friendshipStatus: friendshipStatus,
-        picture: reqUser.picture,
-    });
-};
-
-const getFriendshipStatus = (whom: User, who: UserDB) => {
-    const isFriend = who.friends.includes(whom.email);
-    const isFriendRequestSent = who.friendRequestsReceived.includes(whom.email);
-    const isFriendRequestReceived = who.friendRequestsSent.includes(whom.email);
-    const isYou = whom.email === who.email;
-
-    return isFriend
-        ? FriendshipStatus.FRIEND
-        : isFriendRequestSent
-        ? FriendshipStatus.REQUEST_SENT
-        : isFriendRequestReceived
-        ? FriendshipStatus.REQUEST_RECEIVED
-        : isYou
-        ? FriendshipStatus.YOU
-        : FriendshipStatus.NOT_FRIEND;
 };
 
 // ------------ Post Friend Request Sent API Start --------------
-export const handleFriendRequestSent = async (req: Request, resp: Response) => {
+export const handleFriendRequestSent = async (
+    req: Request<{}, {}, FriendRequestSentReq>,
+    resp: Response<FriendRequestSentResp | ErrorResp>
+) => {
     const to = req.body.email;
     const user = req.user as { email: string };
     const from = user.email;
     try {
         await addFriendRequest(from, to);
-        resp.status(200).send("OK");
+        resp.status(200).json({ message: "OK" });
     } catch (err) {
-        resp.status(500).send(err);
+        resp.status(getStatusCode(err)).json(getErrorMessage(err));
     }
 };
 // ------------ Post Friend Request Sent API End --------------
 
 // ------------ Post friend request accept API Start ----------------
-interface FriendRequestAcceptReq {
-    email: string;
-}
 
 export const handleFriendRequestAccept = async (
     req: Request<{}, {}, FriendRequestAcceptReq>,
-    resp: Response<SuccessResp | ErrorResp>
+    resp: Response<FriendRequestAcceptResp | ErrorResp>
 ) => {
     const to = req.body.email;
     const user = req.user as { email: string };
@@ -157,26 +144,17 @@ export const handleFriendRequestAccept = async (
         await acceptFriendRequest(from, to);
         resp.status(200).json({ message: "OK" });
     } catch (err) {
-        resp.status(500).json({ message: "ACCEPT_FRIEND_REQUEST_FAILED" });
+        resp.status(getStatusCode(err)).json(getErrorMessage(err));
     }
 };
 // ------------ Post friend request accept API End ----------------
 
 // ------------ Get friend list API Start ----------------
-interface FriendListResp {
-    friends: {
-        email: string;
-        name: string | undefined;
-    }[];
-    friendRequests: {
-        email: string;
-        name: string | undefined;
-    }[];
-}
 
-interface FriendListReq {}
-
-export const handleFriendList = async (req: Request<{}, {}, FriendListReq>, resp: Response<FriendListResp>) => {
+export const handleFriendList = async (
+    req: Request<{}, {}, FriendListReq>,
+    resp: Response<FriendListResp | ErrorResp>
+) => {
     const user = req.user as User;
 
     try {
@@ -218,31 +196,24 @@ export const handleFriendList = async (req: Request<{}, {}, FriendListReq>, resp
 // ------------ Get friend list API End ----------------
 
 // ------------ Unfriend API Start --------------
-interface UnfriendReq {
-    email: string;
-}
 
-export const handleUnfriend = async (req: Request<{}, {}, UnfriendReq>, resp: Response<SuccessResp | ErrorResp>) => {
+export const handleUnfriend = async (req: Request<{}, {}, UnfriendReq>, resp: Response<UnfriendResp | ErrorResp>) => {
     const friendEmail = req.body.email;
     const user = req.user as { email: string };
     try {
         await unfriend(user.email, friendEmail);
         resp.status(200).json({ message: "OK" });
     } catch (err) {
-        resp.status(500).json({ message: "UNFRIEND_FAILED" });
+        resp.status(getStatusCode(err)).json(getErrorMessage(err));
     }
 };
 // ------------ Unfriend API End --------------
 
 // ------------ Delete friend request API Start --------------
 
-interface DeleteFriendRequestReq {
-    email: string;
-}
-
 export const handleDeleteFriendRequest = async (
     req: Request<{}, {}, DeleteFriendRequestReq>,
-    resp: Response<SuccessResp | ErrorResp>
+    resp: Response<DeleteFriendRequestResp | ErrorResp>
 ) => {
     const friendEmail = req.body.email;
     const user = req.user as { email: string };
@@ -251,7 +222,30 @@ export const handleDeleteFriendRequest = async (
         await removeFriendRequest(friendEmail, userEmail);
         resp.status(200).json({ message: "OK" });
     } catch (err) {
-        resp.status(500).json({ message: "DELETE_FRIEND_REQUEST_FAILED" });
+        resp.status(getStatusCode(err)).json(getErrorMessage(err));
     }
 };
 // ------------ Delete friend request API End --------------
+
+// ------------ Update user profile API Start --------------
+
+export const handleUserProfileUpdate = async (
+    req: Request<{}, {}, UserProfileUpdateReq>,
+    resp: Response<UserProfileUpdateResp | ErrorResp>
+) => {
+    const user = req.user as User;
+    const userEmail = user.email;
+    const name = req.body.name;
+    const picture = req.body.picture;
+    const location = req.body.location;
+    const bio = req.body.bio;
+
+    try {
+        await updateUser(userEmail, name, picture, location, bio);
+        resp.status(200).json({ message: "OK" });
+    } catch (err) {
+        resp.status(getStatusCode(err)).json(getErrorMessage(err));
+    }
+};
+
+// ------------ Update user profile API End --------------

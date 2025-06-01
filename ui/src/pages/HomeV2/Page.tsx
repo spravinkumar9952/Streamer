@@ -174,35 +174,37 @@ export const HomeV2: React.FC = () => {
                         </div>
                     ) : friends ? (
                         <div className="space-y-8">
+                            {friends.friendRequests.length > 0 && (
+                                <div>
+                                    <div className="flex items-center gap-2 mb-4">
+                                        <HeartIcon className="w-6 h-6 text-accent-pink" />
+                                        <span className="text-lg font-semibold text-white">Friend Requests</span>
+                                        <span className="ml-2 px-2 py-0.5 rounded-full bg-gradient-to-r from-[#A084CA] to-[#C6B6F7] text-white text-xs font-semibold">
+                                            {friends.friendRequests.length}
+                                        </span>
+                                    </div>
+                                    <div className="space-y-2">
+                                        {friends.friendRequests.map((req: FriendRequest, idx: number) => (
+                                            <FriendRequestCard
+                                                key={req.email}
+                                                name={req.name}
+                                                username={req.email.split("@")[0]}
+                                                initials={getInitials(req.name)}
+                                                color={pastelColors[idx % pastelColors.length]}
+                                                onAccept={() =>
+                                                    acceptFriendRequest(req.email).then(() => window.location.reload())
+                                                }
+                                                onDecline={handleDeleteFriendRequest(req.email)}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                             <div>
                                 <div className="flex items-center gap-2 mb-4">
-                                    <HeartIcon className="w-6 h-6 text-accent-pink" />
-                                    <span className="text-lg font-semibold text-white">Friend Requests</span>
-                                    <span className="ml-2 px-2 py-0.5 rounded-full bg-accent-pink/10 text-accent-pink text-xs font-semibold">
-                                        {friends.friendRequests.length}
-                                    </span>
-                                </div>
-                                <div className="space-y-2">
-                                    {friends.friendRequests.map((req: FriendRequest, idx: number) => (
-                                        <FriendRequestCard
-                                            key={req.email}
-                                            name={req.name}
-                                            username={req.email.split("@")[0]}
-                                            initials={getInitials(req.name)}
-                                            color={pastelColors[idx % pastelColors.length]}
-                                            onAccept={() =>
-                                                acceptFriendRequest(req.email).then(() => window.location.reload())
-                                            }
-                                            onDecline={handleDeleteFriendRequest(req.email)}
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-                            <div>
-                                <div className="flex items-center gap-2 mb-4">
-                                    <FriendsIcon className="w-6 h-6 text-accent-pink" />
+                                    <FriendsIcon className="w-8 h-8 text-accent-pink" />
                                     <span className="text-lg font-semibold text-white">Your Friends</span>
-                                    <span className="ml-2 px-2 py-0.5 rounded-full bg-accent-pink/10 text-accent-pink text-xs font-semibold">
+                                    <span className="ml-2 px-2 py-0.5 rounded-full bg-gradient-to-r from-[#A084CA] to-[#C6B6F7] text-white text-xs font-semibold">
                                         {friends.friends.length}
                                     </span>
                                 </div>
@@ -214,6 +216,7 @@ export const HomeV2: React.FC = () => {
                                             username={friend.email.split("@")[0]}
                                             initials={getInitials(friend.name)}
                                             color={pastelColors[idx % pastelColors.length]}
+                                            friend={friend}
                                             online={true}
                                             onUnfriend={handleUnfriend(friend.email)}
                                         />

@@ -16,13 +16,16 @@ import {
     profileHandler,
     handleUnfriend,
     handleDeleteFriendRequest,
+    handleUserProfileUpdate,
 } from "./handlers/user";
 import { authGoogleCallback, logOutHandler, verifyToken } from "./handlers/auth";
 import {
     createStreamingRoom,
     deleteStreamingRoom,
     getStreamingRoomsHandler,
-    updateVideoUrl,
+    updateStreamingRoom,
+    addFriendsToRoom,
+    removeFriendsFromRoom,
 } from "./handlers/streamingRoom";
 import "../utils/logger";
 import { HTTP_PORT, UI_BASE_URL, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_CALLBACK_URL } from "../utils/env";
@@ -67,7 +70,7 @@ passport.use(
             const email = emails[0].value;
 
             const userResp = await getUserDetails(email);
-            if (userResp) await updateUser(email, profile.displayName, picture);
+            if (userResp) await updateUser(email, profile.displayName, picture, undefined, undefined);
             else await insertUser(email, profile.displayName, picture);
 
             return done(null, profile);
@@ -86,10 +89,13 @@ app.get("/profile", verifyToken, profileHandler);
 app.get("/stream/rooms/list", verifyToken, getStreamingRoomsHandler);
 app.post("/stream/rooms/create", verifyToken, createStreamingRoom);
 app.delete("/stream/rooms/delete", verifyToken, deleteStreamingRoom);
-app.post("/stream/rooms/update-url", verifyToken, updateVideoUrl);
+app.post("/stream/rooms/update", verifyToken, updateStreamingRoom);
+app.post("/stream/rooms/friends/add", verifyToken, addFriendsToRoom);
+app.post("/stream/rooms/friends/remove", verifyToken, removeFriendsFromRoom);
 
 app.get("/user/search", verifyToken, handleUserSearch);
 app.get("/user/profile", verifyToken, handleUserProfile);
+app.post("/user/profile/update", verifyToken, handleUserProfileUpdate);
 
 app.post("/friend/request/sent", verifyToken, handleFriendRequestSent);
 app.post("/friend/request/accept", verifyToken, handleFriendRequestAccept);

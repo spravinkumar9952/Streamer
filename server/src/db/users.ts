@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { Schema, model, Document } from "mongoose";
 import { removeUserFromRooms } from "./streamingRoom";
+import { UserNotFoundError, UserNotFriendError } from "./errors/users";
 
 export interface User extends Document {
     email: string;
@@ -10,6 +11,8 @@ export interface User extends Document {
     friendRequestsReceived: string[];
     friends: string[];
     joinedStreamingRooms: string[];
+    location: string | undefined;
+    bio: string | undefined;
 }
 
 const UserSchema = new Schema<User>({
@@ -20,12 +23,18 @@ const UserSchema = new Schema<User>({
     friendRequestsReceived: { type: [String], default: [] },
     friends: { type: [String], default: [] },
     joinedStreamingRooms: { type: [String], default: [] },
+    location: { type: String, required: false },
+    bio: { type: String, required: false },
 });
 
 export const UserModel = model<User>("User", UserSchema);
 
-export const getUserDetails = async (email: string): Promise<User | null> => {
-    return await UserModel.findOne({ email: email });
+export const getUserDetails = async (email: string): Promise<User> => {
+    const user = await UserModel.findOne({ email: email });
+    if (!user) {
+        throw new UserNotFoundError(email);
+    }
+    return user;
 };
 
 export const insertUser = async (email: string, userName: string, picture: string | undefined): Promise<void> => {
@@ -37,13 +46,24 @@ export const insertUser = async (email: string, userName: string, picture: strin
     await UserModel.insertMany(newUser);
 };
 
-export const updateUser = async (email: string, userName: string | undefined, picture: string | undefined) => {
-    const userDetails = new UserModel();
+export const updateUser = async (
+    email: string,
+    userName: string | undefined,
+    picture: string | undefined,
+    location: string | undefined,
+    bio: string | undefined
+) => {
+    const userDetails = await UserModel.findOne({ email: email });
+    if (!userDetails) {
+        throw new UserNotFoundError(email);
+    }
 
-    if (userName) userDetails.userName = userName;
-    if (picture) userDetails.picture = picture;
+    if (userName) userDetails!.userName = userName;
+    if (picture) userDetails!.picture = picture;
+    if (location) userDetails!.location = location;
+    if (bio) userDetails!.bio = bio;
 
-    UserModel.updateOne({ email: email }, userDetails);
+    await UserModel.updateOne({ email: email }, userDetails!);
 };
 
 export const addFriendRequest = async (from: string, to: string) => {
@@ -52,7 +72,7 @@ export const addFriendRequest = async (from: string, to: string) => {
 
     try {
         if (!(await UserModel.findOne({ email: to }))) {
-            throw new Error(`User not exist with {to}`);
+            throw new UserNotFoundError(to);
         }
 
         await UserModel.updateOne({ email: from }, { $addToSet: { friendRequestsSent: to } });
@@ -76,7 +96,7 @@ export const acceptFriendRequest = async (personWhoAccepting: string, personWhoS
         });
 
         if (!isFriendRequestThere) {
-            throw new Error("No friend request found");
+            throw new UserNotFriendError(personWhoSent);
         }
 
         await UserModel.updateOne(
@@ -99,7 +119,7 @@ export const acceptFriendRequest = async (personWhoAccepting: string, personWhoS
 export const getFriends = async (email: string) => {
     const user = await UserModel.findOne({ email: email });
     if (!user) {
-        throw new Error(`No user found with email {email}`);
+        throw new UserNotFoundError(email);
     }
     return user.friends;
 };
@@ -107,7 +127,7 @@ export const getFriends = async (email: string) => {
 export const getStreamingRooms = async (userEmail: string) => {
     const userInfo = await UserModel.findOne({ email: userEmail });
     if (!userInfo) {
-        throw new Error(`No user found with email {userEmail}`);
+        throw new UserNotFoundError(userEmail);
     }
 
     return userInfo.joinedStreamingRooms;

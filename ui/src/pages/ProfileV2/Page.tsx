@@ -12,6 +12,7 @@ const ProfileV2: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [editMode, setEditMode] = useState(false);
     const location = useLocation();
+    const [isAlien, setIsAlien] = useState(false);
     const { user: authUser } = useContext(AuthContext);
     const data: ProfileResp | undefined = location.state;
 
@@ -21,6 +22,7 @@ const ProfileV2: React.FC = () => {
             try {
                 const profileResp = data && data.email ? await getUserByEmail(data.email) : await getProfile();
                 setUser(profileResp);
+                setIsAlien(profileResp.email !== authUser?.email);
             } finally {
                 setIsLoading(false);
             }
@@ -34,10 +36,10 @@ const ProfileV2: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-background-primary">
-            <ProfileNavBar />
+            <ProfileNavBar isAlien={isAlien} />
             <div className="container mx-auto px-4 py-8">
                 <div className="max-w-4xl mx-auto">
-                    <ProfileHeader user={user} editMode={editMode} setEditMode={setEditMode} />
+                    <ProfileHeader user={user} editMode={editMode} setEditMode={setEditMode} isAlien={isAlien} />
                     <ProfileStats user={user} />
                     {editMode && <ProfileEditForm user={user} setUser={setUser} setEditMode={setEditMode} />}
                 </div>
