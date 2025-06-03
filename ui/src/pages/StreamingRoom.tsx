@@ -86,7 +86,9 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
     }, [streamingRoomObj?.createdBy, user?.email]);
 
     const initializeSocket = useCallback(() => {
+        console.log("initializing socket", user?.email, roomId);
         if (!socketRef.current) {
+            console.log("initializing socket", user?.email, roomId);
             socketRef.current = io(SOCKET_SERVER_URL, {
                 transports: ["websocket"],
                 path: "/socket",
@@ -124,11 +126,13 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
         };
 
         const handlePlay = (time: number) => {
+            console.log("received play", time);
             setPlayerState((prev) => ({ ...prev, isPlaying: true }));
             syncPlayer(time);
         };
 
         const handlePause = (time: number) => {
+            console.log("received pause", time);
             setPlayerState((prev) => ({ ...prev, isPlaying: false }));
             syncPlayer(time);
         };
@@ -187,6 +191,7 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
     );
 
     useEffect(() => {
+        console.log("useEffect initializing socket", user?.email, roomId);
         const cleanup = initializeSocket();
         return cleanup;
     }, [initializeSocket]);
@@ -201,18 +206,18 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
     }, []);
 
     const handlePlay = useCallback(() => {
-        console.log("handlePlay called", roomId, user?.email);
+        console.log("handlePlay called", roomId, user?.email, currentProgress.current);
         if (!roomId || !user?.email) return;
         if (viewOnly) return;
-        emitEvent("play", roomId, user.email, playerState.currentTime);
-    }, [roomId, user?.email, emitEvent, viewOnly, playerState.currentTime]);
+        emitEvent("play", roomId, user.email, currentProgress.current);
+    }, [roomId, user?.email, emitEvent, viewOnly, currentProgress.current]);
 
     const handlePause = useCallback(() => {
-        console.log("handlePause called", roomId, user?.email);
+        console.log("handlePause called", roomId, user?.email, currentProgress.current);
         if (!roomId) return;
         if (viewOnly) return;
-        emitEvent("pause", roomId, user?.email, playerState.currentTime);
-    }, [roomId, user?.email, emitEvent, viewOnly, playerState.currentTime]);
+        emitEvent("pause", roomId, user?.email, currentProgress.current);
+    }, [roomId, user?.email, emitEvent, viewOnly, currentProgress.current]);
 
     const handleSeek = useCallback(
         (seconds: number) => {
@@ -247,6 +252,7 @@ export const StreamingRoomPlayer: FC<StreamingRoomProps> = () => {
             }
 
             currentProgress.current = state.playedSeconds;
+
             console.log("currentProgress.current", viewOnly);
             if (viewOnly) return;
 

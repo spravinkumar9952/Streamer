@@ -11,6 +11,7 @@ import {
 import { ErrorResp, SuccessResp, User } from "../common";
 import { UserNotFriendError } from "../../db/errors/users";
 import { NotOwnerError, RoomNotFoundError } from "../../db/errors/streamingRoom";
+import { getStatusCode, getErrorMessage } from "../error";
 
 // ------------------- API create streaming room list Start ----------
 interface StreamingRoomReq {
@@ -29,8 +30,13 @@ export const createStreamingRoom = async (
 ) => {
     const user = req.user as User;
     const body = req.body;
-    const resp = await createRoom(user.email, body.friends, body.roomName, body.videoUrl);
-    res.send({ id: resp });
+    try {
+        const resp = await createRoom(user.email, body.friends, body.roomName, body.videoUrl);
+        res.send({ id: resp });
+    } catch (error) {
+        console.error("Error creating room:", error);
+        res.status(getStatusCode(error)).send(getErrorMessage(error));
+    }
 };
 
 // ------------------- API delete streaming room list Start ----------
@@ -46,18 +52,13 @@ export const deleteStreamingRoom = async (
     const user = req.user as User;
     const roomId = req.query.roomId;
 
-    if (!roomId) {
-        res.status(400).send({ message: "Room ID is required" });
-        return;
-    }
-
     try {
-        const room = await getRoomById(roomId);
+        await getRoomById(roomId);
         await deleteRoom(roomId, user.email, res);
         res.send({ message: "Room deleted successfully" });
     } catch (error) {
         console.error("Error deleting room:", error);
-        res.status(500).send({ message: "Failed to delete room" });
+        res.status(getStatusCode(error)).send(getErrorMessage(error));
     }
 };
 
@@ -91,9 +92,6 @@ export const getStreamingRoomsHandler = async (
                 console.log("getStreamingRoomsHandler RoomId", roomId);
                 const roomInfoFromDB = await getRoomById(roomId);
                 console.log("getStreamingRoomsHandler roomInfoFromDB", roomInfoFromDB);
-                if (roomInfoFromDB == undefined) {
-                    throw new Error("Room info not found for id " + roomId);
-                }
                 const roomInfo: StreamingRoom = {
                     id: roomInfoFromDB._id.toString(),
                     created_at: roomInfoFromDB.created_at,
@@ -108,7 +106,7 @@ export const getStreamingRoomsHandler = async (
         res.send({ list: roomsList });
     } catch (err) {
         console.error("getStreamingRoomsHandler Error", err);
-        res.status(500).send({ message: err as string });
+        res.status(getStatusCode(err)).send(getErrorMessage(err));
     }
 };
 
@@ -131,7 +129,7 @@ export const updateStreamingRoom = async (
         res.send({ message: "Room updated successfully" });
     } catch (err) {
         console.error("updateStreamingRoom Error", err);
-        res.status(500).send({ message: err as string });
+        res.status(getStatusCode(err)).send(getErrorMessage(err));
     }
 };
 
@@ -140,7 +138,10 @@ interface AddFriendsToRoomReq {
     friends: string[];
 }
 
-export const addFriendsToRoom = async (req: Request, res: Response<SuccessResp | ErrorResp>) => {
+export const addFriendsToRoom = async (
+    req: Request<{}, {}, AddFriendsToRoomReq>,
+    res: Response<SuccessResp | ErrorResp>
+) => {
     const user = req.user as User;
     const body = req.body;
     try {
@@ -149,7 +150,7 @@ export const addFriendsToRoom = async (req: Request, res: Response<SuccessResp |
         res.send({ message: "Friends added to room successfully" });
     } catch (err) {
         console.error("addFriendsToRoom Error", err);
-        res.status(500).send({ message: err as string });
+        res.status(getStatusCode(err)).send(getErrorMessage(err));
     }
 };
 
@@ -158,7 +159,10 @@ interface RemoveFriendsFromRoomReq {
     friends: string[];
 }
 
-export const removeFriendsFromRoom = async (req: Request, res: Response<SuccessResp | ErrorResp>) => {
+export const removeFriendsFromRoom = async (
+    req: Request<{}, {}, RemoveFriendsFromRoomReq>,
+    res: Response<SuccessResp | ErrorResp>
+) => {
     const user = req.user as User;
     const body = req.body;
     try {
@@ -168,14 +172,7 @@ export const removeFriendsFromRoom = async (req: Request, res: Response<SuccessR
         await removeFriendsFromRoomDB(body.roomId, user.email, filterValidFriends);
         res.send({ message: "Friends removed from room successfully" });
     } catch (error) {
-        if (error instanceof UserNotFriendError) {
-            res.status(400).send({ message: error.message });
-        } else if (error instanceof RoomNotFoundError) {
-            res.status(404).send({ message: error.message });
-        } else if (error instanceof NotOwnerError) {
-        } else {
-            console.error("removeFriendsFromRoom Error", error);
-            res.status(500).send({ message: error as string });
-        }
+        console.error("removeFriendsFromRoom Error", error);
+        res.status(getStatusCode(error)).send(getErrorMessage(error));
     }
 };

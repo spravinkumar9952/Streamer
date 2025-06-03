@@ -43,7 +43,7 @@ const ProfileV2: React.FC = () => {
                     <ProfileHeader user={user} editMode={editMode} setEditMode={setEditMode} isAlien={isAlien} />
                     <ProfileStats user={user} />
                     {editMode && <ProfileEditForm user={user} setUser={setUser} setEditMode={setEditMode} />}
-                    <LogOut />
+                    {!isAlien && <LogOut />}
                 </div>
             </div>
         </div>

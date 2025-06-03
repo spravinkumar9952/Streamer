@@ -3,6 +3,7 @@ import http from "http";
 import { Server } from "socket.io";
 import { createServer } from "http";
 import { SOCKET_PORT, UI_BASE_URL } from "../utils/env";
+import "../utils/logger";
 // import { redisClient } from "../db/redis";
 
 const app = express();
