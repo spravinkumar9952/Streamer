@@ -113,3 +113,29 @@ export const deleteStreamingRoom = async (req: DeleteStreamingRoomReq): Promise<
     const apiResp = await resp.json();
     return apiResp as DeleteStreamingRoomResp;
 };
+
+interface AddFriendsToRoomReq {
+    roomId: string;
+    friends: string[];
+}
+
+interface AddFriendsToRoomResp {
+    message: string;
+}
+
+export const addFriendsToRoom = async (req: AddFriendsToRoomReq): Promise<AddFriendsToRoomResp> => {
+    const url = baseUrl + "stream/rooms/friends/add";
+    const resp = await fetch(url ?? "", {
+        method: "POST",
+        headers: getHeaders(),
+        body: JSON.stringify(req),
+    });
+
+    if (!resp.ok) {
+        handleUnAuthorize(resp.status);
+        throw new Error(`HTTP error! status: ${resp.status}`);
+    }
+
+    const apiResp = await resp.json();
+    return apiResp as AddFriendsToRoomResp;
+};

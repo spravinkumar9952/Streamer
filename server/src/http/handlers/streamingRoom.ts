@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
-import { getStreamingRooms, getUserDetails } from "../../db/users";
+import { addUserToRoom, getStreamingRooms, getUserDetails } from "../../db/users";
 import {
     createRoom,
     deleteRoom,
@@ -12,6 +12,7 @@ import { ErrorResp, SuccessResp, User } from "../common";
 import { UserNotFriendError } from "../../db/errors/users";
 import { NotOwnerError, RoomNotFoundError } from "../../db/errors/streamingRoom";
 import { getStatusCode, getErrorMessage } from "../error";
+import mongoose from "mongoose";
 
 // ------------------- API create streaming room list Start ----------
 interface StreamingRoomReq {
@@ -144,13 +145,19 @@ export const addFriendsToRoom = async (
 ) => {
     const user = req.user as User;
     const body = req.body;
+    const session = await mongoose.startSession();
+    session.startTransaction();
     try {
-        await addFriendsToRoomDB(body.roomId, user.email, body.friends);
-
+        await addFriendsToRoomDB(body.roomId, user.email, body.friends, session);
+        await addUserToRoom(user.email, body.roomId, session);
+        await session.commitTransaction();
         res.send({ message: "Friends added to room successfully" });
     } catch (err) {
         console.error("addFriendsToRoom Error", err);
+        await session.abortTransaction();
         res.status(getStatusCode(err)).send(getErrorMessage(err));
+    } finally {
+        session.endSession();
     }
 };
 

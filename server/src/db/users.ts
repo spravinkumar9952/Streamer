@@ -226,3 +226,11 @@ export const removeFriendRequest = async (from: string, to: string) => {
         throw err;
     }
 };
+
+export const addUserToRoom = async (email: string, roomId: string, session: mongoose.ClientSession) => {
+    await UserModel.findOneAndUpdate({ email }, { $addToSet: { joinedStreamingRooms: roomId } }, { session });
+};
+
+export const removeUserFromRoom = async (email: string, roomId: string, session: mongoose.ClientSession) => {
+    await UserModel.findOneAndUpdate({ email }, { $pull: { joinedStreamingRooms: roomId } }, { session });
+};

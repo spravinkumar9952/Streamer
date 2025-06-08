@@ -7,7 +7,7 @@ import RoomInfoBar from "./components/RoomInfoBar";
 import GroupChat from "./components/GroupChat";
 import styles from "./StreamingRoomV2.module.css";
 import { socketService } from "../../services/socketService";
-import { getStreamingRoomsList, updateVideoUrl } from "../../api/streamingRoom";
+import { getStreamingRoomsList, updateVideoUrl, deleteStreamingRoom } from "../../api/streamingRoom";
 import AuthContext from "../../contexts/Auth";
 
 interface Room {
@@ -264,15 +264,25 @@ const StreamingRoomV2: React.FC = () => {
         }
     };
 
+    const handleDeleteRoom = useCallback(async () => {
+        if (!roomId) return;
+        try {
+            await deleteStreamingRoom({ roomId });
+            navigate("/home");
+        } catch (error) {
+            alert("Failed to delete room");
+        }
+    }, [roomId, navigate]);
+
     if (!room) {
         return <div>Loading...</div>;
     }
 
     return (
         <div className={styles.container}>
-            <RoomHeader room={room} onLeave={handleLeaveRoom} />
+            <RoomHeader room={room} onLeave={handleLeaveRoom} onDelete={!viewOnly ? handleDeleteRoom : undefined} />
             <div className={styles.mainContent}>
-                <JoinedFriendsList friends={friends} />
+                <JoinedFriendsList friendsEmail={room.joinedUsers} creatorEmail={room.createdBy} />
                 <VideoPlayerSection
                     room={room}
                     ref={playerRef}

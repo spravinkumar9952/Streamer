@@ -161,7 +161,12 @@ export const updateRoom = async (
     await StreamingRoomModel.updateOne({ _id: roomId }, room);
 };
 
-export const addFriendsToRoom = async (roomId: string, userEmail: string, friends: string[]) => {
+export const addFriendsToRoom = async (
+    roomId: string,
+    userEmail: string,
+    friends: string[],
+    session: mongoose.ClientSession
+) => {
     const room = await StreamingRoomModel.findById(roomId);
     if (!room) {
         throw new RoomNotFoundError(roomId);
@@ -169,7 +174,11 @@ export const addFriendsToRoom = async (roomId: string, userEmail: string, friend
         throw new NotOwnerError(roomId);
     }
 
-    await StreamingRoomModel.findByIdAndUpdate({ _id: roomId }, { $addToSet: { joinedUsers: { $in: friends } } });
+    await StreamingRoomModel.findByIdAndUpdate(
+        { _id: roomId },
+        { $addToSet: { joinedUsers: { $each: friends } } },
+        { session }
+    );
 };
 
 export const removeFriendsFromRoom = async (roomId: string, userEmail: string, friends: string[]) => {
