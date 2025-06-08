@@ -61,4 +61,9 @@ io.on("connection", async (socket) => {
         // await redisClient.del(key);
         console.log("A user disconnected:", socket.id);
     });
+
+    socket.on("chatMessage", (roomId, email, message) => {
+        console.log("received chat message", message, "from", email, "to", roomId);
+        socket.to(roomId).emit("chatMessage", email, message);
+    });
 });

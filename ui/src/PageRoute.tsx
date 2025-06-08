@@ -12,6 +12,7 @@ import LandingPage from "./pages/LandingPage/Page";
 import ProfileV2 from "./pages/ProfileV2/Page";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./contexts/Auth";
+import StreamingRoomV2 from "./pages/StreamingRoomV2/Page";
 
 const PageRoute: FC = () => {
     const [initialCompenent, setInitialComponent] = useState<React.JSX.Element>(<LandingPage />);
@@ -52,16 +53,7 @@ const PageRoute: FC = () => {
                         path="/streamingRoom/:roomId"
                         element={
                             <ProtectedRoute>
-                                <StreamingRoomPlayer
-                                    streamingRoomObj={{
-                                        id: "",
-                                        created_at: new Date().toISOString(),
-                                        joinedUsers: [],
-                                        name: "",
-                                        videoUrl: "",
-                                        createdBy: "",
-                                    }}
-                                />
+                                <StreamingRoomV2 />
                             </ProtectedRoute>
                         }
                     />
