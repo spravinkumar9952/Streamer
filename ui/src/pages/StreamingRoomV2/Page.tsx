@@ -9,6 +9,7 @@ import styles from "./StreamingRoomV2.module.css";
 import { socketService } from "../../services/socketService";
 import { getStreamingRoomsList, updateVideoUrl, deleteStreamingRoom } from "../../api/streamingRoom";
 import AuthContext from "../../contexts/Auth";
+import { VideoUrlModal } from "./components/VideoUrlModal";
 
 interface Room {
     id: string;
@@ -49,6 +50,7 @@ const StreamingRoomV2: React.FC = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isUrlModalOpen, setIsUrlModalOpen] = useState(false);
     const [newVideoUrl, setNewVideoUrl] = useState("");
+    const [updateUrlError, setUpdateUrlError] = useState<string | null>(null);
 
     const viewOnly = useMemo(() => {
         return room?.createdBy !== user?.email;
@@ -254,12 +256,32 @@ const StreamingRoomV2: React.FC = () => {
 
     const handleUpdateUrl = async () => {
         if (!roomId || !user?.email || !newVideoUrl) return;
+        // Check if valid YouTube URL
+        const isYoutubeUrl = newVideoUrl.includes("youtube.com/watch?v=") || newVideoUrl.includes("youtu.be/");
+        if (!isYoutubeUrl) {
+            setUpdateUrlError("Please enter a valid YouTube URL");
+            return;
+        }
         try {
             await updateVideoUrl({ roomId, videoUrl: newVideoUrl });
-            socketService.emit("updateVideoUrl", roomId, user.email, newVideoUrl);
+            // Refetch room data
+            const resp = await getStreamingRoomsList({});
+            const roomData = resp.list.find((r) => r.id === roomId);
+            if (roomData) {
+                setRoom({
+                    ...roomData,
+                    platform: "YouTube",
+                    viewers: roomData.joinedUsers.length,
+                    movieTitle: roomData.videoUrl
+                        ? new URL(roomData.videoUrl).searchParams.get("v") || "Unknown"
+                        : "No video selected",
+                });
+            }
             setIsUrlModalOpen(false);
             setNewVideoUrl("");
+            setUpdateUrlError(null);
         } catch (error) {
+            setUpdateUrlError("Failed to update video URL");
             console.error("Failed to update video URL:", error);
         }
     };
@@ -300,6 +322,17 @@ const StreamingRoomV2: React.FC = () => {
                 activeTime={new Date(room.created_at).toLocaleTimeString()}
                 isCreator={!viewOnly}
                 onUpdateUrl={() => setIsUrlModalOpen(true)}
+            />
+            <VideoUrlModal
+                isOpen={isUrlModalOpen}
+                onClose={() => {
+                    setIsUrlModalOpen(false);
+                    setUpdateUrlError(null);
+                }}
+                videoUrl={newVideoUrl}
+                onVideoUrlChange={setNewVideoUrl}
+                onUpdate={handleUpdateUrl}
+                error={updateUrlError}
             />
         </div>
     );

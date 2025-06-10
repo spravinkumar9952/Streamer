@@ -25,78 +25,44 @@ export const RoomCard: React.FC<RoomCardProps> = ({
     createdBy,
 }) => {
     return (
-        <div className="bg-[#3B2A4A] rounded-2xl shadow-lg overflow-hidden flex flex-col transform transition-transform duration-200 hover:scale-105 hover:shadow-2xl">
-            <div className="relative flex-1 flex flex-col items-center justify-center min-h-[180px] bg-gradient-to-br from-[#A084CA]/20 to-[#C6B6F7]/10">
-                {/* Status badge */}
+        <div className="w-full max-w-xs bg-[#232323] rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+            <div className="relative aspect-video bg-[#111]">
+                {thumbnail ? (
+                    <img src={thumbnail} alt="Video thumbnail" className="w-full h-full object-cover" />
+                ) : (
+                    <div className="w-full h-full flex items-center justify-center text-3xl text-[#C6B6F7]">🎬</div>
+                )}
                 <span
-                    className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold ${
-                        status === "Live" ? "bg-green-100 text-green-600" : "bg-gray-200 text-gray-600"
+                    className={`absolute top-2 left-2 px-2 py-0.5 rounded text-xs font-semibold ${
+                        status === "Live" ? "bg-green-600 text-white" : "bg-gray-700 text-gray-200"
                     }`}
                 >
                     {status}
                 </span>
-                {/* Viewers badge */}
-                <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold bg-[#A084CA]/10 text-[#A084CA]">
+                <span className="absolute top-2 right-2 px-2 py-0.5 rounded text-xs bg-black/60 text-white">
                     {viewers} viewers
                 </span>
-                {/* Thumbnail or Video icon */}
-                {thumbnail ? (
-                    <>
-                        <img
-                            src={thumbnail}
-                            alt="Video thumbnail"
-                            className="absolute inset-0 w-full h-full object-cover rounded-2xl"
-                        />
-                        <div className="absolute inset-0 bg-black/30 rounded-2xl" />
-                        <svg
-                            className="w-16 h-16 text-white relative z-10"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            viewBox="0 0 32 32"
-                        >
-                            <rect x="6" y="10" width="14" height="12" rx="4" stroke="white" strokeWidth="2" />
-                            <polygon points="22,14 26,16 22,18" fill="#C6B6F7" fillOpacity="0.7" />
-                        </svg>
-                    </>
-                ) : (
-                    <svg
-                        className="w-16 h-16 text-[#C6B6F7]"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        viewBox="0 0 32 32"
-                    >
-                        <rect x="6" y="10" width="14" height="12" rx="4" stroke="#C6B6F7" strokeWidth="2" />
-                        <polygon points="22,14 26,16 22,18" fill="#C6B6F7" fillOpacity="0.7" />
-                    </svg>
-                )}
             </div>
-            <div className="bg-[#4A3A5A] p-6 flex flex-col gap-3">
-                {/* Room Name */}
-                <div className="font-semibold text-lg text-gray-100 mb-1">{title}</div>
-                {/* Creator */}
-                {createdBy && (
-                    <div className="text-xs text-[#E7B6C7] mb-1">
-                        Hosted by <span className="font-medium text-[#F7A8C1]">{createdBy}</span>
-                    </div>
-                )}
-                <div className="flex items-center gap-2 mb-4">
-                    {avatars.map((a, i) => (
+            <div className="p-3 flex flex-col gap-1">
+                <div className="font-semibold text-base text-white truncate">{title}</div>
+                {createdBy && <div className="text-xs text-gray-400 truncate">by {createdBy}</div>}
+                <div className="flex items-center gap-1 mt-1">
+                    {avatars.slice(0, 3).map((a, i) => (
                         <div
                             key={i}
-                            className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm"
-                            style={{ background: a.color }}
+                            className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
+                            style={{ background: a.color, color: "#fff" }}
                         >
                             {a.initials}
                         </div>
                     ))}
+                    {avatars.length > 3 && <span className="text-xs text-gray-400">+{avatars.length - 3}</span>}
                 </div>
                 <button
                     onClick={onJoin}
-                    className="w-full py-2 rounded-full font-semibold text-gray-100 bg-gradient-to-r from-[#A084CA] to-[#C6B6F7] shadow transition hover:from-[#C6B6F7] hover:to-[#A084CA]"
+                    className="mt-2 w-full py-1 rounded bg-[#A084CA] text-white text-sm font-semibold hover:bg-[#C6B6F7] transition"
                 >
-                    Join Room
+                    Join
                 </button>
             </div>
         </div>

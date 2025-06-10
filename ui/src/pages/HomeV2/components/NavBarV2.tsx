@@ -20,6 +20,7 @@ export const NavBarV2: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
     const { user: authUser } = useContext(AuthContext);
+    const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
 
     useEffect(() => {
         getFriendsList()
@@ -53,13 +54,15 @@ export const NavBarV2: React.FC = () => {
     };
 
     return (
-        <nav className="sticky top-0 z-30 w-full bg-[#4A4458] shadow-lg py-3 px-6 flex items-center justify-between rounded-b-2xl">
-            <div className="flex items-center gap-3">
-                <img src="/png/ic_logo.png" alt="Streamer Logo" className="w-8 h-8 object-contain" />
-                <span className="text-2xl font-bold text-white">Streamer</span>
+        <nav className="sticky top-0 z-30 w-full bg-[#4A4458] shadow-lg py-2 px-2 md:py-3 md:px-6 flex items-center justify-between rounded-b-2xl">
+            {/* Logo and Brand */}
+            <div className="flex items-center gap-2 md:gap-3">
+                <img src="/png/ic_logo.png" alt="Streamer Logo" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
+                <span className="text-lg md:text-2xl font-bold text-white">Streamer</span>
             </div>
+            {/* Search (hidden on mobile, show as icon) */}
             <div className="flex-1 flex justify-center relative">
-                <div className="w-full max-w-xl">
+                <div className="w-full max-w-xl hidden md:block">
                     <input
                         ref={inputRef}
                         type="text"
@@ -81,50 +84,26 @@ export const NavBarV2: React.FC = () => {
                     )}
                 </div>
             </div>
-            <div className="flex items-center gap-5">
+            {/* Actions */}
+            <div className="flex items-center gap-2 md:gap-5">
+                {/* Mobile search icon */}
+                <button className="block md:hidden text-white ml-2" onClick={() => setMobileSearchOpen(true)}>
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                </button>
                 <button
-                    className="px-5 py-2 rounded-full font-semibold text-white bg-gradient-to-r from-[#A084CA] to-[#C6B6F7] shadow hover:from-[#C6B6F7] hover:to-[#A084CA] transition"
+                    className="px-3 py-1 md:px-5 md:py-2 rounded-full font-semibold text-white bg-gradient-to-r from-[#A084CA] to-[#C6B6F7] shadow hover:from-[#C6B6F7] hover:to-[#A084CA] transition text-sm md:text-base"
                     onClick={() => navigate("/createStreaming")}
                 >
-                    Create Room
+                    Create
                 </button>
-                {/* Notification Icon */}
-                {/* <button className="relative">
-                    <svg
-                        className="w-6 h-6 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                        />
-                    </svg>
-                </button> */}
-                {/* Settings Icon */}
-                {/* <button>
-                    <svg
-                        className="w-6 h-6 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 0V4m0 16v-4m8-4h-4m-8 0H4"
-                        />
-                    </svg>
-                </button> */}
                 {/* Profile Icon */}
                 <button onClick={onProfileClick}>
-                    <div className="w-8 h-8 rounded-full bg-accent-pink/30 flex items-center justify-center">
+                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-accent-pink/30 flex items-center justify-center">
                         <svg
-                            className="w-6 h-6 text-white"
+                            className="w-5 h-5 md:w-6 md:h-6 text-white"
                             fill="none"
                             stroke="currentColor"
                             strokeWidth="2"
@@ -139,6 +118,39 @@ export const NavBarV2: React.FC = () => {
                     </div>
                 </button>
             </div>
+            {mobileSearchOpen && (
+                <div className="fixed inset-0 z-50 bg-black bg-opacity-60 flex flex-col items-start">
+                    <div className="bg-[#232323] rounded-b-lg w-full max-w-md mx-auto p-4 pt-6">
+                        <div className="flex items-center">
+                            <input
+                                ref={inputRef}
+                                type="text"
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                autoFocus
+                                placeholder="Search for friends..."
+                                className="w-full px-4 py-2 rounded-full border border-border-light bg-background-tertiary text-white focus:outline-none focus:ring-2 focus:ring-accent-pink placeholder:text-gray-300"
+                            />
+                            <button className="ml-2 text-white text-2xl" onClick={() => setMobileSearchOpen(false)}>
+                                ✕
+                            </button>
+                        </div>
+                        {/* Show results below input */}
+                        {search && (
+                            <div className="mt-4">
+                                <SearchOverlay
+                                    results={results}
+                                    loading={loading}
+                                    friends={friends}
+                                    onAddFriend={handleAddFriend}
+                                    onAccept={acceptFriendRequest}
+                                    onClose={() => setMobileSearchOpen(false)}
+                                />
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
         </nav>
     );
 };

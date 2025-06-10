@@ -160,7 +160,10 @@ export const HomeV2: React.FC = () => {
                     {loading ? (
                         <div className="text-center text-text-tertiary py-12">Loading...</div>
                     ) : selectedSection === SectionV2.Rooms ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div
+                            className="grid gap-x-8 gap-y-8 w-full"
+                            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))" }}
+                        >
                             {rooms.map((room: StreamingRoom, idx: number) => (
                                 <RoomCard
                                     key={room.id}
