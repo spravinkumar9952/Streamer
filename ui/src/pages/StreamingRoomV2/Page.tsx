@@ -5,9 +5,15 @@ import JoinedFriendsList from "./components/JoinedFriendsList";
 import VideoPlayerSection from "./components/VideoPlayerSection";
 import RoomInfoBar from "./components/RoomInfoBar";
 import GroupChat from "./components/GroupChat";
+import StreamingNavBar from "./components/StreamingNavBar";
 import styles from "./StreamingRoomV2.module.css";
 import { socketService } from "../../services/socketService";
-import { getStreamingRoomsList, updateVideoUrl, deleteStreamingRoom } from "../../api/streamingRoom";
+import {
+    getStreamingRoomsList,
+    updateVideoUrl,
+    deleteStreamingRoom,
+    updateStreamingRoom,
+} from "../../api/streamingRoom";
 import AuthContext from "../../contexts/Auth";
 import { VideoUrlModal } from "./components/VideoUrlModal";
 
@@ -21,6 +27,7 @@ interface Room {
     viewers: number;
     movieTitle: string;
     joinedUsers: string[];
+    videoTitle?: string;
 }
 
 interface Friend {
@@ -51,6 +58,7 @@ const StreamingRoomV2: React.FC = () => {
     const [isUrlModalOpen, setIsUrlModalOpen] = useState(false);
     const [newVideoUrl, setNewVideoUrl] = useState("");
     const [updateUrlError, setUpdateUrlError] = useState<string | null>(null);
+    const [videoTitle, setVideoTitle] = useState<string>("");
 
     const viewOnly = useMemo(() => {
         return room?.createdBy !== user?.email;
@@ -59,13 +67,54 @@ const StreamingRoomV2: React.FC = () => {
     const getFormattedTime = () =>
         new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit", hour12: true });
 
+    const fetchYouTubeVideoDetails = useCallback(async (videoId: string) => {
+        try {
+            const response = await fetch(
+                `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
+            );
+            const data = await response.json();
+            if (data.items && data.items.length > 0) {
+                return data.items[0].snippet.title;
+            }
+            return null;
+        } catch (error) {
+            console.error("Error fetching YouTube video details:", error);
+            return null;
+        }
+    }, []);
+
+    const formatElapsedTime = (createdAt: string) => {
+        const created = new Date(createdAt);
+        const now = new Date();
+        const diffInSeconds = Math.floor((now.getTime() - created.getTime()) / 1000);
+
+        const hours = Math.floor(diffInSeconds / 3600);
+        const minutes = Math.floor((diffInSeconds % 3600) / 60);
+        const seconds = diffInSeconds % 60;
+
+        const parts = [];
+        if (hours > 0) parts.push(`${hours}hr`);
+        if (minutes > 0) parts.push(`${minutes}mins`);
+        if (seconds > 0) parts.push(`${seconds}sec`);
+
+        return parts.join(" ");
+    };
+
     useEffect(() => {
         if (!roomId || !user?.email) return;
 
         // Fetch room data
-        getStreamingRoomsList({}).then((resp) => {
+        getStreamingRoomsList({}).then(async (resp) => {
             const roomData = resp.list.find((r) => r.id === roomId);
             if (roomData) {
+                let videoTitle = "";
+                if (roomData.videoUrl) {
+                    const videoId = new URL(roomData.videoUrl).searchParams.get("v");
+                    if (videoId) {
+                        videoTitle = (await fetchYouTubeVideoDetails(videoId)) || "Unknown Video";
+                    }
+                }
+
                 setRoom({
                     ...roomData,
                     platform: "YouTube",
@@ -73,7 +122,9 @@ const StreamingRoomV2: React.FC = () => {
                     movieTitle: roomData.videoUrl
                         ? new URL(roomData.videoUrl).searchParams.get("v") || "Unknown"
                         : "No video selected",
+                    videoTitle: videoTitle,
                 });
+                setVideoTitle(videoTitle);
 
                 // Initialize friends list from joined users
                 const friendsList = roomData.joinedUsers.map((email) => ({
@@ -196,7 +247,7 @@ const StreamingRoomV2: React.FC = () => {
             socketService.off("userLeft", handleUserLeft);
             socketService.cleanup();
         };
-    }, [roomId, user?.email, viewOnly]);
+    }, [roomId, user?.email, viewOnly, fetchYouTubeVideoDetails]);
 
     const handleLeaveRoom = useCallback(() => {
         if (roomId && user?.email) {
@@ -263,7 +314,7 @@ const StreamingRoomV2: React.FC = () => {
             return;
         }
         try {
-            await updateVideoUrl({ roomId, videoUrl: newVideoUrl });
+            await updateStreamingRoom({ roomId, videoUrl: newVideoUrl });
             // Refetch room data
             const resp = await getStreamingRoomsList({});
             const roomData = resp.list.find((r) => r.id === roomId);
@@ -296,44 +347,60 @@ const StreamingRoomV2: React.FC = () => {
         }
     }, [roomId, navigate]);
 
+    const updateJoinedUsers = useCallback((joinedUsers: string[]) => {
+        setRoom((prev) => (prev ? { ...prev, joinedUsers } : null));
+    }, []);
+
     if (!room) {
         return <div>Loading...</div>;
     }
 
     return (
         <div className={styles.container}>
-            <RoomHeader room={room} onLeave={handleLeaveRoom} onDelete={!viewOnly ? handleDeleteRoom : undefined} />
+            <StreamingNavBar joinedUsers={room.joinedUsers} />
             <div className={styles.mainContent}>
-                <JoinedFriendsList friendsEmail={room.joinedUsers} creatorEmail={room.createdBy} />
-                <VideoPlayerSection
-                    room={room}
-                    ref={playerRef}
-                    isPlaying={isPlaying}
-                    onPlay={handlePlay}
-                    onPause={handlePause}
-                    onSeek={handleSeek}
-                    onProgress={handleProgress}
-                    viewOnly={viewOnly}
-                />
+                <div className="hidden md:block">
+                    <JoinedFriendsList
+                        friendsEmail={room.joinedUsers}
+                        creatorEmail={room.createdBy}
+                        updateJoinedUsers={updateJoinedUsers}
+                    />
+                </div>
+                <div className="flex flex-col gap-4 flex-1">
+                    <VideoPlayerSection
+                        room={room}
+                        ref={playerRef}
+                        isPlaying={isPlaying}
+                        onPlay={handlePlay}
+                        onPause={handlePause}
+                        onSeek={handleSeek}
+                        onProgress={handleProgress}
+                        viewOnly={viewOnly}
+                    />
+                    <RoomInfoBar
+                        roomName={room.name}
+                        creatorEmail={room.createdBy}
+                        activeTime={formatElapsedTime(room.created_at)}
+                        isCreator={!viewOnly}
+                        onUpdateUrl={() => setIsUrlModalOpen(true)}
+                        onLeave={handleLeaveRoom}
+                        onDelete={!viewOnly ? handleDeleteRoom : undefined}
+                        videoTitle={room.videoTitle}
+                    />
+                    <VideoUrlModal
+                        isOpen={isUrlModalOpen}
+                        onClose={() => {
+                            setIsUrlModalOpen(false);
+                            setUpdateUrlError(null);
+                        }}
+                        videoUrl={newVideoUrl}
+                        onVideoUrlChange={setNewVideoUrl}
+                        onUpdate={handleUpdateUrl}
+                        error={updateUrlError}
+                    />
+                </div>
                 <GroupChat chat={chat} onSend={handleSendMessage} />
             </div>
-            <RoomInfoBar
-                roomName={room.name}
-                activeTime={new Date(room.created_at).toLocaleTimeString()}
-                isCreator={!viewOnly}
-                onUpdateUrl={() => setIsUrlModalOpen(true)}
-            />
-            <VideoUrlModal
-                isOpen={isUrlModalOpen}
-                onClose={() => {
-                    setIsUrlModalOpen(false);
-                    setUpdateUrlError(null);
-                }}
-                videoUrl={newVideoUrl}
-                onVideoUrlChange={setNewVideoUrl}
-                onUpdate={handleUpdateUrl}
-                error={updateUrlError}
-            />
         </div>
     );
 };

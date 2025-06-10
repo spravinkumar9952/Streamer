@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
-import { addUserToRoom, getStreamingRooms, getUserDetails } from "../../db/users";
+import { addUserToRoom, getStreamingRooms, getUserDetails, removeUserFromRoom } from "../../db/users";
 import {
     createRoom,
     deleteRoom,
@@ -147,10 +147,14 @@ export const addFriendsToRoom = async (
     const body = req.body;
     const session = await mongoose.startSession();
     session.startTransaction();
+    console.log("addFriendsToRoom body", body);
     try {
         await addFriendsToRoomDB(body.roomId, user.email, body.friends, session);
-        await addUserToRoom(user.email, body.roomId, session);
+        for (const friendEmail of body.friends) {
+            await addUserToRoom(friendEmail, body.roomId, session);
+        }
         await session.commitTransaction();
+        console.log("addFriendsToRoom success");
         res.send({ message: "Friends added to room successfully" });
     } catch (err) {
         console.error("addFriendsToRoom Error", err);
@@ -172,14 +176,23 @@ export const removeFriendsFromRoom = async (
 ) => {
     const user = req.user as User;
     const body = req.body;
+    const session = await mongoose.startSession();
+    session.startTransaction();
     try {
         const userDB = await getUserDetails(user.email);
         const friends = body.friends;
         const filterValidFriends = friends.filter((friend: string) => userDB.friends.includes(friend));
         await removeFriendsFromRoomDB(body.roomId, user.email, filterValidFriends);
+        for (const friendEmail of filterValidFriends) {
+            await removeUserFromRoom(friendEmail, body.roomId, session);
+        }
+        await session.commitTransaction();
         res.send({ message: "Friends removed from room successfully" });
     } catch (error) {
         console.error("removeFriendsFromRoom Error", error);
+        await session.abortTransaction();
         res.status(getStatusCode(error)).send(getErrorMessage(error));
+    } finally {
+        session.endSession();
     }
 };

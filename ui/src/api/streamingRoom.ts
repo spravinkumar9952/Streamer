@@ -139,3 +139,55 @@ export const addFriendsToRoom = async (req: AddFriendsToRoomReq): Promise<AddFri
     const apiResp = await resp.json();
     return apiResp as AddFriendsToRoomResp;
 };
+
+interface RemoveFriendsFromRoomReq {
+    roomId: string;
+    friends: string[];
+}
+
+interface RemoveFriendsFromRoomResp {
+    message: string;
+}
+
+export const removeFriendsFromRoom = async (req: RemoveFriendsFromRoomReq): Promise<RemoveFriendsFromRoomResp> => {
+    const url = baseUrl + "stream/rooms/friends/remove";
+    const resp = await fetch(url ?? "", {
+        method: "POST",
+        headers: getHeaders(),
+        body: JSON.stringify(req),
+    });
+
+    if (!resp.ok) {
+        handleUnAuthorize(resp.status);
+        throw new Error(`HTTP error! status: ${resp.status}`);
+    }
+
+    const apiResp = await resp.json();
+    return apiResp;
+};
+interface UpdateStreamingRoomReq {
+    roomId: string;
+    videoUrl?: string;
+    name?: string;
+}
+
+interface UpdateStreamingRoomResp {
+    message: string;
+}
+
+export const updateStreamingRoom = async (req: UpdateStreamingRoomReq): Promise<UpdateStreamingRoomResp> => {
+    const url = baseUrl + "stream/rooms/update";
+    const resp = await fetch(url ?? "", {
+        method: "POST",
+        headers: getHeaders(),
+        body: JSON.stringify(req),
+    });
+
+    if (!resp.ok) {
+        handleUnAuthorize(resp.status);
+        throw new Error(`HTTP error! status: ${resp.status}`);
+    }
+
+    const apiResp = await resp.json();
+    return apiResp;
+};
