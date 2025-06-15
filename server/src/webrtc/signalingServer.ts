@@ -1,6 +1,7 @@
 import express from "express";
 import http from "http";
 import { Server, Socket } from "socket.io";
+import { WEBRTC_PORT } from "../utils/env";
 
 const app = express();
 const server = http.createServer(app);
@@ -66,7 +67,6 @@ io.on("connection", (socket: Socket) => {
     });
 });
 
-const PORT = 9997;
-server.listen(PORT, () => {
-    console.log(`Signaling server listening on http://localhost:${PORT}`);
+server.listen(WEBRTC_PORT, () => {
+    console.log(`Signaling server listening on http://localhost:${WEBRTC_PORT}`);
 });

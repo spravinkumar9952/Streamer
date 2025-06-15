@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import path from 'path';
+import path from "path";
 
 const envFile = process.env.NODE_ENV === "production" ? ".env.production" : ".env.development";
 dotenv.config({ path: path.resolve(__dirname, "../../", envFile) });
@@ -24,6 +24,7 @@ export const GOOGLE_CLIENT_SECRET = getEnvVar("GOOGLE_CLIENT_SECRET");
 export const UI_REDIRECT_URL = getEnvVar("UI_REDIRECT_URL");
 export const SECRET_KEY = getEnvVar("SECRET_KEY");
 export const GOOGLE_CALLBACK_URL = getEnvVar("GOOGLE_CALLBACK_URL");
+export const WEBRTC_PORT = parseInt(getEnvVar("WEBRTC_PORT"));
 
 // Log environment variables in development
 if (process.env.NODE_ENV === "development") {
@@ -38,5 +39,6 @@ if (process.env.NODE_ENV === "development") {
         UI_REDIRECT_URL,
         SECRET_KEY,
         GOOGLE_CALLBACK_URL,
+        WEBRTC_PORT,
     });
 }

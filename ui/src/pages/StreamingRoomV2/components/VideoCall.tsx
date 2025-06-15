@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import io, { Socket } from "socket.io-client";
 import { useAuth } from "../../../contexts/Auth";
-
-const SERVER_URL = "http://localhost:9997";
+import { WEBRTC_SERVER_URL } from "../../../utils/env";
 
 interface VideoCallProps {
     roomId: string;
@@ -45,7 +44,7 @@ const VideoCall: React.FC<VideoCallProps> = ({ roomId, onClose }) => {
 
     const startSignaling = (stream: MediaStream) => {
         console.log(TAG, "startSignaling");
-        const socket = io(SERVER_URL);
+        const socket = io(WEBRTC_SERVER_URL);
         socketRef.current = socket;
         socket.emit("join", roomId, user?.email ?? "");
 
