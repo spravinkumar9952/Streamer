@@ -16,6 +16,7 @@ import {
 } from "../../api/streamingRoom";
 import AuthContext from "../../contexts/Auth";
 import { VideoUrlModal } from "./components/VideoUrlModal";
+import VideoCall from "./components/VideoCall";
 
 interface Room {
     id: string;
@@ -59,6 +60,8 @@ const StreamingRoomV2: React.FC = () => {
     const [newVideoUrl, setNewVideoUrl] = useState("");
     const [updateUrlError, setUpdateUrlError] = useState<string | null>(null);
     const [videoTitle, setVideoTitle] = useState<string>("");
+    const [showVideoCall, setShowVideoCall] = useState(false);
+    const [leftTab, setLeftTab] = useState<"friends" | "chat">("friends");
 
     const viewOnly = useMemo(() => {
         return room?.createdBy !== user?.email;
@@ -359,34 +362,76 @@ const StreamingRoomV2: React.FC = () => {
         <div className={styles.container}>
             <StreamingNavBar joinedUsers={room.joinedUsers} />
             <div className={styles.mainContent}>
-                <div className="hidden md:block">
-                    <JoinedFriendsList
-                        friendsEmail={room.joinedUsers}
-                        creatorEmail={room.createdBy}
-                        updateJoinedUsers={updateJoinedUsers}
-                    />
+                {/* Left: Tabbed Friends/Chat panel */}
+                <div className="flex flex-col h-full bg-background-card rounded-card border border-border-light">
+                    <div className="flex p-1">
+                        <button
+                            className={`flex-1 py-2 font-semibold rounded-lg transition-colors ${
+                                leftTab === "friends"
+                                    ? "bg-background-tertiary text-text-primary"
+                                    : "text-text-tertiary hover:bg-background-tertiary/50"
+                            }`}
+                            onClick={() => setLeftTab("friends")}
+                        >
+                            Friends
+                        </button>
+                        <button
+                            className={`flex-1 py-2 font-semibold rounded-lg transition-colors ${
+                                leftTab === "chat"
+                                    ? "bg-background-tertiary text-text-primary"
+                                    : "text-text-tertiary hover:bg-background-tertiary/50"
+                            }`}
+                            onClick={() => setLeftTab("chat")}
+                        >
+                            Chat
+                        </button>
+                    </div>
+                    <div className="flex-1 min-h-0 overflow-y-auto">
+                        {leftTab === "friends" ? (
+                            <JoinedFriendsList
+                                friendsEmail={room.joinedUsers}
+                                creatorEmail={room.createdBy}
+                                updateJoinedUsers={updateJoinedUsers}
+                            />
+                        ) : (
+                            <GroupChat chat={chat} onSend={handleSendMessage} />
+                        )}
+                    </div>
                 </div>
-                <div className="flex flex-col gap-4 flex-1">
-                    <VideoPlayerSection
-                        room={room}
-                        ref={playerRef}
-                        isPlaying={isPlaying}
-                        onPlay={handlePlay}
-                        onPause={handlePause}
-                        onSeek={handleSeek}
-                        onProgress={handleProgress}
-                        viewOnly={viewOnly}
-                    />
-                    <RoomInfoBar
-                        roomName={room.name}
-                        creatorEmail={room.createdBy}
-                        activeTime={formatElapsedTime(room.created_at)}
-                        isCreator={!viewOnly}
-                        onUpdateUrl={() => setIsUrlModalOpen(true)}
-                        onLeave={handleLeaveRoom}
-                        onDelete={!viewOnly ? handleDeleteRoom : undefined}
-                        videoTitle={room.videoTitle}
-                    />
+                {/* Center: Main video area and info bar (unchanged) */}
+                <div className="flex flex-col flex-1 h-full min-h-0 relative">
+                    <div
+                        style={{ flex: "0 0 70%", minHeight: 0, maxHeight: "70%" }}
+                        className="flex flex-col h-full min-h-0"
+                    >
+                        <div style={{ flex: "1 1 0%", minHeight: 0, maxHeight: "100%" }}>
+                            <VideoPlayerSection
+                                room={room}
+                                ref={playerRef}
+                                isPlaying={isPlaying}
+                                onPlay={handlePlay}
+                                onPause={handlePause}
+                                onSeek={handleSeek}
+                                onProgress={handleProgress}
+                                viewOnly={viewOnly}
+                            />
+                        </div>
+                    </div>
+                    <div style={{ flex: "1 1 30%", minHeight: 0, overflowY: "auto" }}>
+                        <RoomInfoBar
+                            roomName={room.name}
+                            creatorEmail={room.createdBy}
+                            activeTime={formatElapsedTime(room.created_at)}
+                            isCreator={!viewOnly}
+                            onUpdateUrl={() => setIsUrlModalOpen(true)}
+                            onLeave={handleLeaveRoom}
+                            onDelete={!viewOnly ? handleDeleteRoom : undefined}
+                            videoTitle={room.videoTitle}
+                            roomId={room.id}
+                            onToggleVideoCall={() => setShowVideoCall(!showVideoCall)}
+                            isVideoCallActive={showVideoCall}
+                        />
+                    </div>
                     <VideoUrlModal
                         isOpen={isUrlModalOpen}
                         onClose={() => {
@@ -399,7 +444,16 @@ const StreamingRoomV2: React.FC = () => {
                         error={updateUrlError}
                     />
                 </div>
-                <GroupChat chat={chat} onSend={handleSendMessage} />
+                {/* Right: VideoCall panel */}
+                <div className="hidden md:block w-80 h-full bg-background-card rounded-card border border-border-light overflow-hidden">
+                    {showVideoCall ? (
+                        <VideoCall roomId={room.id} onClose={() => setShowVideoCall(false)} />
+                    ) : (
+                        <div className="h-full flex items-center justify-center text-text-tertiary">
+                            Click "Start Video Call" to begin
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );

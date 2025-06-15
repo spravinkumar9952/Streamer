@@ -1,10 +1,12 @@
 import { HTTP_SERVER_URL } from "../utils/env";
+import Cookies from "js-cookie";
+
 export const baseUrl = HTTP_SERVER_URL + "/";
 
 export const getHeaders = () => {
-    const token = localStorage.getItem("authToken");
+    const cookie = Cookies.get("authToken");
     return {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${cookie}`,
         "Content-Type": "application/json",
     };
 };

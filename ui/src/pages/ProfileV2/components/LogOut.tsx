@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/Auth";
+import Cookies from "js-cookie";
 
 export const LogOut: FC = () => {
     const navigate = useNavigate();
@@ -8,7 +9,7 @@ export const LogOut: FC = () => {
     const { setUser } = useAuth();
 
     const onLogout = () => {
-        localStorage.removeItem("authToken");
+        Cookies.remove("authToken");
         setUser(null);
         document.cookie.split(";").forEach(function (c) {
             document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");

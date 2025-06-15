@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../contexts/Auth";
 import { useContext } from "react";
 import { FriendshipStatus } from "../api/profile";
+import Cookies from "js-cookie";
 
 export const Profile: FC = () => {
     const [user, setUser] = useState<ProfileResp | null>(null);
@@ -45,7 +46,7 @@ export const Profile: FC = () => {
     };
 
     const handleLogout = () => {
-        localStorage.removeItem("authToken");
+        Cookies.remove("authToken");
         setAuthUser(null);
         navigate("/login");
     };

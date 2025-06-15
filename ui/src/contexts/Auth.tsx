@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getProfile } from "../api/profile";
+import Cookies from "js-cookie";
 
 interface User {
     email: string;
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         const validateToken = async () => {
-            const token = localStorage.getItem("authToken");
+            const token = Cookies.get("authToken");
             if (token) {
                 try {
                     const profile = await getProfile();
@@ -35,7 +36,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     });
                 } catch (error) {
                     // Token is invalid or expired
-                    localStorage.removeItem("authToken");
+                    Cookies.remove("authToken");
                     setUser(null);
                     navigate("/login", { replace: true });
                 }

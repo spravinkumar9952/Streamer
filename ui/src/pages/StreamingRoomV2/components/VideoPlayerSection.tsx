@@ -17,7 +17,7 @@ interface VideoPlayerSectionProps {
 const VideoPlayerSection = forwardRef<ReactPlayer, VideoPlayerSectionProps>(
     ({ room, isPlaying, onPlay, onPause, onSeek, onProgress, viewOnly }, ref) => {
         return (
-            <div className="bg-white/80 rounded-2xl border border-pink-100 overflow-hidden">
+            <div className="bg-white/80 rounded-2xl border border-pink-100 overflow-hidden h-50% ">
                 <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
                     <div className="absolute top-0 left-0 w-full h-full">
                         {room.videoUrl ? (
