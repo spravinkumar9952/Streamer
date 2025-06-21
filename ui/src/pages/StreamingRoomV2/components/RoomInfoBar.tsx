@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FiUsers, FiClock, FiVideo, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import VideoCall from "./VideoCall";
 
 interface RoomInfoBarProps {
     roomName: string;
@@ -10,6 +11,9 @@ interface RoomInfoBarProps {
     onLeave: () => void;
     onDelete?: () => void;
     videoTitle?: string;
+    roomId: string;
+    onToggleVideoCall: () => void;
+    isVideoCallActive: boolean;
 }
 
 const RoomInfoBar: React.FC<RoomInfoBarProps> = ({
@@ -21,8 +25,17 @@ const RoomInfoBar: React.FC<RoomInfoBarProps> = ({
     onLeave,
     onDelete,
     videoTitle,
+    roomId,
+    onToggleVideoCall,
+    isVideoCallActive,
 }) => {
     const [expanded, setExpanded] = useState(false);
+    const [videoCall, setVideoCall] = useState(false);
+
+    const handleVideoCall = () => {
+        setVideoCall(true);
+    };
+
     return (
         <div className="bg-background-card border border-border-light p-4 rounded-card shadow-card">
             {/* Mobile: Toggle bar */}
@@ -121,8 +134,20 @@ const RoomInfoBar: React.FC<RoomInfoBarProps> = ({
                             Update Video
                         </button>
                     )}
+
+                    <button
+                        onClick={onToggleVideoCall}
+                        className={`px-4 py-2 rounded-lg ${
+                            isVideoCallActive
+                                ? "bg-red-500 text-white hover:bg-red-600"
+                                : "bg-primary text-white hover:bg-primary-dark"
+                        }`}
+                    >
+                        {isVideoCallActive ? "End Video Call" : "Start Video Call"}
+                    </button>
                 </div>
             </div>
+            {videoCall && <VideoCall roomId={roomId} onClose={() => setVideoCall(false)} />}
         </div>
     );
 };

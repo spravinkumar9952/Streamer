@@ -13,12 +13,13 @@ import ProfileV2 from "./pages/ProfileV2/Page";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./contexts/Auth";
 import StreamingRoomV2 from "./pages/StreamingRoomV2/Page";
+import Cookies from "js-cookie";
 
 const PageRoute: FC = () => {
     const [initialCompenent, setInitialComponent] = useState<React.JSX.Element>(<LandingPage />);
 
     useEffect(() => {
-        const currentToken = localStorage.getItem("authToken");
+        const currentToken = Cookies.get("authToken");
         if (currentToken) {
             setInitialComponent(<HomeV2 />);
         } else {

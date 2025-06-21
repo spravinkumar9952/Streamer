@@ -7,7 +7,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start:http": "NODE_ENV=development nodemon src/http/server.ts",
         "start:socket": "NODE_ENV=development nodemon src/socket/server.ts",
-        "start:all": "concurrently \"npm run start:http\" \"npm run start:socket\"",
+        "start:webrtc": "NODE_ENV=development nodemon src/webrtc/signalingServer.ts",
+        "start:all": "concurrently \"npm run start:http\" \"npm run start:socket\" \"npm run start:webrtc\"",
         "list:env": "node -e 'console.log(process.env)'",
         "build": "tsc",
         "start": "node dist/http/server.js"

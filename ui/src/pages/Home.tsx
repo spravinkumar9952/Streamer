@@ -14,6 +14,7 @@ import {
 import { getStreamingRoomsList, StreamingRoom } from "../api/streamingRoom";
 import { StreamingRoomListItem } from "../components/StreamingRoomListItem";
 import AuthContext from "../contexts/Auth";
+import Cookies from "js-cookie";
 
 enum Section {
     StreamingRooms,
@@ -29,7 +30,7 @@ const Home: FC = () => {
     const { setUser, user } = useContext(AuthContext);
 
     const checkOldTokenValidity = (newToken: string | null): boolean => {
-        const currentToken = localStorage.getItem("authToken");
+        const currentToken = Cookies.get("authToken");
         console.log("currentToken", currentToken);
         console.log("token", newToken);
         if (newToken == null && currentToken) {
@@ -51,14 +52,14 @@ const Home: FC = () => {
 
     const checkNewTokenValidity = (name: string | null, email: string | null, token: string | null) => {
         if (!name || !email || !token) {
-            const token = localStorage.getItem("authToken");
+            const token = Cookies.get("authToken");
             if (!user?.email || !user?.name || !token) {
                 navigation("/login");
                 return;
             }
             return;
         }
-        localStorage.setItem("authToken", token ?? "");
+        Cookies.set("authToken", token ?? "", { expires: 1, path: "/", secure: true });
         changeSection(Section.StreamingRooms);
         setUser({ email: email ?? "", name: name ?? "", picture: "" });
     };
